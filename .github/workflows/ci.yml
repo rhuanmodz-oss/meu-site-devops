@@ -1,0 +1,64 @@
+name: Pipeline DevOps Aula
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  setup:
+    name: 🔧 Setup
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Listar arquivos
+        run: ls -la
+
+  validation:
+    name: ✅ Validação
+    runs-on: ubuntu-latest
+    needs: setup
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Verificar index.html
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Erro: index.html não encontrado!"
+            exit 1
+          fi
+
+      - name: Validação concluída
+        run: echo "Arquivo OK ✅"
+
+  build:
+    name: 📦 Build (simulado)
+    runs-on: ubuntu-latest
+    needs: validation
+
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Criar artefato
+        run: |
+          mkdir dist
+          cp index.html dist/
+
+      - name: Verificar dist
+        run: ls -la dist
+
+  deploy:
+    name: 🚀 Deploy (informativo)
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - name: Deploy
+        run: echo "Cloudflare fará deploy automaticamente"
