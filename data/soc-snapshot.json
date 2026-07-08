@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:23:57-03:00",
-  "sync": "21:23:56",
+  "collected_at": "2026-07-07T21:24:27-03:00",
+  "sync": "21:24:25",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -12,6 +12,32 @@
     "outbound": 0
   },
   "incidents": [
+    {
+      "ts": "2026-07-07 21:24:19",
+      "hits": 121,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.4.103",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 53,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:24:00",
+      "hits": 50,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.12.48",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 35,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
     {
       "ts": "2026-07-07 21:23:46",
       "hits": 59,
@@ -78,19 +104,6 @@
       "risk": 95
     },
     {
-      "ts": "2026-07-07 21:22:29",
-      "hits": 174,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.16.55",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 110,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-07 21:21:12",
       "hits": 20,
       "level": "CRITICAL",
@@ -115,19 +128,6 @@
       "dest_count": 0,
       "dest_type": "",
       "risk": 100
-    },
-    {
-      "ts": "2026-07-07 21:20:25",
-      "hits": 49,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.12.48",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 34,
-      "dest_type": "Destinos Externos",
-      "risk": 95
     },
     {
       "ts": "2026-07-07 21:18:35",
