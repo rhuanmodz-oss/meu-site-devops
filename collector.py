@@ -217,43 +217,64 @@ async () => {
   const HOURS = 6;
   const now = Date.now();
   const from = String(now - HOURS*3600*1000), to = String(now);
-  const jget = async (u) => (await fetch(u, {credentials:'include'})).json();
-  let list;
-  try { list = await jget('/grafana/api/search?type=dash-db'); } catch(e){ return {erro:'search:'+e}; }
-  const out = [];
-  for (const d of (list||[])) {
-    let dash;
-    try { dash = await jget('/grafana/api/dashboards/uid/'+d.uid); } catch(e){ continue; }
-    const panels = (dash.dashboard && dash.dashboard.panels) || [];
-    const pout = [];
-    for (const p of panels) {
-      if (!p.targets || !p.targets.length) continue;
-      const dsUid = (p.datasource&&p.datasource.uid) || (p.targets[0].datasource&&p.targets[0].datasource.uid);
-      const dsType = (p.datasource&&p.datasource.type) || 'elasticsearch';
-      const queries = p.targets.map((t,i)=>Object.assign({}, t, {
-        datasource:{type:dsType, uid:dsUid}, intervalMs:300000, maxDataPoints:100, refId:(t.refId||('Q'+i))
-      }));
-      let qj;
-      try {
-        const q = await fetch('/grafana/api/ds/query', {method:'POST', credentials:'include',
-          headers:{'content-type':'application/json'}, body:JSON.stringify({queries, from, to})});
-        qj = await q.json();
-      } catch(e){ continue; }
-      const res = qj.results || {};
-      const frames = [];
-      for (const k of Object.keys(res)) {
-        for (const fr of ((res[k]&&res[k].frames)||[])) {
-          const names = ((fr.schema&&fr.schema.fields)||[]).map(f=>f.name);
-          const vals = (fr.data&&fr.data.values) || [];
-          const n = vals[0] ? vals[0].length : 0;
-          const rows = [];
-          for (let i=0;i<Math.min(n,60);i++) rows.push(names.map((nm,c)=>vals[c]?vals[c][i]:null));
-          if (names.length) frames.push({fields:names, rows});
-        }
-      }
-      pout.push({title:(p.title||''), type:p.type, frames});
+  const DS = 'P31C819B24CF3C3C7';
+  const T = (field,size)=>[{id:'2',type:'terms',field:field,settings:{min_doc_count:'1',order:'desc',orderBy:'_count',size:String(size||12)}}];
+  const H = [{id:'2',type:'date_histogram',field:'@timestamp',settings:{interval:'5m',min_doc_count:'0'}}];
+  const BASE = 'tags:"threat_detected"';
+  const IN = BASE + ' AND event.direction:"inbound"';
+  const OUT = BASE + ' AND event.direction:"outbound"';
+  const SPEC = [
+    {dash:'Visão Geral', q:BASE, panels:[
+      {title:'Volume de ameaças no tempo', viz:'line', agg:H},
+      {title:'Direção do tráfego', viz:'pie', agg:T('event.direction',5)},
+      {title:'Países de origem', viz:'rank', agg:T('source.geo.country_name',12)},
+      {title:'Países de destino', viz:'rank', agg:T('destination.geo.country_name',12)},
+      {title:'Portas mais visadas', viz:'rank', agg:T('destination.port',12)},
+      {title:'Protocolos', viz:'pie', agg:T('network.transport',5)},
+    ]},
+    {dash:'Ataques Inbound', q:IN, panels:[
+      {title:'Volume de ataques no tempo', viz:'line', agg:H},
+      {title:'Países de origem dos ataques', viz:'rank', agg:T('source.geo.country_name',12)},
+      {title:'Operadoras / Redes de origem', viz:'rank', agg:T('source.as.as.organization.name.keyword',12)},
+      {title:'Portas alvo', viz:'rank', agg:T('destination.port',12)},
+      {title:'IPs internos mais atacados', viz:'rank', agg:T('destination.ip',12)},
+      {title:'Protocolos', viz:'pie', agg:T('network.transport',5)},
+    ]},
+    {dash:'Infectados Outbound', q:OUT, panels:[
+      {title:'Volume de saída no tempo', viz:'line', agg:H},
+      {title:'Países de destino', viz:'rank', agg:T('destination.geo.country_name',12)},
+      {title:'Operadoras / Redes de destino', viz:'rank', agg:T('destination.as.as.organization.name.keyword',12)},
+      {title:'IPs internos infectados', viz:'rank', agg:T('source.ip',12)},
+      {title:'Portas de destino', viz:'rank', agg:T('destination.port',12)},
+      {title:'Protocolos', viz:'pie', agg:T('network.transport',5)},
+    ]},
+    {dash:'Análise Profunda', q:BASE, panels:[
+      {title:'Top IPs de origem', viz:'rank', agg:T('source.ip',15)},
+      {title:'Top IPs de destino', viz:'rank', agg:T('destination.ip',15)},
+      {title:'Portas mais usadas', viz:'rank', agg:T('destination.port',15)},
+      {title:'Operadoras envolvidas (destino)', viz:'rank', agg:T('destination.as.as.organization.name.keyword',15)},
+    ]},
+  ];
+  async function runPanel(q, agg){
+    const body={queries:[{refId:'A',datasource:{type:'elasticsearch',uid:DS},query:q,timeField:'@timestamp',
+      alias:'',bucketAggs:agg,metrics:[{id:'1',type:'count'}],intervalMs:300000,maxDataPoints:80}],from:from,to:to};
+    const j=await (await fetch('/grafana/api/ds/query',{method:'POST',credentials:'include',
+      headers:{'content-type':'application/json'},body:JSON.stringify(body)})).json();
+    const res=j.results||{}; const k=Object.keys(res)[0]; const fr=(res[k]&&res[k].frames&&res[k].frames[0]);
+    if(!fr) return null;
+    const fields=((fr.schema&&fr.schema.fields)||[]).map(f=>f.name);
+    const vals=(fr.data&&fr.data.values)||[]; const n=vals[0]?vals[0].length:0;
+    const rows=[]; for(let i=0;i<Math.min(n,120);i++) rows.push(fields.map((nm,c)=>vals[c]?vals[c][i]:null));
+    return {fields:fields, rows:rows};
+  }
+  const out=[];
+  for(const mod of SPEC){
+    const panels=[];
+    for(const p of mod.panels){
+      try{ const r=await runPanel(mod.q, p.agg); if(r) panels.push({title:p.title, viz:p.viz, fields:r.fields, rows:r.rows}); }
+      catch(e){}
     }
-    out.push({title:(dash.dashboard&&dash.dashboard.title)||d.title, uid:d.uid, folder:d.folderTitle||'', panels:pout});
+    out.push({dash:mod.dash, panels:panels});
   }
   return out;
 }
@@ -409,9 +430,25 @@ def main() -> int:
             while True:
                 t0 = time.time()
                 try:
+                    # se a janela do Chrome caiu/fechou, reanexa
+                    if attached:
+                        need = page is None
+                        if not need:
+                            try:
+                                need = page.is_closed()
+                            except Exception:
+                                need = True
+                        if need:
+                            browser = pw.chromium.connect_over_cdp(args.cdp, timeout=5000)
+                            ctx = browser.contexts[0] if browser.contexts else browser.new_context()
+                            page = _pick_page(ctx)
+                            ensure_logged_in(page)
+                            print(">>> Reanexado ao seu Chrome.")
                     collect_once(page, do_git, args.grafana_wait)
                 except Exception as e:
                     print("   erro na coleta:", e)
+                    if attached:
+                        page = None  # forca reconexao no proximo ciclo
                 dt = args.interval - (time.time() - t0)
                 if dt > 0:
                     time.sleep(dt)

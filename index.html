@@ -3,88 +3,101 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FlowSpec SOC — Dashboard</title>
+<title>FlowSpec SOC</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
 :root{
-  --bg:#0a0b0e; --card:#14161b; --card2:#0f1114; --card-border:#232630;
-  --text:#f2f4f8; --muted:#8a92a0; --accent:#00fff2; --crit:#ff4d5e; --high:#ffb020;
-  --grid:rgba(255,255,255,0.06);
+  --bg:#070b14; --panel:#0e1522; --panel2:#0a1019; --border:#1c2740;
+  --text:#e9eef7; --muted:#7f8da0;
+  --cyan:#22d3ee; --red:#fb5975; --amber:#fbbf24; --violet:#a78bfa; --green:#34d399; --blue:#60a5fa;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
 }
 *{box-sizing:border-box;}
 body{
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  background:radial-gradient(1100px 500px at 85% -10%,#16323133,transparent),
-             radial-gradient(900px 500px at -10% 0%,#3a121a33,transparent),var(--bg);
-  color:var(--text); margin:0; padding:24px 24px 56px; min-height:100vh;
+  background:
+    radial-gradient(900px 420px at 88% -8%, #0c3a4522, transparent),
+    radial-gradient(760px 420px at -6% 4%, #2a123a22, transparent),
+    var(--bg);
+  color:var(--text); margin:0; padding:22px 22px 60px; min-height:100vh;
 }
-.wrap{max-width:1240px;margin:0 auto;}
-/* header */
-header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;}
-.brand{display:flex;align-items:center;gap:12px;}
-.brand .logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--crit));display:grid;place-items:center;font-weight:800;color:#06131a;font-size:20px;}
-.brand h1{font-size:1.3rem;margin:0;font-weight:700;letter-spacing:-.02em;}
-.brand span{display:block;font-size:.8rem;color:var(--muted);font-weight:500;}
-.hstatus{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-.pill{font-size:.8rem;color:var(--muted);background:var(--card);border:1px solid var(--card-border);padding:8px 14px;border-radius:999px;display:flex;align-items:center;gap:8px;}
-.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 8px #34d399;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
-/* nav por módulo */
-.modnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid var(--card-border);padding-bottom:12px;}
-.modnav button{font:inherit;font-size:.86rem;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--card-border);padding:9px 16px;border-radius:10px;cursor:pointer;transition:all .15s;}
-.modnav button:hover{color:var(--text);border-color:var(--muted);}
-.modnav button.active{color:#06131a;background:var(--accent);border-color:var(--accent);}
-.modnav button.crit.active{background:var(--crit);border-color:var(--crit);color:#fff;}
-/* módulos */
-.mod{display:none;}
-.mod.active{display:block;animation:fade .25s ease;}
-@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
-/* KPIs */
-.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:16px;}
-.kpi{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;}
-.kpi .label{font-size:.72rem;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em;}
-.kpi .value{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;}
-.kpi.crit .value{color:var(--crit);}
-.kpi.high .value{color:var(--high);}
-/* cards e grids */
-.card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:16px;}
-.card h2{font-size:1rem;margin:0 0 2px;font-weight:650;}
-.card .sub{font-size:.8rem;color:var(--muted);margin:0 0 16px;}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
-.grid .card{margin-bottom:0;}
-.chart-box{position:relative;height:280px;}
-/* módulo grafana grid */
-.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;align-items:start;}
-.mod-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;}
-.mod-cap{font-size:.84rem;font-weight:650;color:var(--text);margin-bottom:12px;display:flex;justify-content:space-between;gap:8px;}
-.mod-cap small{color:var(--muted);font-weight:500;}
-.mod-chart{position:relative;height:230px;}
-.mod-num{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;color:var(--accent);}
-.mod-empty{color:var(--muted);font-size:.85rem;padding:30px 0;text-align:center;}
-/* tabela detalhada */
-.dtable{width:100%;border-collapse:collapse;font-size:.76rem;}
-.dtable th{text-align:left;color:var(--muted);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--card-border);position:sticky;top:0;background:var(--card);}
-.dtable td{padding:5px 8px;border-bottom:1px solid var(--card-border);white-space:nowrap;}
-.dtable td:last-child{text-align:right;font-weight:600;color:var(--accent);}
-.dscroll{max-height:300px;overflow:auto;}
-/* mitigação ao vivo */
-.mitig-head{display:flex;align-items:center;gap:10px;margin:0 0 4px;}
-.live-tag{font-size:.7rem;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--crit);padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:6px;}
-.live-tag .dot{background:#fff;box-shadow:0 0 8px #fff;}
-.mitig-list{max-height:300px;overflow:auto;margin-top:14px;display:flex;flex-direction:column;gap:6px;}
-.mrow{display:grid;grid-template-columns:88px 108px 1fr auto;align-items:center;gap:10px;padding:8px 12px;background:var(--card2);border:1px solid var(--card-border);border-radius:9px;font-size:.8rem;}
-.mrow.crit{border-left:3px solid var(--crit);}
-.mrow.high{border-left:3px solid var(--high);}
-.mtime{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600;}
-.mtag{font-size:.68rem;font-weight:800;letter-spacing:.04em;color:#34d399;background:#34d39918;border:1px solid #34d39955;border-radius:6px;padding:3px 6px;text-align:center;}
-.mip{color:var(--text);font-weight:600;overflow:hidden;text-overflow:ellipsis;}
-.mmut{color:var(--muted);font-weight:400;}
-.mrisk{font-weight:700;color:var(--crit);font-variant-numeric:tabular-nums;}
-/* reputação */
+.wrap{max-width:1280px;margin:0 auto;}
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:16px;}
+.brand{display:flex;align-items:center;gap:13px;}
+.brand .logo{width:44px;height:44px;border-radius:12px;background:conic-gradient(from 210deg,var(--cyan),var(--violet),var(--red),var(--cyan));display:grid;place-items:center;font-weight:800;color:#05121a;font-size:20px;}
+.brand h1{font-size:1.32rem;margin:0;font-weight:750;letter-spacing:-.02em;}
+.brand span{display:block;font-size:.78rem;color:var(--muted);}
+.hstatus{display:flex;gap:9px;align-items:center;flex-wrap:wrap;}
+.pill{font-size:.78rem;color:var(--muted);background:var(--panel);border:1px solid var(--border);padding:7px 13px;border-radius:999px;display:flex;align-items:center;gap:7px;}
+.pill b{color:var(--text);font-variant-numeric:tabular-nums;}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 9px var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+
+.modnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;}
+.modnav button{font:inherit;font-size:.85rem;font-weight:650;color:var(--muted);background:var(--panel);border:1px solid var(--border);padding:10px 16px;border-radius:11px;cursor:pointer;transition:.15s;display:flex;align-items:center;gap:7px;}
+.modnav button:hover{color:var(--text);transform:translateY(-1px);}
+.modnav button.active{color:#05121a;}
+.modnav button[data-mod=mitig].active{background:var(--green);border-color:var(--green);}
+.modnav button[data-mod=geral].active{background:var(--cyan);border-color:var(--cyan);}
+.modnav button[data-mod=inbound].active{background:var(--red);border-color:var(--red);color:#fff;}
+.modnav button[data-mod=outbound].active{background:var(--amber);border-color:var(--amber);}
+.modnav button[data-mod=deep].active{background:var(--violet);border-color:var(--violet);color:#fff;}
+
+.mod{display:none;} .mod.active{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:13px;margin-bottom:16px;}
+.kpi{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:15px 16px;position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--cyan);opacity:.8;}
+.kpi.crit::before{background:var(--red);} .kpi.high::before{background:var(--amber);}
+.kpi .label{font-size:.7rem;color:var(--muted);margin-bottom:7px;text-transform:uppercase;letter-spacing:.05em;}
+.kpi .value{font-size:1.5rem;font-weight:750;letter-spacing:-.02em;font-variant-numeric:tabular-nums;}
+.kpi.crit .value{color:var(--red);} .kpi.high .value{color:var(--amber);}
+
+.card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:18px 20px;margin-bottom:16px;}
+.card h2{font-size:1rem;margin:0 0 3px;font-weight:700;}
+.card .sub{font-size:.8rem;color:var(--muted);margin:0 0 14px;}
+
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;align-items:start;}
+.mcard{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:16px 18px;position:relative;overflow:hidden;}
+.mcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent,var(--cyan));opacity:.85;}
+.mcard .cap{font-size:.86rem;font-weight:700;margin:4px 0 14px;display:flex;justify-content:space-between;gap:8px;align-items:baseline;}
+.mcard .cap small{color:var(--muted);font-weight:500;font-size:.72rem;}
+.chart-h{position:relative;height:215px;}
+
+/* rank list — barras embutidas, sem scroll */
+.rank{display:flex;flex-direction:column;gap:9px;}
+.rk{display:grid;grid-template-columns:20px 1fr auto;align-items:center;gap:10px;position:relative;}
+.rk .i{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums;text-align:right;}
+.rk .l{font-size:.82rem;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.rk .l .svc{color:var(--muted);font-size:.74rem;}
+.rk .v{font-size:.82rem;font-weight:700;font-family:var(--mono);color:var(--accent,var(--cyan));font-variant-numeric:tabular-nums;}
+.rk .track{grid-column:2/4;height:5px;border-radius:4px;background:#ffffff0d;overflow:hidden;margin-top:-3px;}
+.rk .track i{display:block;height:100%;border-radius:4px;background:var(--accent,var(--cyan));opacity:.55;}
+
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.grid2 .card{margin-bottom:0;}
+.chart-box{position:relative;height:270px;}
+
+/* mitigação */
+.mhead{display:flex;align-items:center;gap:10px;margin:0 0 3px;}
+.live{font-size:.68rem;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--red);padding:3px 9px;border-radius:6px;display:flex;align-items:center;gap:6px;}
+.live .dot{background:#fff;box-shadow:0 0 8px #fff;}
+.mlist{max-height:320px;overflow-y:auto;overflow-x:hidden;margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.mrow{display:grid;grid-template-columns:78px 96px 1fr auto;align-items:center;gap:10px;padding:8px 12px;background:var(--panel2);border:1px solid var(--border);border-radius:9px;font-size:.8rem;}
+.mrow.crit{border-left:3px solid var(--red);} .mrow.high{border-left:3px solid var(--amber);}
+.mtime{font-family:var(--mono);color:var(--text);font-weight:600;}
+.mtag{font-size:.66rem;font-weight:800;color:var(--green);background:#34d39916;border:1px solid #34d39955;border-radius:6px;padding:3px 6px;text-align:center;}
+.mip{font-family:var(--mono);color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.mip small{color:var(--muted);font-family:inherit;}
+.mrisk{font-weight:700;color:var(--red);font-family:var(--mono);}
+
 #repBlock .kpis{grid-template-columns:repeat(4,1fr);margin:12px 0 0;}
-.mod-title{font-size:1.05rem;font-weight:700;margin:0 0 14px;padding-left:12px;border-left:3px solid var(--accent);}
-footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:32px;}
-@media (max-width:900px){.kpis{grid-template-columns:repeat(3,1fr);}.grid{grid-template-columns:1fr;}#repBlock .kpis{grid-template-columns:repeat(2,1fr);}}
+.modtitle{font-size:1.1rem;font-weight:750;margin:0 0 16px;display:flex;align-items:center;gap:10px;}
+.modtitle .bar{width:4px;height:20px;border-radius:3px;background:var(--accent,var(--cyan));}
+.empty{color:var(--muted);font-size:.85rem;padding:34px;text-align:center;}
+footer{text-align:center;color:var(--muted);font-size:.77rem;margin-top:30px;}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(3,1fr);}.grid2{grid-template-columns:1fr;}#repBlock .kpis{grid-template-columns:repeat(2,1fr);}}
 </style>
 </head>
 <body>
@@ -95,294 +108,182 @@ footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:32px;}
       <div><h1>FlowSpec SOC</h1><span id="subtitle">carregando…</span></div>
     </div>
     <div class="hstatus">
-      <div class="pill" id="freshBadge"><span class="dot" id="freshDot"></span> <span id="freshLabel">—</span></div>
-      <div class="pill"><span id="syncLabel">SOC ACTIVE</span></div>
+      <div class="pill" id="freshBadge"><span class="dot" id="freshDot"></span> <b id="freshLabel">—</b></div>
+      <div class="pill">Sync <b id="syncLabel">—</b></div>
     </div>
   </header>
 
   <nav class="modnav" id="modnav">
-    <button data-mod="mitig" class="crit active">🛡️ Mitigação</button>
-    <button data-mod="overview">Overview</button>
-    <button data-mod="inbound">Ataques Inbound</button>
-    <button data-mod="outbound">Infectados Outbound</button>
-    <button data-mod="deep">Análise Profunda</button>
+    <button data-mod="mitig" class="active">🛡️ Mitigação</button>
+    <button data-mod="geral">🌐 Visão Geral</button>
+    <button data-mod="inbound">⬇️ Ataques Inbound</button>
+    <button data-mod="outbound">⬆️ Infectados Outbound</button>
+    <button data-mod="deep">🔬 Análise Profunda</button>
   </nav>
 
-  <!-- MÓDULO 1: MITIGAÇÃO -->
   <section class="mod active" id="mod-mitig">
     <div class="kpis" id="kpis"></div>
-
     <section id="repBlock" style="display:none;">
-      <div class="card">
-        <h2>Reputação do ASN <span id="repAsn" style="color:var(--accent);font-weight:600"></span></h2>
-        <p class="sub" id="repPrefix"></p>
-        <div class="kpis" id="repKpis"></div>
-      </div>
+      <div class="card"><h2>Reputação do ASN <span id="repAsn" style="color:var(--cyan);font-weight:700"></span></h2>
+        <p class="sub" id="repPrefix"></p><div class="kpis" id="repKpis"></div></div>
     </section>
-
     <div class="card">
-      <div class="mitig-head">
-        <h2 style="margin:0">Mitigação em tempo real</h2>
-        <span class="live-tag"><span class="dot"></span> AO VIVO</span>
-      </div>
-      <p class="sub">Cada incidente é uma ameaça mitigada automaticamente — hora exata e volume de hits</p>
-      <div class="chart-box" style="height:220px"><canvas id="mitigBar"></canvas></div>
-      <div class="mitig-list" id="mitigList"></div>
+      <div class="mhead"><h2 style="margin:0">Mitigação em tempo real</h2><span class="live"><span class="dot"></span> AO VIVO</span></div>
+      <p class="sub">Cada ameaça bloqueada aparece com a hora exata da mitigação e o volume de hits</p>
+      <div class="chart-box" style="height:210px"><canvas id="mitigBar"></canvas></div>
+      <div class="mlist" id="mitigList"></div>
     </div>
-
-    <div class="grid">
-      <div class="card"><h2>Hits ao longo do tempo</h2><p class="sub">Feed de incidentes (mais antigo → recente)</p><div class="chart-box"><canvas id="timeline"></canvas></div></div>
-      <div class="card"><h2>Top origens por hits</h2><p class="sub">IPs de origem com maior volume</p><div class="chart-box"><canvas id="sources"></canvas></div></div>
-      <div class="card"><h2>Incidentes por severidade</h2><p class="sub">Distribuição do feed atual</p><div class="chart-box"><canvas id="severity"></canvas></div></div>
-      <div class="card"><h2>Origem por rede / ASN</h2><p class="sub">Hits agregados por fonte</p><div class="chart-box"><canvas id="asn"></canvas></div></div>
+    <div class="grid2">
+      <div class="card"><h2>Hits no tempo</h2><p class="sub">Feed de incidentes</p><div class="chart-box"><canvas id="timeline"></canvas></div></div>
+      <div class="card"><h2>Severidade</h2><p class="sub">Distribuição do feed atual</p><div class="chart-box"><canvas id="severity"></canvas></div></div>
     </div>
   </section>
 
-  <!-- MÓDULOS GRAFANA -->
-  <section class="mod" id="mod-overview"><div class="mod-title">Overview — visão global</div><div class="mod-grid" id="graf-overview"></div></section>
-  <section class="mod" id="mod-inbound"><div class="mod-title">Ataques Inbound</div><div class="mod-grid" id="graf-inbound"></div></section>
-  <section class="mod" id="mod-outbound"><div class="mod-title">Infectados Outbound</div><div class="mod-grid" id="graf-outbound"></div></section>
-  <section class="mod" id="mod-deep"><div class="mod-title">Análise Profunda</div><div class="mod-grid" id="graf-deep"></div></section>
+  <section class="mod" id="mod-geral"><div class="modtitle"><span class="bar" style="--accent:var(--cyan)"></span>Visão Geral</div><div class="mgrid" id="g-geral"></div></section>
+  <section class="mod" id="mod-inbound"><div class="modtitle"><span class="bar" style="--accent:var(--red)"></span>Ataques Inbound</div><div class="mgrid" id="g-inbound"></div></section>
+  <section class="mod" id="mod-outbound"><div class="modtitle"><span class="bar" style="--accent:var(--amber)"></span>Infectados Outbound</div><div class="mgrid" id="g-outbound"></div></section>
+  <section class="mod" id="mod-deep"><div class="modtitle"><span class="bar" style="--accent:var(--violet)"></span>Análise Profunda</div><div class="mgrid" id="g-deep"></div></section>
 
   <footer id="footer">Aguardando dados…</footer>
 </div>
 
 <script>
-/* ---- fallback: mostra o layout mesmo sem fetch (file://) ---- */
-const FALLBACK={"collected_at":"2026-07-07T21:25:57-03:00","sync":"21:25:55","kpis":{"iocs_mundiais":127879,"critical":0,"high":0,"info":1727,"permanentes":0,"inbound":0,"outbound":0},"incidents":[{"ts":"2026-07-07 21:25:47","hits":135,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.10.50","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:25:30","hits":804,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.8.240","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:24:56","hits":15,"level":"CRITICAL","direction":"IN","category":"DAY-0 SCANNER","origin_ip":"152.255.32.160","origin_net":"TELEFONICA","country":"Brazil","risk":95},{"ts":"2026-07-07 21:24:53","hits":461,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.17.217","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:23:45","hits":9,"level":"HIGH","direction":"OUT","category":"DAY-0: MULTI-TARGET","origin_ip":"100.64.6.211","origin_net":"REDE INTERNA","country":"Interna","risk":80},{"ts":"2026-07-07 21:17:05","hits":99,"level":"CRITICAL","direction":"IN","category":"DAY-0 SCANNER","origin_ip":"152.255.32.35","origin_net":"TELEFONICA","country":"Brazil","risk":95}],"modules":{"reputacao_asn":{"asn":"AS267114","prefix":"45.229.120.0/22","saude_pct":75.2,"total_ips":1024,"saudaveis":770,"criticos":254,"intel_feed":[{"ip":"45.229.120.6","status":"CRÍTICO"}]}},"grafana":[
-{"dash":"Dashboard 1 (Overview)","panels":[
- {"title":"","type":"timeseries","frames":[{"fields":["Time","Value"],"rows":[[1783454400000,52],[1783454700000,743],[1783455000000,882],[1783455300000,610],[1783455600000,930],[1783455900000,1204],[1783456200000,760],[1783456500000,845]]}]},
- {"title":"","type":"piechart","frames":[{"fields":["event.direction","Count"],"rows":[["transit",110],["outbound",44520],["inbound",330]]}]},
- {"title":"","type":"table","frames":[{"fields":["destination.port","Count"],"rows":[[5060,51],[23,38],[51677,18],[80,12],[443,9]]}]},
- {"title":"","type":"barchart","frames":[{"fields":["source.geo.country_name","Count"],"rows":[["United States",101],["Seychelles",50],["Brazil",43],["Germany",22],["Russia",15]]}]},
- {"title":"","type":"table","frames":[{"fields":["destination.geo.city_name.keyword","Count"],"rows":[["Cidade A",27380],["Cidade B",7190],["Cidade C",3944]]}]}
+const FALLBACK={"collected_at":"2026-07-07T23:41:34-03:00","sync":"23:41:33","kpis":{"iocs_mundiais":127879,"critical":0,"high":0,"info":1797,"permanentes":0,"inbound":0,"outbound":0},"incidents":[{"ts":"2026-07-07 23:41:21","hits":7409,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.8.15","risk":95,"dest_count":3910,"dest_type":"Destinos Externos"},{"ts":"2026-07-07 23:41:10","hits":956,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.8.240","risk":95,"dest_count":727,"dest_type":"Destinos Externos"},{"ts":"2026-07-07 23:40:44","hits":114,"level":"CRITICAL","direction":"IN","category":"DAY-0 SCANNER","origin_ip":"152.255.32.35","risk":95,"dest_count":95,"dest_type":"Dispositivos Internos"},{"ts":"2026-07-07 23:37:42","hits":1,"level":"HIGH","direction":"OUT","category":"DAY-0: ADMIN PROBE","origin_ip":"100.64.0.70","risk":85,"dest_count":0,"dest_type":""}],"modules":{"reputacao_asn":{"asn":"AS267114","prefix":"45.229.120.0/22","saude_pct":75.2,"total_ips":1024,"saudaveis":770,"criticos":254,"intel_feed":[{"ip":"45.229.120.6","status":"CRÍTICO"}]}},"grafana":[
+{"dash":"Visão Geral","panels":[
+ {"title":"Volume de ameaças no tempo","viz":"line","fields":["Time","Value"],"rows":[[1783457400000,461],[1783457700000,1125],[1783458000000,736],[1783458300000,727],[1783458600000,941],[1783458900000,620]]},
+ {"title":"Direção do tráfego","viz":"pie","fields":["event.direction","Count"],"rows":[["transit",112],["outbound",48077],["inbound",352]]},
+ {"title":"Países de origem","viz":"rank","fields":["c","Count"],"rows":[["United States",109],["Seychelles",47],["Brazil",43],["United Kingdom",30],["The Netherlands",24],["China",20]]},
+ {"title":"Países de destino","viz":"rank","fields":["c","Count"],"rows":[["Brazil",35197],["United States",11379],["China",174],["The Netherlands",84]]},
+ {"title":"Portas mais visadas","viz":"rank","fields":["p","Count"],"rows":[[5060,53],[23,41],[51677,18],[1433,16],[3389,16],[123,11]]},
+ {"title":"Protocolos","viz":"pie","fields":["network.transport","Count"],"rows":[["udp",47352],["tcp",796]]}
 ]},
-{"dash":"Dashboard 2 (Inbound)","panels":[
- {"title":"","type":"barchart","frames":[{"fields":["source.as.as.organization.name.keyword","Count"],"rows":[["Scloud Pte Ltd",42],["IP Solus Inc",41],["UAB Host Baltic",30],["OVH",18]]}]},
- {"title":"","type":"table","frames":[{"fields":["destination.ip","Count"],"rows":[["45.229.123.242",31292],["45.229.123.229",7251],["45.229.120.10",980]]}]},
- {"title":"","type":"table","frames":[{"fields":["source.as.as.organization.name.keyword","source.ip","destination.port","Count"],"rows":[["UAB Host Baltic","91.224.92.88",33322,3],["UAB Host Baltic","91.224.92.88",58468,2],["Scloud","103.7.29.1",23,9]]}]}
+{"dash":"Ataques Inbound","panels":[
+ {"title":"Países de origem dos ataques","viz":"rank","fields":["c","Count"],"rows":[["United States",109],["Seychelles",47],["Brazil",43],["United Kingdom",30]]},
+ {"title":"Operadoras / Redes de origem","viz":"rank","fields":["o","Count"],"rows":[["Scloud Pte Ltd",43],["IP Solus Inc",41],["UAB Host Baltic",28],["Psychz Networks",20]]},
+ {"title":"Portas alvo","viz":"rank","fields":["p","Count"],"rows":[[5060,53],[23,41],[51677,18],[1433,16]]},
+ {"title":"IPs internos mais atacados","viz":"rank","fields":["ip","Count"],"rows":[["45.229.123.242",31292],["45.229.123.229",7251],["45.229.120.10",980]]},
+ {"title":"Protocolos","viz":"pie","fields":["network.transport","Count"],"rows":[["udp",300],["tcp",120]]}
 ]},
-{"dash":"Dashboard 3 (Outbound)","panels":[
- {"title":"","type":"stat","frames":[{"fields":["Time","Value"],"rows":[[1783455300000,15],[1783455600000,177]]}]},
- {"title":"","type":"table","frames":[{"fields":["destination.port","Count"],"rows":[[443,1286374],[80,166213],[53,44201]]}]},
- {"title":"","type":"piechart","frames":[{"fields":["network.transport","Sum"],"rows":[["udp",81632545],["tcp",143672]]}]},
- {"title":"","type":"piechart","frames":[{"fields":["destination.as.as.organization.name.keyword","Count"],"rows":[["NOW FIBRA",120],["Google",88],["Cloudflare",41]]}]}
+{"dash":"Infectados Outbound","panels":[
+ {"title":"Países de destino","viz":"rank","fields":["c","Count"],"rows":[["Brazil",35197],["United States",11379],["China",174],["The Netherlands",84]]},
+ {"title":"Operadoras / Redes de destino","viz":"rank","fields":["o","Count"],"rows":[["NOW FIBRA PROVEDOR DE INTERNET LTDA",27380],["Google LLC",10642],["FENIX BRASIL",5977],["VISION TELECOM",1448]]},
+ {"title":"IPs internos infectados","viz":"rank","fields":["ip","Count"],"rows":[["100.64.8.15",3910],["100.64.8.240",727],["100.64.5.115",689]]},
+ {"title":"Portas de destino","viz":"rank","fields":["p","Count"],"rows":[[53,46625],[123,591],[3389,238]]},
+ {"title":"Protocolos","viz":"pie","fields":["network.transport","Count"],"rows":[["udp",47352],["tcp",796]]}
 ]},
-{"dash":"Dashboard 4 Análise Profunda","panels":[
- {"title":"","type":"barchart","frames":[{"fields":["source.ip","Count"],"rows":[["100.64.5.239",1980],["100.64.13.24",1420],["100.64.8.15",980]]}]},
- {"title":"","type":"table","frames":[{"fields":["source.ip","destination.port","Count"],"rows":[["100.64.5.115",53,6215],["100.64.18.54",53,5072],["100.64.5.239",53,3824]]}]}
+{"dash":"Análise Profunda","panels":[
+ {"title":"Top IPs de origem","viz":"rank","fields":["ip","Count"],"rows":[["100.64.8.15",1980],["100.64.13.24",1420],["100.64.8.240",980]]},
+ {"title":"Top IPs de destino","viz":"rank","fields":["ip","Count"],"rows":[["45.229.123.242",31292],["45.229.123.229",7251]]},
+ {"title":"Portas mais usadas","viz":"rank","fields":["p","Count"],"rows":[[53,46625],[5060,53],[123,591]]},
+ {"title":"Operadoras envolvidas (destino)","viz":"rank","fields":["o","Count"],"rows":[["NOW FIBRA",27380],["Google LLC",10642]]}
 ]}
 ]};
 
-/* ---- setup ---- */
 const css=getComputedStyle(document.documentElement);
-const ACCENT=css.getPropertyValue('--accent').trim(),CRIT=css.getPropertyValue('--crit').trim(),
-      HIGH=css.getPropertyValue('--high').trim(),MUTED=css.getPropertyValue('--muted').trim(),
-      GRID=css.getPropertyValue('--grid').trim(),CARD=css.getPropertyValue('--card').trim();
-const PAL=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185','#c084fc','#4ade80'];
-Chart.defaults.color=MUTED;Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;
+const C={cyan:css.getPropertyValue('--cyan').trim(),red:css.getPropertyValue('--red').trim(),amber:css.getPropertyValue('--amber').trim(),
+  violet:css.getPropertyValue('--violet').trim(),green:css.getPropertyValue('--green').trim(),muted:css.getPropertyValue('--muted').trim(),
+  panel:css.getPropertyValue('--panel').trim(),grid:'rgba(255,255,255,.06)'};
+const PAL=['#22d3ee','#a78bfa','#fb5975','#34d399','#fbbf24','#60a5fa','#f472b6','#7dd3fc'];
+Chart.defaults.color=C.muted;Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;
 Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.boxWidth=8;
-const gridOpt={grid:{color:GRID},border:{display:false},ticks:{padding:6}};
+const gopt={grid:{color:C.grid},border:{display:false},ticks:{padding:6}};
 const nf=new Intl.NumberFormat('pt-BR');
 const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
 const fmtT=ms=>{const d=new Date(Number(ms));return isNaN(d.getTime())?String(ms):(d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'));};
 const numify=v=>{if(typeof v==='number')return v;const n=parseFloat(String(v).replace(/[^\d.\-]/g,''));return isNaN(n)?0:n;};
-function grad(ctx,color,h){const g=ctx.createLinearGradient(0,0,0,h||280);g.addColorStop(0,color+'55');g.addColorStop(1,color+'00');return g;}
+function grad(ctx,color,h){const g=ctx.createLinearGradient(0,0,0,h||270);g.addColorStop(0,color+'50');g.addColorStop(1,color+'00');return g;}
 
-let lastSnap=null, activeMod='mitig', charts=[];
+const FLAG={'United States':'🇺🇸','Brazil':'🇧🇷','China':'🇨🇳','United Kingdom':'🇬🇧','The Netherlands':'🇳🇱','Netherlands':'🇳🇱','Seychelles':'🇸🇨','Germany':'🇩🇪','Russia':'🇷🇺','France':'🇫🇷','Canada':'🇨🇦','India':'🇮🇳','Singapore':'🇸🇬','Japan':'🇯🇵','Ukraine':'🇺🇦','Lithuania':'🇱🇹'};
+const PORTS={'53':'DNS','443':'HTTPS','80':'HTTP','23':'Telnet','22':'SSH','3389':'RDP','5060':'SIP','1433':'MS-SQL','123':'NTP','25':'SMTP','21':'FTP','3306':'MySQL','8080':'HTTP-alt','445':'SMB'};
+const ACC={geral:C.cyan,inbound:C.red,outbound:C.amber,deep:C.violet};
+
+let lastSnap=null,activeMod='mitig',charts=[];
 function clearCharts(){charts.forEach(c=>{try{c.destroy();}catch(e){}});charts=[];}
 
-/* ---- agregações do feed ---- */
-function agg(incs){
-  const sev={CRITICAL:0,HIGH:0,INFO:0}, srcHits={}, netHits={};
-  incs.forEach(i=>{sev[i.level]=(sev[i.level]||0)+1;
-    srcHits[i.origin_ip]=(srcHits[i.origin_ip]||0)+(i.hits||0);
-    const net=(i.origin_net&&i.origin_net.toUpperCase().includes('REDE INTERNA'))?'Rede Interna (CGNAT)':(i.origin_net||i.country||'—');
-    netHits[net]=(netHits[net]||0)+(i.hits||0);});
-  return {sev,topSrc:Object.entries(srcHits).sort((a,b)=>b[1]-a[1]).slice(0,8),
-          nets:Object.entries(netHits).sort((a,b)=>b[1]-a[1])};
-}
-
-/* ---- KPIs ---- */
-function renderKpis(k,incs){
-  incs=incs||[];const cnt=f=>incs.filter(f).length;
-  const crit=k.critical||cnt(i=>i.level==='CRITICAL'),high=k.high||cnt(i=>i.level==='HIGH'),
-        inb=k.inbound||cnt(i=>i.direction==='IN'),outb=k.outbound||cnt(i=>i.direction==='OUT');
-  const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',crit,'crit'],['High',high,'high'],
-               ['Info',k.info,''],['Inbound',inb,''],['Outbound',outb,'']];
-  document.getElementById('kpis').innerHTML=items.map(([l,v,c])=>
-    `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');
-}
-
-/* ---- Reputação ASN ---- */
-function renderRep(rep){
-  const b=document.getElementById('repBlock');
+function agg(incs){const sev={CRITICAL:0,HIGH:0,INFO:0};incs.forEach(i=>sev[i.level]=(sev[i.level]||0)+1);return {sev};}
+function renderKpis(k,incs){incs=incs||[];const cnt=f=>incs.filter(f).length;
+  const crit=k.critical||cnt(i=>i.level==='CRITICAL'),high=k.high||cnt(i=>i.level==='HIGH'),inb=k.inbound||cnt(i=>i.direction==='IN'),outb=k.outbound||cnt(i=>i.direction==='OUT');
+  const it=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',crit,'crit'],['High',high,'high'],['Info',k.info,''],['Inbound',inb,''],['Outbound',outb,'']];
+  document.getElementById('kpis').innerHTML=it.map(([l,v,c])=>`<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');}
+function renderRep(rep){const b=document.getElementById('repBlock');
   if(!rep||(rep.total_ips==null&&rep.saude_pct==null)){b.style.display='none';return;}
-  b.style.display='block';
-  document.getElementById('repAsn').textContent=rep.asn||'';
+  b.style.display='block';document.getElementById('repAsn').textContent=rep.asn||'';
   document.getElementById('repPrefix').textContent=(rep.prefix||'')+(rep.intel_feed&&rep.intel_feed.length?(' · '+rep.intel_feed.length+' IPs no Intel Feed'):'');
-  const items=[['Saúde da rede',rep.saude_pct!=null?rep.saude_pct+'%':'—',''],['Total de IPs',rep.total_ips,''],['Saudáveis',rep.saudaveis,''],['Críticos',rep.criticos,'crit']];
-  document.getElementById('repKpis').innerHTML=items.map(([l,v,c])=>
-    `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');
-}
+  const it=[['Saúde da rede',rep.saude_pct!=null?rep.saude_pct+'%':'—',''],['Total de IPs',rep.total_ips,''],['Saudáveis',rep.saudaveis,''],['Críticos',rep.criticos,'crit']];
+  document.getElementById('repKpis').innerHTML=it.map(([l,v,c])=>`<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');}
 
-/* ---- Mitigação em tempo real ---- */
-function renderMitig(incs){
-  const arr=(incs||[]).slice(0,20);
+function renderMitig(incs){const arr=(incs||[]).slice(0,20);
   const ctx=document.getElementById('mitigBar').getContext('2d');
-  charts.push(new Chart(ctx,{type:'bar',
-    data:{labels:arr.map(i=>(i.ts||'').slice(11)),
-      datasets:[{label:'Hits mitigados',data:arr.map(i=>i.hits),
-        backgroundColor:arr.map(i=>i.level==='CRITICAL'?CRIT:i.level==='HIGH'?HIGH:MUTED),borderRadius:5,maxBarThickness:26}]},
-    options:{maintainAspectRatio:false,plugins:{legend:{display:false},
-      tooltip:{callbacks:{title:it=>'Mitigado às '+it[0].label,label:it=>nf.format(it.raw)+' hits'}}},
-      scales:{x:{...gridOpt,grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}},y:{...gridOpt,beginAtZero:true}}}}));
-  document.getElementById('mitigList').innerHTML=arr.map(i=>{
-    const cls=i.level==='CRITICAL'?'crit':i.level==='HIGH'?'high':'';
-    const dst=i.dest_count?(' → '+i.dest_count+' '+(i.dest_type||'')):'';
-    return `<div class="mrow ${cls}"><span class="mtime">${esc((i.ts||'').slice(11))}</span>`+
-      `<span class="mtag">✓ MITIGADO</span>`+
-      `<span class="mip">${esc(i.origin_ip)} <span class="mmut">${esc(i.category||'')} ${i.direction?('· '+i.direction):''}${esc(dst)}</span></span>`+
-      `<span class="mrisk">${i.risk||0}%</span></div>`;
-  }).join('');
-}
-
-/* ---- gráficos do feed (módulo mitigação) ---- */
-function renderFeed(snap){
-  const incs=(snap.incidents||[]).slice().reverse();
-  const a=agg(snap.incidents||[]);
+  charts.push(new Chart(ctx,{type:'bar',data:{labels:arr.map(i=>(i.ts||'').slice(11)),datasets:[{data:arr.map(i=>i.hits),backgroundColor:arr.map(i=>i.level==='CRITICAL'?C.red:i.level==='HIGH'?C.amber:C.muted),borderRadius:5,maxBarThickness:26}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{title:it=>'Mitigado às '+it[0].label,label:it=>nf.format(it.raw)+' hits'}}},scales:{x:{...gopt,grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}},y:{...gopt,beginAtZero:true}}}}));
+  document.getElementById('mitigList').innerHTML=arr.map(i=>{const cls=i.level==='CRITICAL'?'crit':i.level==='HIGH'?'high':'';
+    const dst=i.dest_count?(' → '+nf.format(i.dest_count)+' '+(i.dest_type||'')):'';
+    return `<div class="mrow ${cls}"><span class="mtime">${esc((i.ts||'').slice(11))}</span><span class="mtag">✓ MITIGADO</span><span class="mip">${esc(i.origin_ip)} <small>${esc(i.category||'')}${esc(dst)}</small></span><span class="mrisk">${i.risk||0}%</span></div>`;}).join('');}
+function renderFeed(snap){const incs=(snap.incidents||[]).slice().reverse();const a=agg(snap.incidents||[]);
   const tctx=document.getElementById('timeline').getContext('2d');
-  charts.push(new Chart(tctx,{type:'line',data:{labels:incs.map(i=>(i.ts||'').slice(11,16)),
-    datasets:[{label:'Hits',data:incs.map(i=>i.hits),borderColor:ACCENT,backgroundColor:grad(tctx,ACCENT),
-      borderWidth:2.5,fill:true,tension:.35,pointRadius:0,pointHoverRadius:5}]},
-    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:gridOpt,y:{...gridOpt,beginAtZero:true}}}}));
-  charts.push(new Chart(document.getElementById('sources').getContext('2d'),{type:'bar',
-    data:{labels:a.topSrc.map(s=>s[0]),datasets:[{data:a.topSrc.map(s=>s[1]),backgroundColor:PAL,borderRadius:6,barThickness:16}]},
-    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:false}}}}}));
-  charts.push(new Chart(document.getElementById('severity').getContext('2d'),{type:'doughnut',
-    data:{labels:['Critical','High'],datasets:[{data:[a.sev.CRITICAL,a.sev.HIGH],backgroundColor:[CRIT,HIGH],borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-    options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}}));
-  charts.push(new Chart(document.getElementById('asn').getContext('2d'),{type:'doughnut',
-    data:{labels:a.nets.map(n=>n[0]),datasets:[{data:a.nets.map(n=>n[1]),backgroundColor:PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-    options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}}));
-}
+  charts.push(new Chart(tctx,{type:'line',data:{labels:incs.map(i=>(i.ts||'').slice(11,16)),datasets:[{data:incs.map(i=>i.hits),borderColor:C.cyan,backgroundColor:grad(tctx,C.cyan),borderWidth:2.5,fill:true,tension:.35,pointRadius:0,pointHoverRadius:5}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:gopt,y:{...gopt,beginAtZero:true}}}}));
+  charts.push(new Chart(document.getElementById('severity').getContext('2d'),{type:'doughnut',data:{labels:['Critical','High','Info'],datasets:[{data:[a.sev.CRITICAL,a.sev.HIGH,a.sev.INFO],backgroundColor:[C.red,C.amber,C.muted],borderColor:C.panel,borderWidth:3,hoverOffset:6}]},
+    options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}}));}
 
-/* ---- módulos Grafana ---- */
-function titleFor(p){
-  if(p.title&&p.title.trim())return p.title;
-  const f=(((p.frames&&p.frames[0]&&p.frames[0].fields)||[]).join(' ')).toLowerCase();
-  if(/direction/.test(f))return 'Direção do tráfego';
-  if(/transport/.test(f))return 'Protocolos (transporte)';
-  if(/country/.test(f))return 'Países de origem';
-  if(/organization|as\.as/.test(f))return 'ASNs / Organizações';
-  if(/destination\.port/.test(f))return 'Portas de destino';
-  if(/source\.port/.test(f))return 'Portas de origem';
-  if(/destination\.ip/.test(f))return 'IPs de destino';
-  if(/source\.ip/.test(f))return 'IPs de origem';
-  if(/geo|city|location/.test(f))return 'Geolocalização';
-  if(/time/.test(f))return p.type==='stat'?'Total no período':'Volume no tempo';
-  return p.type||'Painel';
+/* rótulos amigáveis: bandeira em país, serviço em porta */
+function fmtLabel(title,raw){const s=String(raw);
+  if(/pa[ií]s/i.test(title)){const f=FLAG[s];return (f?f+' ':'')+s;}
+  if(/porta/i.test(title)){const sv=PORTS[s];return s+(sv?` <span class="svc">· ${sv}</span>`:'');}
+  return esc(s);
 }
-function chartFor(id,p){
-  const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);if(!fr)return null;
-  const cols=fr.fields||[],rows=fr.rows||[];
-  const ctx=document.getElementById(id).getContext('2d');
-  let vi=cols.findIndex(c=>/count|value|total|sum|hits/i.test(c));if(vi<0)vi=cols.length-1;
-  let li=cols.findIndex((c,i)=>i!==vi);if(li<0)li=0;
-  if(/time|timestamp/i.test(cols[0]||'')){
-    const g=grad(ctx,ACCENT,230);
-    return new Chart(ctx,{type:'line',data:{labels:rows.map(r=>fmtT(r[0])),datasets:[{data:rows.map(r=>numify(r[vi])),borderColor:ACCENT,backgroundColor:g,borderWidth:2,fill:true,tension:.4,pointRadius:0,pointHoverRadius:4}]},
-      options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,ticks:{maxTicksLimit:6}},y:{...gridOpt,beginAtZero:true}}}});
-  }
-  const labels=rows.map(r=>String(r[li])),data=rows.map(r=>numify(r[vi]));
-  if(p.type==='piechart')
-    return new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-      options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{boxWidth:8,font:{size:10}}}}}});
-  const horiz=labels.some(l=>l.length>6)||labels.length>6;
-  return new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:PAL,borderRadius:6,barThickness:horiz?14:undefined,maxBarThickness:34}]},
-    options:{indexAxis:horiz?'y':'x',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:!horiz}}}}});
+function renderRank(host,panel,accent){
+  const rows=(panel.rows||[]).filter(r=>r&&r.length);
+  const max=Math.max(1,...rows.map(r=>numify(r[r.length-1])));
+  const body=rows.map((r,i)=>{const val=numify(r[r.length-1]);const w=Math.max(2,Math.round(val/max*100));
+    return `<div class="rk"><span class="i">${i+1}</span><span class="l">${fmtLabel(panel.title,r[0])}</span><span class="v">${nf.format(val)}</span><div class="track"><i style="width:${w}%"></i></div></div>`;}).join('');
+  host.insertAdjacentHTML('beforeend',`<div class="mcard" style="--accent:${accent}"><div class="cap">${esc(panel.title)} <small>${rows.length}</small></div><div class="rank">${body||'<div class="empty">sem dados</div>'}</div></div>`);
 }
-function renderModule(containerId, dash){
-  const cont=document.getElementById(containerId);
-  if(!dash||!dash.panels||!dash.panels.length){cont.innerHTML='<div class="mod-empty">Sem dados coletados ainda para este módulo. Rode o coletor.</div>';return;}
-  let idx=0,html='';const q=[];
-  dash.panels.forEach(p=>{
-    const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);
-    const title=titleFor(p);
-    if(p.type==='stat'&&fr){
-      const last=fr.rows[fr.rows.length-1];const v=numify(last[last.length-1]);
-      html+=`<div class="mod-card"><div class="mod-cap">${esc(title)}</div><div class="mod-num">${nf.format(v)}</div></div>`;return;
-    }
-    if(!fr)return;
-    if((fr.fields||[]).length>2){
-      let t=`<div class="mod-card"><div class="mod-cap">${esc(title)} <small>${fr.rows.length} linhas</small></div><div class="dscroll"><table class="dtable"><thead><tr>`+
-        fr.fields.map(f=>`<th>${esc(f)}</th>`).join('')+'</tr></thead><tbody>';
-      fr.rows.slice(0,40).forEach(r=>{t+='<tr>'+r.map(c=>`<td>${esc(typeof c==='number'?nf.format(c):c)}</td>`).join('')+'</tr>';});
-      t+='</tbody></table></div></div>';html+=t;return;
-    }
-    const id=containerId+'_c'+(idx++);
-    html+=`<div class="mod-card"><div class="mod-cap">${esc(title)} <small>${fr.rows.length}</small></div><div class="mod-chart"><canvas id="${id}"></canvas></div></div>`;
-    q.push({id,p});
-  });
-  cont.innerHTML=html;
-  q.forEach(o=>{try{const c=chartFor(o.id,o.p);if(c)charts.push(c);}catch(e){}});
+function renderVizCard(host,panel,accent){
+  if(panel.viz==='rank'){renderRank(host,panel,accent);return;}
+  const id='c'+Math.random().toString(36).slice(2,8);
+  host.insertAdjacentHTML('beforeend',`<div class="mcard" style="--accent:${accent}"><div class="cap">${esc(panel.title)}</div><div class="chart-h"><canvas id="${id}"></canvas></div></div>`);
+  const rows=(panel.rows||[]).filter(r=>r&&r.length);const ctx=document.getElementById(id).getContext('2d');
+  if(panel.viz==='line'){charts.push(new Chart(ctx,{type:'line',data:{labels:rows.map(r=>fmtT(r[0])),datasets:[{data:rows.map(r=>numify(r[1])),borderColor:accent,backgroundColor:grad(ctx,accent,215),borderWidth:2,fill:true,tension:.4,pointRadius:0,pointHoverRadius:4}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gopt,ticks:{maxTicksLimit:6}},y:{...gopt,beginAtZero:true}}}}));return;}
+  // pie
+  charts.push(new Chart(ctx,{type:'doughnut',data:{labels:rows.map(r=>String(r[0])),datasets:[{data:rows.map(r=>numify(r[r.length-1])),backgroundColor:PAL,borderColor:C.panel,borderWidth:3,hoverOffset:6}]},
+    options:{maintainAspectRatio:false,cutout:'58%',plugins:{legend:{position:'right',labels:{boxWidth:8,font:{size:10}}}}}}));
 }
-function findDash(g,key){
-  if(!Array.isArray(g))return null;
-  const rx={overview:/overview/i,inbound:/inbound/i,outbound:/outbound/i,deep:/profunda|deep|análise|analise/i}[key];
-  return g.find(d=>rx.test(d.dash||d.title||''))||null;
+function renderModule(mod){const host=document.getElementById('g-'+mod);host.innerHTML='';
+  const dash=findDash(lastSnap&&lastSnap.grafana,mod);
+  if(!dash||!(dash.panels||[]).length){host.innerHTML='<div class="empty">Sem dados coletados ainda para este módulo. Deixe o coletor rodar um ciclo.</div>';return;}
+  const accent=ACC[mod]||C.cyan;
+  dash.panels.forEach(p=>{try{renderVizCard(host,p,accent);}catch(e){}});
 }
+function findDash(g,key){if(!Array.isArray(g))return null;
+  const rx={geral:/geral|overview/i,inbound:/inbound/i,outbound:/outbound/i,deep:/profunda|deep|análise|analise/i}[key];
+  return g.find(d=>rx.test(d.dash||d.title||''))||null;}
 
-/* ---- render do módulo ativo ---- */
-function renderActive(){
-  const s=lastSnap;if(!s)return;clearCharts();
-  if(activeMod==='mitig'){
-    renderKpis(s.kpis||{},s.incidents||[]);
-    renderRep(s.modules&&s.modules.reputacao_asn);
-    renderMitig(s.incidents||[]);
-    renderFeed(s);
-  }else{
-    renderModule('graf-'+activeMod, findDash(s.grafana,activeMod));
-  }
-}
+function renderActive(){const s=lastSnap;if(!s)return;clearCharts();
+  if(activeMod==='mitig'){renderKpis(s.kpis||{},s.incidents||[]);renderRep(s.modules&&s.modules.reputacao_asn);renderMitig(s.incidents||[]);renderFeed(s);}
+  else renderModule(activeMod);}
 
-/* ---- navegação por módulo ---- */
-document.getElementById('modnav').addEventListener('click',e=>{
-  const b=e.target.closest('button');if(!b)return;
+document.getElementById('modnav').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
   activeMod=b.dataset.mod;
   document.querySelectorAll('.modnav button').forEach(x=>x.classList.toggle('active',x===b));
   document.querySelectorAll('.mod').forEach(m=>m.classList.toggle('active',m.id==='mod-'+activeMod));
-  renderActive();
-});
+  renderActive();});
 
-/* ---- selo de frescor ---- */
-function tickFreshness(){
-  const lbl=document.getElementById('freshLabel'),dot=document.getElementById('freshDot'),badge=document.getElementById('freshBadge');
-  if(!window.__lastCollected){lbl.textContent='sem dados';return;}
-  const sc=Math.max(0,Math.round((Date.now()-window.__lastCollected)/1000));
-  lbl.textContent=sc<60?('atualizado há '+sc+'s'):('atualizado há '+Math.floor(sc/60)+'m '+(sc%60)+'s');
-  const col=sc<90?'#34d399':(sc<180?'#fbbf24':'#ff4d5e');
-  dot.style.background=col;dot.style.boxShadow='0 0 8px '+col;lbl.style.color=col;badge.style.borderColor=col;
-}
+function tickFreshness(){const lbl=document.getElementById('freshLabel'),dot=document.getElementById('freshDot'),badge=document.getElementById('freshBadge');
+  if(!window.__lc){lbl.textContent='sem dados';return;}
+  const sc=Math.max(0,Math.round((Date.now()-window.__lc)/1000));
+  lbl.textContent=sc<60?('há '+sc+'s'):('há '+Math.floor(sc/60)+'m '+(sc%60)+'s');
+  const col=sc<90?C.green:(sc<180?C.amber:C.red);dot.style.background=col;dot.style.boxShadow='0 0 8px '+col;badge.style.borderColor=col;}
 setInterval(tickFreshness,1000);
 
-/* ---- carregamento ---- */
-function apply(snap){
-  lastSnap=snap;
-  document.getElementById('subtitle').textContent='Análise de incidentes · '+((snap.incidents||[]).length)+' registros';
-  document.getElementById('syncLabel').textContent='Sync '+(snap.sync||'—');
-  const dt=snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—';
-  document.getElementById('footer').textContent='Dados do ASN Monitor (FlowSpec SOC) · coletado em '+dt;
-  window.__lastCollected=snap.collected_at?new Date(snap.collected_at).getTime():null;
-  tickFreshness();
-  renderActive();
-}
-async function load(){
-  try{const r=await fetch('./data/soc-snapshot.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;apply(await r.json());}
-  catch(e){apply(FALLBACK);}
-}
-load();
-setInterval(load,30000);
+function apply(snap){lastSnap=snap;
+  document.getElementById('subtitle').textContent='Monitoramento em tempo real · '+((snap.incidents||[]).length)+' incidentes';
+  document.getElementById('syncLabel').textContent=snap.sync||'—';
+  document.getElementById('footer').textContent='ASN Monitor (FlowSpec SOC) · coletado em '+(snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—');
+  window.__lc=snap.collected_at?new Date(snap.collected_at).getTime():null;tickFreshness();renderActive();}
+async function load(){try{const r=await fetch('./data/soc-snapshot.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;apply(await r.json());}catch(e){apply(FALLBACK);}}
+load();setInterval(load,30000);
 </script>
 </body>
 </html>

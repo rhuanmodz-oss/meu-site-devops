@@ -1,209 +1,209 @@
 {
-  "collected_at": "2026-07-07T23:41:12-03:00",
-  "sync": "23:41:10",
+  "collected_at": "2026-07-08T00:12:09-03:00",
+  "sync": "00:12:08",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
     "critical": 0,
     "high": 0,
-    "info": 1796,
+    "info": 1814,
     "permanentes": 0,
     "inbound": 0,
     "outbound": 0
   },
   "incidents": [
     {
-      "ts": "2026-07-07 23:40:57",
-      "hits": 857,
+      "ts": "2026-07-08 00:12:03",
+      "hits": 25,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.5.115",
+      "origin_ip": "100.64.13.243",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 689,
+      "dest_count": 11,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:40:44",
-      "hits": 114,
-      "level": "CRITICAL",
-      "direction": "IN",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "152.255.32.35",
-      "origin_net": "TELEFÔNICA BRASIL S.A",
-      "country": "Brazil",
-      "dest_count": 95,
-      "dest_type": "Dispositivos Internos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:40:43",
-      "hits": 169,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.15.75",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 63,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:40:37",
-      "hits": 330,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.6.166",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 135,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:40:37",
-      "hits": 955,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.240",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 726,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:40:22",
-      "hits": 1030,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.11.202",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 320,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:40:12",
-      "hits": 174,
+      "ts": "2026-07-08 00:12:03",
+      "hits": 186,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.10.50",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 105,
+      "dest_count": 111,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:39:42",
-      "hits": 7408,
+      "ts": "2026-07-08 00:12:03",
+      "hits": 1118,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.15",
+      "origin_ip": "100.64.5.115",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 3909,
+      "dest_count": 945,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:39:41",
-      "hits": 480,
+      "ts": "2026-07-08 00:12:00",
+      "hits": 257,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.17.217",
+      "origin_ip": "100.64.19.76",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 211,
+      "dest_count": 134,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:39:24",
-      "hits": 38,
+      "ts": "2026-07-08 00:11:51",
+      "hits": 181,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.15.75",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 66,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:11:51",
+      "hits": 10,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "64.210.136.64",
+      "origin_net": "REFLECTED NETWORKS, INC.",
+      "country": "United States",
+      "dest_count": 10,
+      "dest_type": "Dispositivos Internos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:11:43",
+      "hits": 17,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.15.143",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 17,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:11:40",
+      "hits": 42,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.19.180",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 19,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:11:13",
+      "hits": 1007,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.8.240",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 771,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:10:51",
+      "hits": 1045,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.11.202",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 326,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:10:08",
+      "hits": 41,
       "level": "CRITICAL",
       "direction": "IN",
       "category": "DAY-0 SCANNER",
       "origin_ip": "152.255.32.160",
       "origin_net": "TELEFÔNICA BRASIL S.A",
       "country": "Brazil",
-      "dest_count": 36,
+      "dest_count": 39,
       "dest_type": "Dispositivos Internos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:39:09",
-      "hits": 297,
+      "ts": "2026-07-08 00:09:52",
+      "hits": 55,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.10.208",
+      "origin_ip": "100.64.17.16",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 205,
+      "dest_count": 41,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:38:35",
-      "hits": 193,
+      "ts": "2026-07-08 00:09:31",
+      "hits": 87,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "45.229.121.216",
+      "origin_ip": "100.64.16.203",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 50,
+      "dest_count": 66,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:38:07",
-      "hits": 2,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "IOC: IPSUM",
-      "origin_ip": "100.64.1.210",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 0,
-      "dest_type": "",
-      "risk": 100
-    },
-    {
-      "ts": "2026-07-07 23:37:42",
-      "hits": 1,
-      "level": "HIGH",
-      "direction": "OUT",
-      "category": "DAY-0: ADMIN PROBE",
-      "origin_ip": "100.64.0.70",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 0,
-      "dest_type": "",
-      "risk": 85
-    },
-    {
-      "ts": "2026-07-07 23:36:29",
-      "hits": 1645,
+      "ts": "2026-07-08 00:09:14",
+      "hits": 116,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "45.229.121.41",
+      "origin_ip": "100.64.5.223",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 578,
+      "dest_count": 69,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:09:09",
+      "hits": 380,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.6.11",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 287,
       "dest_type": "Destinos Externos",
       "risk": 95
     }
@@ -216,5547 +216,2031 @@
       "total_ips": 1024,
       "saudaveis": 770,
       "criticos": 254,
-      "intel_feed": []
+      "intel_feed": [
+        {
+          "ip": "45.229.120.6",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.3",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.13",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.12",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.16",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.24",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.8",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.20",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.1",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.18",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.17",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.21",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.11",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.5",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.14",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.15",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.2",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.9",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.19",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.10",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.4",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.7",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.0",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.23",
+          "status": "CRÍTICO"
+        },
+        {
+          "ip": "45.229.120.22",
+          "status": "CRÍTICO"
+        }
+      ]
     }
   },
   "grafana": [
     {
-      "title": "Dashboard 1 (Overview)",
-      "uid": "ad5b6hc",
-      "folder": "SOC",
+      "dash": "Visão Geral",
       "panels": [
         {
-          "title": "",
-          "type": "timeseries",
-          "frames": [
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  502
-                ],
-                [
-                  1783457100000,
-                  640
-                ],
-                [
-                  1783457400000,
-                  708
-                ],
-                [
-                  1783457700000,
-                  1125
-                ],
-                [
-                  1783458000000,
-                  736
-                ],
-                [
-                  1783458300000,
-                  727
-                ],
-                [
-                  1783458600000,
-                  941
-                ],
-                [
-                  1783458900000,
-                  821
-                ],
-                [
-                  1783459200000,
-                  955
-                ],
-                [
-                  1783459500000,
-                  1016
-                ],
-                [
-                  1783459800000,
-                  717
-                ],
-                [
-                  1783460100000,
-                  855
-                ],
-                [
-                  1783460400000,
-                  759
-                ],
-                [
-                  1783460700000,
-                  729
-                ],
-                [
-                  1783461000000,
-                  1408
-                ],
-                [
-                  1783461300000,
-                  1075
-                ],
-                [
-                  1783461600000,
-                  1150
-                ],
-                [
-                  1783461900000,
-                  1041
-                ],
-                [
-                  1783462200000,
-                  1093
-                ],
-                [
-                  1783462500000,
-                  1661
-                ],
-                [
-                  1783462800000,
-                  762
-                ],
-                [
-                  1783463100000,
-                  821
-                ],
-                [
-                  1783463400000,
-                  1468
-                ],
-                [
-                  1783463700000,
-                  1229
-                ],
-                [
-                  1783464000000,
-                  2249
-                ],
-                [
-                  1783464300000,
-                  1435
-                ],
-                [
-                  1783464600000,
-                  1391
-                ],
-                [
-                  1783464900000,
-                  1262
-                ],
-                [
-                  1783465200000,
-                  1386
-                ],
-                [
-                  1783465500000,
-                  1989
-                ],
-                [
-                  1783465800000,
-                  1488
-                ],
-                [
-                  1783466100000,
-                  1404
-                ],
-                [
-                  1783466400000,
-                  1882
-                ],
-                [
-                  1783466700000,
-                  1042
-                ],
-                [
-                  1783467000000,
-                  1052
-                ],
-                [
-                  1783467300000,
-                  1134
-                ],
-                [
-                  1783467600000,
-                  1201
-                ],
-                [
-                  1783467900000,
-                  1899
-                ],
-                [
-                  1783468200000,
-                  1846
-                ],
-                [
-                  1783468500000,
-                  1072
-                ],
-                [
-                  1783468800000,
-                  1899
-                ],
-                [
-                  1783469100000,
-                  1892
-                ],
-                [
-                  1783469400000,
-                  1590
-                ],
-                [
-                  1783469700000,
-                  1157
-                ],
-                [
-                  1783470000000,
-                  1505
-                ],
-                [
-                  1783470300000,
-                  2266
-                ],
-                [
-                  1783470600000,
-                  942
-                ],
-                [
-                  1783470900000,
-                  924
-                ],
-                [
-                  1783471200000,
-                  1106
-                ],
-                [
-                  1783471500000,
-                  1941
-                ],
-                [
-                  1783471800000,
-                  2032
-                ],
-                [
-                  1783472100000,
-                  1619
-                ],
-                [
-                  1783472400000,
-                  1895
-                ],
-                [
-                  1783472700000,
-                  2307
-                ],
-                [
-                  1783473000000,
-                  980
-                ],
-                [
-                  1783473300000,
-                  716
-                ],
-                [
-                  1783473600000,
-                  754
-                ],
-                [
-                  1783473900000,
-                  663
-                ],
-                [
-                  1783474200000,
-                  753
-                ],
-                [
-                  1783474500000,
-                  721
-                ]
-              ]
-            }
+          "title": "Volume de ameaças no tempo",
+          "viz": "line",
+          "fields": [
+            "Time",
+            "Value"
+          ],
+          "rows": [
+            [
+              1783458600000,
+              607
+            ],
+            [
+              1783458900000,
+              821
+            ],
+            [
+              1783459200000,
+              955
+            ],
+            [
+              1783459500000,
+              1016
+            ],
+            [
+              1783459800000,
+              717
+            ],
+            [
+              1783460100000,
+              855
+            ],
+            [
+              1783460400000,
+              759
+            ],
+            [
+              1783460700000,
+              729
+            ],
+            [
+              1783461000000,
+              1408
+            ],
+            [
+              1783461300000,
+              1075
+            ],
+            [
+              1783461600000,
+              1150
+            ],
+            [
+              1783461900000,
+              1041
+            ],
+            [
+              1783462200000,
+              1093
+            ],
+            [
+              1783462500000,
+              1661
+            ],
+            [
+              1783462800000,
+              762
+            ],
+            [
+              1783463100000,
+              821
+            ],
+            [
+              1783463400000,
+              1468
+            ],
+            [
+              1783463700000,
+              1229
+            ],
+            [
+              1783464000000,
+              2249
+            ],
+            [
+              1783464300000,
+              1435
+            ],
+            [
+              1783464600000,
+              1391
+            ],
+            [
+              1783464900000,
+              1262
+            ],
+            [
+              1783465200000,
+              1386
+            ],
+            [
+              1783465500000,
+              1989
+            ],
+            [
+              1783465800000,
+              1488
+            ],
+            [
+              1783466100000,
+              1404
+            ],
+            [
+              1783466400000,
+              1882
+            ],
+            [
+              1783466700000,
+              1042
+            ],
+            [
+              1783467000000,
+              1052
+            ],
+            [
+              1783467300000,
+              1134
+            ],
+            [
+              1783467600000,
+              1201
+            ],
+            [
+              1783467900000,
+              1899
+            ],
+            [
+              1783468200000,
+              1846
+            ],
+            [
+              1783468500000,
+              1072
+            ],
+            [
+              1783468800000,
+              1899
+            ],
+            [
+              1783469100000,
+              1892
+            ],
+            [
+              1783469400000,
+              1590
+            ],
+            [
+              1783469700000,
+              1157
+            ],
+            [
+              1783470000000,
+              1505
+            ],
+            [
+              1783470300000,
+              2266
+            ],
+            [
+              1783470600000,
+              942
+            ],
+            [
+              1783470900000,
+              924
+            ],
+            [
+              1783471200000,
+              1106
+            ],
+            [
+              1783471500000,
+              1941
+            ],
+            [
+              1783471800000,
+              2032
+            ],
+            [
+              1783472100000,
+              1619
+            ],
+            [
+              1783472400000,
+              1895
+            ],
+            [
+              1783472700000,
+              2307
+            ],
+            [
+              1783473000000,
+              980
+            ],
+            [
+              1783473300000,
+              716
+            ],
+            [
+              1783473600000,
+              754
+            ],
+            [
+              1783473900000,
+              663
+            ],
+            [
+              1783474200000,
+              753
+            ],
+            [
+              1783474500000,
+              721
+            ],
+            [
+              1783474800000,
+              1005
+            ],
+            [
+              1783475100000,
+              1261
+            ],
+            [
+              1783475400000,
+              1440
+            ],
+            [
+              1783475700000,
+              927
+            ],
+            [
+              1783476000000,
+              1329
+            ],
+            [
+              1783476300000,
+              1380
+            ],
+            [
+              1783476600000,
+              1252
+            ],
+            [
+              1783476900000,
+              978
+            ],
+            [
+              1783477200000,
+              937
+            ],
+            [
+              1783477500000,
+              995
+            ],
+            [
+              1783477800000,
+              983
+            ],
+            [
+              1783478100000,
+              1263
+            ],
+            [
+              1783478400000,
+              837
+            ],
+            [
+              1783478700000,
+              852
+            ],
+            [
+              1783479000000,
+              915
+            ],
+            [
+              1783479300000,
+              975
+            ],
+            [
+              1783479600000,
+              754
+            ],
+            [
+              1783479900000,
+              0
+            ],
+            [
+              1783480200000,
+              0
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "geomap",
-          "frames": [
-            {
-              "fields": [
-                "destination.geo.location",
-                "destination.geo.city_name.keyword",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "6gyq",
-                  "Cidade",
-                  27380
-                ],
-                [
-                  "9ydq",
-                  "Cidade",
-                  7137
-                ],
-                [
-                  "6gyc",
-                  "Cidade",
-                  5168
-                ],
-                [
-                  "drkr",
-                  "Cidade",
-                  3939
-                ],
-                [
-                  "6xmq",
-                  "Cidade",
-                  1448
-                ],
-                [
-                  "ww0v",
-                  "Cidade",
-                  134
-                ],
-                [
-                  "dqcj",
-                  "Cidade",
-                  90
-                ],
-                [
-                  "sxk9",
-                  "Cidade",
-                  81
-                ],
-                [
-                  "u8vx",
-                  "Cidade",
-                  78
-                ],
-                [
-                  "75cq",
-                  "Cidade",
-                  66
-                ],
-                [
-                  "u173",
-                  "Cidade",
-                  62
-                ],
-                [
-                  "gcpu",
-                  "Cidade",
-                  59
-                ],
-                [
-                  "7p76",
-                  "Cidade",
-                  48
-                ],
-                [
-                  "9q5c",
-                  "Cidade",
-                  38
-                ],
-                [
-                  "6gyf",
-                  "Cidade",
-                  36
-                ],
-                [
-                  "xn77",
-                  "Cidade",
-                  32
-                ],
-                [
-                  "wtmk",
-                  "Cidade",
-                  31
-                ],
-                [
-                  "mppt",
-                  "Cidade",
-                  28
-                ],
-                [
-                  "dhwf",
-                  "Cidade",
-                  25
-                ],
-                [
-                  "f25d",
-                  "Cidade",
-                  23
-                ],
-                [
-                  "9tbq",
-                  "Cidade",
-                  23
-                ],
-                [
-                  "7h2j",
-                  "Cidade",
-                  22
-                ],
-                [
-                  "7h7m",
-                  "Cidade",
-                  21
-                ],
-                [
-                  "6gyd",
-                  "Cidade",
-                  20
-                ],
-                [
-                  "wecn",
-                  "Cidade",
-                  19
-                ],
-                [
-                  "u6sc",
-                  "Cidade",
-                  18
-                ],
-                [
-                  "wecp",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "w21z",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "dqcn",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "c23n",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "7pkd",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "75cm",
-                  "Cidade",
-                  16
-                ],
-                [
-                  "9yuw",
-                  "Cidade",
-                  15
-                ],
-                [
-                  "u1h3",
-                  "Cidade",
-                  13
-                ],
-                [
-                  "s1v8",
-                  "Cidade",
-                  12
-                ],
-                [
-                  "dpz8",
-                  "Cidade",
-                  12
-                ],
-                [
-                  "9q9k",
-                  "Cidade",
-                  12
-                ],
-                [
-                  "u09t",
-                  "Cidade",
-                  11
-                ],
-                [
-                  "dp3w",
-                  "Cidade",
-                  9
-                ],
-                [
-                  "6ujg",
-                  "Cidade",
-                  9
-                ],
-                [
-                  "tnke",
-                  "Cidade",
-                  8
-                ],
-                [
-                  "drt2",
-                  "Cidade",
-                  8
-                ],
-                [
-                  "wsqq",
-                  "Cidade",
-                  7
-                ],
-                [
-                  "ws0e",
-                  "Cidade",
-                  7
-                ],
-                [
-                  "dryw",
-                  "Cidade",
-                  6
-                ],
-                [
-                  "dr5r",
-                  "Cidade",
-                  6
-                ],
-                [
-                  "9v1z",
-                  "Cidade",
-                  6
-                ],
-                [
-                  "7nee",
-                  "Cidade",
-                  6
-                ],
-                [
-                  "7h1c",
-                  "Cidade",
-                  6
-                ],
-                [
-                  "u81v",
-                  "Cidade",
-                  5
-                ],
-                [
-                  "gc7x",
-                  "Cidade",
-                  5
-                ],
-                [
-                  "cbk1",
-                  "Cidade",
-                  5
-                ],
-                [
-                  "6fez",
-                  "Cidade",
-                  5
-                ],
-                [
-                  "wydm",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "u179",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "u14z",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "u0yj",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "dr46",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "c22z",
-                  "Cidade",
-                  4
-                ],
-                [
-                  "9xj5",
-                  "Cidade",
-                  4
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "source.geo.location",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "mppt",
-                  47
-                ],
-                [
-                  "9q5c",
-                  46
-                ],
-                [
-                  "gcpu",
-                  29
-                ],
-                [
-                  "9ydq",
-                  22
-                ],
-                [
-                  "dqby",
-                  20
-                ],
-                [
-                  "ww0v",
-                  18
-                ],
-                [
-                  "u173",
-                  11
-                ],
-                [
-                  "6gyd",
-                  11
-                ],
-                [
-                  "u1h3",
-                  10
-                ],
-                [
-                  "u0yj",
-                  10
-                ],
-                [
-                  "u09t",
-                  8
-                ],
-                [
-                  "snyr",
-                  8
-                ],
-                [
-                  "dqcj",
-                  8
-                ],
-                [
-                  "7h3f",
-                  8
-                ],
-                [
-                  "sx8d",
-                  5
-                ],
-                [
-                  "7jub",
-                  5
-                ],
-                [
-                  "c20d",
-                  4
-                ],
-                [
-                  "6gyf",
-                  4
-                ],
-                [
-                  "u1ne",
-                  3
-                ],
-                [
-                  "u142",
-                  3
-                ],
-                [
-                  "dqch",
-                  3
-                ],
-                [
-                  "6gyc",
-                  3
-                ],
-                [
-                  "xn77",
-                  2
-                ],
-                [
-                  "wecn",
-                  2
-                ],
-                [
-                  "u81v",
-                  2
-                ],
-                [
-                  "d8sb",
-                  2
-                ],
-                [
-                  "9q9j",
-                  2
-                ],
-                [
-                  "7pkd",
-                  2
-                ],
-                [
-                  "75cq",
-                  2
-                ],
-                [
-                  "wttk",
-                  1
-                ],
-                [
-                  "wecp",
-                  1
-                ],
-                [
-                  "w21z",
-                  1
-                ],
-                [
-                  "w0wd",
-                  1
-                ],
-                [
-                  "u82f",
-                  1
-                ],
-                [
-                  "u6sc",
-                  1
-                ],
-                [
-                  "u3qc",
-                  1
-                ],
-                [
-                  "u24w",
-                  1
-                ],
-                [
-                  "u0yh",
-                  1
-                ],
-                [
-                  "tnke",
-                  1
-                ],
-                [
-                  "thnz",
-                  1
-                ],
-                [
-                  "tdr1",
-                  1
-                ],
-                [
-                  "qqu8",
-                  1
-                ],
-                [
-                  "f253",
-                  1
-                ],
-                [
-                  "dr5r",
-                  1
-                ],
-                [
-                  "dqbs",
-                  1
-                ],
-                [
-                  "dpz8",
-                  1
-                ],
-                [
-                  "djgz",
-                  1
-                ],
-                [
-                  "dhwf",
-                  1
-                ],
-                [
-                  "c2b8",
-                  1
-                ],
-                [
-                  "9v1z",
-                  1
-                ],
-                [
-                  "9q97",
-                  1
-                ],
-                [
-                  "7h7m",
-                  1
-                ],
-                [
-                  "7h2y",
-                  1
-                ],
-                [
-                  "7h2j",
-                  1
-                ],
-                [
-                  "6vjy",
-                  1
-                ],
-                [
-                  "6ute",
-                  1
-                ],
-                [
-                  "6gyt",
-                  1
-                ],
-                [
-                  "6d45",
-                  1
-                ]
-              ]
-            }
+          "title": "Direção do tráfego",
+          "viz": "pie",
+          "fields": [
+            "event.direction",
+            "Count"
+          ],
+          "rows": [
+            [
+              "outbound",
+              48940
+            ],
+            [
+              "internal",
+              38233
+            ],
+            [
+              "inbound",
+              361
+            ],
+            [
+              "transit",
+              110
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "piechart",
-          "frames": [
-            {
-              "fields": [
-                "event.direction",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "transit",
-                  116
-                ],
-                [
-                  "outbound",
-                  47230
-                ],
-                [
-                  "inbound",
-                  349
-                ]
-              ]
-            }
+          "title": "Países de origem",
+          "viz": "rank",
+          "fields": [
+            "source.geo.country_name",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Italy",
+              118
+            ],
+            [
+              "United States",
+              113
+            ],
+            [
+              "Seychelles",
+              48
+            ],
+            [
+              "Brazil",
+              43
+            ],
+            [
+              "United Kingdom",
+              34
+            ],
+            [
+              "The Netherlands",
+              25
+            ],
+            [
+              "China",
+              20
+            ],
+            [
+              "Germany",
+              13
+            ],
+            [
+              "France",
+              11
+            ],
+            [
+              "Bulgaria",
+              4
+            ],
+            [
+              "Hong Kong",
+              4
+            ],
+            [
+              "Canada",
+              3
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "destination.port",
-                "Count"
-              ],
-              "rows": [
-                [
-                  5060,
-                  53
-                ],
-                [
-                  23,
-                  41
-                ],
-                [
-                  51677,
-                  18
-                ],
-                [
-                  1433,
-                  16
-                ],
-                [
-                  3389,
-                  16
-                ],
-                [
-                  123,
-                  11
-                ],
-                [
-                  53,
-                  9
-                ],
-                [
-                  80,
-                  9
-                ],
-                [
-                  54761,
-                  8
-                ],
-                [
-                  62178,
-                  8
-                ]
-              ]
-            }
+          "title": "Países de destino",
+          "viz": "rank",
+          "fields": [
+            "destination.geo.country_name",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Brazil",
+              36062
+            ],
+            [
+              "United States",
+              11387
+            ],
+            [
+              "China",
+              170
+            ],
+            [
+              "The Netherlands",
+              92
+            ],
+            [
+              "Türkiye",
+              81
+            ],
+            [
+              "Ukraine",
+              79
+            ],
+            [
+              "United Kingdom",
+              71
+            ],
+            [
+              "Japan",
+              40
+            ],
+            [
+              "Canada",
+              36
+            ],
+            [
+              "Hong Kong",
+              34
+            ],
+            [
+              "Nigeria",
+              25
+            ],
+            [
+              "Seychelles",
+              25
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "barchart",
-          "frames": [
-            {
-              "fields": [
-                "source.geo.country_name",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "United States",
-                  111
-                ],
-                [
-                  "Seychelles",
-                  47
-                ],
-                [
-                  "Brazil",
-                  43
-                ],
-                [
-                  "United Kingdom",
-                  29
-                ],
-                [
-                  "The Netherlands",
-                  21
-                ],
-                [
-                  "China",
-                  19
-                ],
-                [
-                  "Germany",
-                  14
-                ],
-                [
-                  "France",
-                  11
-                ],
-                [
-                  "Italy",
-                  8
-                ],
-                [
-                  "Bulgaria",
-                  5
-                ]
-              ]
-            }
+          "title": "Portas mais visadas",
+          "viz": "rank",
+          "fields": [
+            "destination.port",
+            "Count"
+          ],
+          "rows": [
+            [
+              53,
+              85705
+            ],
+            [
+              123,
+              599
+            ],
+            [
+              3389,
+              265
+            ],
+            [
+              1900,
+              254
+            ],
+            [
+              5060,
+              121
+            ],
+            [
+              25,
+              68
+            ],
+            [
+              7776,
+              61
+            ],
+            [
+              23,
+              54
+            ],
+            [
+              8291,
+              54
+            ],
+            [
+              1433,
+              38
+            ],
+            [
+              37911,
+              34
+            ],
+            [
+              50450,
+              32
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "destination.ip",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "100.64.5.218",
-                  27
-                ],
-                [
-                  "100.64.19.99",
-                  17
-                ],
-                [
-                  "100.64.19.195",
-                  16
-                ],
-                [
-                  "100.64.22.136",
-                  14
-                ],
-                [
-                  "45.229.121.216",
-                  12
-                ],
-                [
-                  "100.64.12.157",
-                  12
-                ],
-                [
-                  "45.229.121.135",
-                  11
-                ],
-                [
-                  "100.64.6.52",
-                  8
-                ],
-                [
-                  "100.64.11.75",
-                  8
-                ],
-                [
-                  "45.229.122.65",
-                  6
-                ]
-              ]
-            }
+          "title": "Protocolos",
+          "viz": "pie",
+          "fields": [
+            "network.transport",
+            "Count"
+          ],
+          "rows": [
+            [
+              "udp",
+              86289
+            ],
+            [
+              "tcp",
+              1368
+            ]
           ]
         }
       ]
     },
     {
-      "title": "Dashboard 2 (Inbound)",
-      "uid": "adl828x",
-      "folder": "SOC",
+      "dash": "Ataques Inbound",
       "panels": [
         {
-          "title": "",
-          "type": "barchart",
-          "frames": [
-            {
-              "fields": [
-                "source.as.as.organization.name.keyword",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "Scloud Pte Ltd",
-                  44
-                ],
-                [
-                  "IP Solus Inc",
-                  41
-                ],
-                [
-                  "UAB Host Baltic",
-                  27
-                ],
-                [
-                  "Psychz Networks",
-                  20
-                ],
-                [
-                  "CHINATELECOM Hubei province Wuhan 5G network",
-                  17
-                ],
-                [
-                  "Developed Methods LLC",
-                  16
-                ],
-                [
-                  "TELEFONICA BRASIL S.A",
-                  11
-                ],
-                [
-                  "31173 Services AB",
-                  10
-                ],
-                [
-                  "Google LLC",
-                  10
-                ],
-                [
-                  "Amarutu Technology Ltd",
-                  9
-                ]
-              ]
-            }
+          "title": "Volume de ataques no tempo",
+          "viz": "line",
+          "fields": [
+            "Time",
+            "Value"
+          ],
+          "rows": [
+            [
+              1783458600000,
+              1
+            ],
+            [
+              1783458900000,
+              5
+            ],
+            [
+              1783459200000,
+              1
+            ],
+            [
+              1783459500000,
+              3
+            ],
+            [
+              1783459800000,
+              2
+            ],
+            [
+              1783460100000,
+              6
+            ],
+            [
+              1783460400000,
+              7
+            ],
+            [
+              1783460700000,
+              8
+            ],
+            [
+              1783461000000,
+              8
+            ],
+            [
+              1783461300000,
+              4
+            ],
+            [
+              1783461600000,
+              4
+            ],
+            [
+              1783461900000,
+              3
+            ],
+            [
+              1783462200000,
+              2
+            ],
+            [
+              1783462500000,
+              1
+            ],
+            [
+              1783462800000,
+              6
+            ],
+            [
+              1783463100000,
+              10
+            ],
+            [
+              1783463400000,
+              4
+            ],
+            [
+              1783463700000,
+              9
+            ],
+            [
+              1783464000000,
+              4
+            ],
+            [
+              1783464300000,
+              5
+            ],
+            [
+              1783464600000,
+              2
+            ],
+            [
+              1783464900000,
+              5
+            ],
+            [
+              1783465200000,
+              6
+            ],
+            [
+              1783465500000,
+              3
+            ],
+            [
+              1783465800000,
+              6
+            ],
+            [
+              1783466100000,
+              3
+            ],
+            [
+              1783466400000,
+              4
+            ],
+            [
+              1783466700000,
+              3
+            ],
+            [
+              1783467000000,
+              5
+            ],
+            [
+              1783467300000,
+              8
+            ],
+            [
+              1783467600000,
+              3
+            ],
+            [
+              1783467900000,
+              10
+            ],
+            [
+              1783468200000,
+              13
+            ],
+            [
+              1783468500000,
+              8
+            ],
+            [
+              1783468800000,
+              12
+            ],
+            [
+              1783469100000,
+              11
+            ],
+            [
+              1783469400000,
+              2
+            ],
+            [
+              1783469700000,
+              4
+            ],
+            [
+              1783470000000,
+              8
+            ],
+            [
+              1783470300000,
+              4
+            ],
+            [
+              1783470600000,
+              2
+            ],
+            [
+              1783470900000,
+              7
+            ],
+            [
+              1783471200000,
+              2
+            ],
+            [
+              1783471500000,
+              6
+            ],
+            [
+              1783471800000,
+              5
+            ],
+            [
+              1783472100000,
+              5
+            ],
+            [
+              1783472400000,
+              5
+            ],
+            [
+              1783472700000,
+              5
+            ],
+            [
+              1783473000000,
+              5
+            ],
+            [
+              1783473300000,
+              3
+            ],
+            [
+              1783473600000,
+              6
+            ],
+            [
+              1783473900000,
+              6
+            ],
+            [
+              1783474200000,
+              8
+            ],
+            [
+              1783474500000,
+              12
+            ],
+            [
+              1783474800000,
+              7
+            ],
+            [
+              1783475100000,
+              3
+            ],
+            [
+              1783475400000,
+              1
+            ],
+            [
+              1783475700000,
+              5
+            ],
+            [
+              1783476000000,
+              7
+            ],
+            [
+              1783476300000,
+              5
+            ],
+            [
+              1783476600000,
+              6
+            ],
+            [
+              1783476900000,
+              3
+            ],
+            [
+              1783477200000,
+              3
+            ],
+            [
+              1783477500000,
+              4
+            ],
+            [
+              1783477800000,
+              5
+            ],
+            [
+              1783478100000,
+              3
+            ],
+            [
+              1783478400000,
+              4
+            ],
+            [
+              1783478700000,
+              6
+            ],
+            [
+              1783479000000,
+              0
+            ],
+            [
+              1783479300000,
+              9
+            ],
+            [
+              1783479600000,
+              0
+            ],
+            [
+              1783479900000,
+              0
+            ],
+            [
+              1783480200000,
+              0
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "destination.ip",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "45.229.123.242",
-                  31277
-                ],
-                [
-                  "45.229.123.229",
-                  7163
-                ],
-                [
-                  "100.65.0.2",
-                  33
-                ],
-                [
-                  "100.64.5.218",
-                  27
-                ],
-                [
-                  "192.168.0.1",
-                  27
-                ],
-                [
-                  "10.34.3.56",
-                  24
-                ],
-                [
-                  "100.64.19.99",
-                  17
-                ],
-                [
-                  "100.64.19.195",
-                  16
-                ],
-                [
-                  "100.64.22.136",
-                  14
-                ],
-                [
-                  "45.229.123.142",
-                  13
-                ]
-              ]
-            }
+          "title": "Países de origem dos ataques",
+          "viz": "rank",
+          "fields": [
+            "source.geo.country_name",
+            "Count"
+          ],
+          "rows": [
+            [
+              "United States",
+              113
+            ],
+            [
+              "Seychelles",
+              48
+            ],
+            [
+              "Brazil",
+              43
+            ],
+            [
+              "United Kingdom",
+              34
+            ],
+            [
+              "The Netherlands",
+              25
+            ],
+            [
+              "China",
+              20
+            ],
+            [
+              "Germany",
+              13
+            ],
+            [
+              "France",
+              11
+            ],
+            [
+              "Italy",
+              8
+            ],
+            [
+              "Bulgaria",
+              4
+            ],
+            [
+              "Hong Kong",
+              4
+            ],
+            [
+              "Canada",
+              3
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "source.as.as.organization.name.keyword",
-                "source.ip",
-                "destination.port",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  33322,
-                  3
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  58468,
-                  2
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  34918,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  37680,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  38356,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  38646,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  39278,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  50030,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  50184,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  54411,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  55184,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  55847,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  56398,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  57352,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  58376,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  58943,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  59178,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  59423,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  59483,
-                  1
-                ],
-                [
-                  "UAB Host Baltic",
-                  "91.224.92.88",
-                  59663,
-                  1
-                ],
-                [
-                  "Psychz Networks",
-                  "108.181.56.189",
-                  5060,
-                  20
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.87",
-                  51677,
-                  18
-                ],
-                [
-                  "CHINATELECOM Hubei province Wuhan 5G network",
-                  "59.174.87.154",
-                  23,
-                  17
-                ],
-                [
-                  "Developed Methods LLC",
-                  "147.185.221.225",
-                  54761,
-                  8
-                ],
-                [
-                  "Developed Methods LLC",
-                  "147.185.221.225",
-                  62178,
-                  8
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  43774,
-                  4
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  20524,
-                  2
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  21100,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  21101,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  36752,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  39282,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  44006,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  44016,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  47728,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.22",
-                  51112,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  59238,
-                  4
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  33262,
-                  2
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  35956,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  39654,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  39728,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.202.170",
-                  40016,
-                  1
-                ],
-                [
-                  "31173 Services AB",
-                  "185.213.155.232",
-                  5060,
-                  10
-                ],
-                [
-                  "Amarutu Technology Ltd",
-                  "80.251.153.178",
-                  23,
-                  9
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51450,
-                  3
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51327,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51448,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51512,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51521,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51533,
-                  1
-                ],
-                [
-                  "IP Solus Inc",
-                  "168.80.32.79",
-                  51539,
-                  1
-                ],
-                [
-                  "TELEFONICA BRASIL S.A",
-                  "187.50.251.58",
-                  5060,
-                  9
-                ],
-                [
-                  "VALE VERDE TELECOMUNICACOES LTDA - ME",
-                  "45.180.198.65",
-                  1433,
-                  8
-                ],
-                [
-                  "OVH SAS",
-                  "91.134.23.126",
-                  5060,
-                  8
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  44702,
-                  3
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  49332,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  50086,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  50094,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  52578,
-                  1
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  "165.154.255.128",
-                  53998,
-                  1
-                ],
-                [
-                  "TechTies Inc.",
-                  "45.153.34.204",
-                  80,
-                  7
-                ]
-              ]
-            }
+          "title": "Operadoras / Redes de origem",
+          "viz": "rank",
+          "fields": [
+            "source.as.as.organization.name.keyword",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Scloud Pte Ltd",
+              42
+            ],
+            [
+              "IP Solus Inc",
+              41
+            ],
+            [
+              "UAB Host Baltic",
+              34
+            ],
+            [
+              "Psychz Networks",
+              23
+            ],
+            [
+              "CHINATELECOM Hubei province Wuhan 5G network",
+              16
+            ],
+            [
+              "Developed Methods LLC",
+              16
+            ],
+            [
+              "TELEFONICA BRASIL S.A",
+              11
+            ],
+            [
+              "TechTies Inc.",
+              11
+            ],
+            [
+              "Google LLC",
+              10
+            ],
+            [
+              "31173 Services AB",
+              9
+            ],
+            [
+              "Amarutu Technology Ltd",
+              9
+            ],
+            [
+              "ONYPHE SAS",
+              9
+            ]
+          ]
+        },
+        {
+          "title": "Portas alvo",
+          "viz": "rank",
+          "fields": [
+            "destination.port",
+            "Count"
+          ],
+          "rows": [
+            [
+              5060,
+              55
+            ],
+            [
+              23,
+              42
+            ],
+            [
+              51677,
+              18
+            ],
+            [
+              1433,
+              16
+            ],
+            [
+              3389,
+              16
+            ],
+            [
+              80,
+              11
+            ],
+            [
+              123,
+              11
+            ],
+            [
+              53,
+              9
+            ],
+            [
+              54761,
+              8
+            ],
+            [
+              62178,
+              8
+            ],
+            [
+              22,
+              4
+            ],
+            [
+              8291,
+              4
+            ]
+          ]
+        },
+        {
+          "title": "IPs internos mais atacados",
+          "viz": "rank",
+          "fields": [
+            "destination.ip",
+            "Count"
+          ],
+          "rows": [
+            [
+              "100.64.5.218",
+              27
+            ],
+            [
+              "100.64.19.99",
+              20
+            ],
+            [
+              "100.64.19.195",
+              16
+            ],
+            [
+              "100.64.12.157",
+              15
+            ],
+            [
+              "100.64.22.136",
+              14
+            ],
+            [
+              "45.229.121.135",
+              11
+            ],
+            [
+              "45.229.121.216",
+              11
+            ],
+            [
+              "100.64.11.75",
+              8
+            ],
+            [
+              "100.64.6.52",
+              7
+            ],
+            [
+              "100.64.8.4",
+              7
+            ],
+            [
+              "100.64.18.60",
+              7
+            ],
+            [
+              "45.229.121.209",
+              6
+            ]
+          ]
+        },
+        {
+          "title": "Protocolos",
+          "viz": "pie",
+          "fields": [
+            "network.transport",
+            "Count"
+          ],
+          "rows": [
+            [
+              "tcp",
+              247
+            ],
+            [
+              "udp",
+              114
+            ]
           ]
         }
       ]
     },
     {
-      "title": "Dashboard 3 (Outbound)",
-      "uid": "adn6skf",
-      "folder": "SOC",
+      "dash": "Infectados Outbound",
       "panels": [
         {
-          "title": "",
-          "type": "stat",
-          "frames": [
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  22
-                ],
-                [
-                  1783457100000,
-                  28
-                ],
-                [
-                  1783457400000,
-                  71
-                ],
-                [
-                  1783457700000,
-                  399
-                ],
-                [
-                  1783458000000,
-                  81
-                ],
-                [
-                  1783458300000,
-                  24
-                ],
-                [
-                  1783458600000,
-                  229
-                ],
-                [
-                  1783458900000,
-                  117
-                ],
-                [
-                  1783459200000,
-                  204
-                ],
-                [
-                  1783459500000,
-                  230
-                ],
-                [
-                  1783459800000,
-                  31
-                ],
-                [
-                  1783460100000,
-                  130
-                ],
-                [
-                  1783460400000,
-                  26
-                ],
-                [
-                  1783460700000,
-                  19
-                ],
-                [
-                  1783461000000,
-                  457
-                ],
-                [
-                  1783461300000,
-                  332
-                ],
-                [
-                  1783461600000,
-                  260
-                ],
-                [
-                  1783461900000,
-                  293
-                ],
-                [
-                  1783462200000,
-                  333
-                ],
-                [
-                  1783462500000,
-                  624
-                ],
-                [
-                  1783462800000,
-                  31
-                ],
-                [
-                  1783463100000,
-                  56
-                ],
-                [
-                  1783463400000,
-                  566
-                ],
-                [
-                  1783463700000,
-                  399
-                ],
-                [
-                  1783464000000,
-                  756
-                ],
-                [
-                  1783464300000,
-                  588
-                ],
-                [
-                  1783464600000,
-                  540
-                ],
-                [
-                  1783464900000,
-                  381
-                ],
-                [
-                  1783465200000,
-                  495
-                ],
-                [
-                  1783465500000,
-                  706
-                ],
-                [
-                  1783465800000,
-                  480
-                ],
-                [
-                  1783466100000,
-                  585
-                ],
-                [
-                  1783466400000,
-                  668
-                ],
-                [
-                  1783466700000,
-                  206
-                ],
-                [
-                  1783467000000,
-                  259
-                ],
-                [
-                  1783467300000,
-                  258
-                ],
-                [
-                  1783467600000,
-                  363
-                ],
-                [
-                  1783467900000,
-                  643
-                ],
-                [
-                  1783468200000,
-                  668
-                ],
-                [
-                  1783468500000,
-                  246
-                ],
-                [
-                  1783468800000,
-                  666
-                ],
-                [
-                  1783469100000,
-                  798
-                ],
-                [
-                  1783469400000,
-                  596
-                ],
-                [
-                  1783469700000,
-                  281
-                ],
-                [
-                  1783470000000,
-                  609
-                ],
-                [
-                  1783470300000,
-                  737
-                ],
-                [
-                  1783470600000,
-                  188
-                ],
-                [
-                  1783470900000,
-                  166
-                ],
-                [
-                  1783471200000,
-                  352
-                ],
-                [
-                  1783471500000,
-                  789
-                ],
-                [
-                  1783471800000,
-                  731
-                ],
-                [
-                  1783472100000,
-                  616
-                ],
-                [
-                  1783472400000,
-                  596
-                ],
-                [
-                  1783472700000,
-                  889
-                ],
-                [
-                  1783473000000,
-                  235
-                ],
-                [
-                  1783473300000,
-                  26
-                ],
-                [
-                  1783473600000,
-                  25
-                ],
-                [
-                  1783473900000,
-                  26
-                ],
-                [
-                  1783474200000,
-                  23
-                ],
-                [
-                  1783474500000,
-                  37
-                ]
-              ]
-            }
+          "title": "Volume de saída no tempo",
+          "viz": "line",
+          "fields": [
+            "Time",
+            "Value"
+          ],
+          "rows": [
+            [
+              1783458600000,
+              331
+            ],
+            [
+              1783458900000,
+              275
+            ],
+            [
+              1783459200000,
+              372
+            ],
+            [
+              1783459500000,
+              448
+            ],
+            [
+              1783459800000,
+              185
+            ],
+            [
+              1783460100000,
+              296
+            ],
+            [
+              1783460400000,
+              191
+            ],
+            [
+              1783460700000,
+              179
+            ],
+            [
+              1783461000000,
+              817
+            ],
+            [
+              1783461300000,
+              528
+            ],
+            [
+              1783461600000,
+              586
+            ],
+            [
+              1783461900000,
+              484
+            ],
+            [
+              1783462200000,
+              521
+            ],
+            [
+              1783462500000,
+              1069
+            ],
+            [
+              1783462800000,
+              194
+            ],
+            [
+              1783463100000,
+              232
+            ],
+            [
+              1783463400000,
+              886
+            ],
+            [
+              1783463700000,
+              685
+            ],
+            [
+              1783464000000,
+              1702
+            ],
+            [
+              1783464300000,
+              873
+            ],
+            [
+              1783464600000,
+              830
+            ],
+            [
+              1783464900000,
+              700
+            ],
+            [
+              1783465200000,
+              752
+            ],
+            [
+              1783465500000,
+              1416
+            ],
+            [
+              1783465800000,
+              883
+            ],
+            [
+              1783466100000,
+              810
+            ],
+            [
+              1783466400000,
+              1258
+            ],
+            [
+              1783466700000,
+              424
+            ],
+            [
+              1783467000000,
+              466
+            ],
+            [
+              1783467300000,
+              545
+            ],
+            [
+              1783467600000,
+              584
+            ],
+            [
+              1783467900000,
+              1363
+            ],
+            [
+              1783468200000,
+              1277
+            ],
+            [
+              1783468500000,
+              487
+            ],
+            [
+              1783468800000,
+              1277
+            ],
+            [
+              1783469100000,
+              1291
+            ],
+            [
+              1783469400000,
+              994
+            ],
+            [
+              1783469700000,
+              560
+            ],
+            [
+              1783470000000,
+              895
+            ],
+            [
+              1783470300000,
+              1691
+            ],
+            [
+              1783470600000,
+              365
+            ],
+            [
+              1783470900000,
+              354
+            ],
+            [
+              1783471200000,
+              569
+            ],
+            [
+              1783471500000,
+              1385
+            ],
+            [
+              1783471800000,
+              1468
+            ],
+            [
+              1783472100000,
+              1028
+            ],
+            [
+              1783472400000,
+              1338
+            ],
+            [
+              1783472700000,
+              1757
+            ],
+            [
+              1783473000000,
+              441
+            ],
+            [
+              1783473300000,
+              176
+            ],
+            [
+              1783473600000,
+              192
+            ],
+            [
+              1783473900000,
+              160
+            ],
+            [
+              1783474200000,
+              168
+            ],
+            [
+              1783474500000,
+              164
+            ],
+            [
+              1783474800000,
+              475
+            ],
+            [
+              1783475100000,
+              738
+            ],
+            [
+              1783475400000,
+              925
+            ],
+            [
+              1783475700000,
+              394
+            ],
+            [
+              1783476000000,
+              833
+            ],
+            [
+              1783476300000,
+              907
+            ],
+            [
+              1783476600000,
+              769
+            ],
+            [
+              1783476900000,
+              484
+            ],
+            [
+              1783477200000,
+              438
+            ],
+            [
+              1783477500000,
+              568
+            ],
+            [
+              1783477800000,
+              467
+            ],
+            [
+              1783478100000,
+              803
+            ],
+            [
+              1783478400000,
+              362
+            ],
+            [
+              1783478700000,
+              412
+            ],
+            [
+              1783479000000,
+              466
+            ],
+            [
+              1783479300000,
+              485
+            ],
+            [
+              1783479600000,
+              503
+            ],
+            [
+              1783479900000,
+              0
+            ],
+            [
+              1783480200000,
+              0
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "destination.port",
-                "Count"
-              ],
-              "rows": [
-                [
-                  443,
-                  1289040
-                ],
-                [
-                  80,
-                  167771
-                ],
-                [
-                  53,
-                  45735
-                ],
-                [
-                  3478,
-                  36494
-                ],
-                [
-                  28575,
-                  11603
-                ],
-                [
-                  5222,
-                  10939
-                ],
-                [
-                  18000,
-                  6501
-                ],
-                [
-                  853,
-                  5993
-                ],
-                [
-                  771,
-                  5519
-                ],
-                [
-                  23429,
-                  5108
-                ]
-              ]
-            }
+          "title": "Países de destino",
+          "viz": "rank",
+          "fields": [
+            "destination.geo.country_name",
+            "Count"
+          ],
+          "rows": [
+            [
+              "Brazil",
+              36062
+            ],
+            [
+              "United States",
+              11277
+            ],
+            [
+              "China",
+              170
+            ],
+            [
+              "The Netherlands",
+              92
+            ],
+            [
+              "Türkiye",
+              81
+            ],
+            [
+              "Ukraine",
+              79
+            ],
+            [
+              "United Kingdom",
+              71
+            ],
+            [
+              "Japan",
+              40
+            ],
+            [
+              "Canada",
+              36
+            ],
+            [
+              "Hong Kong",
+              34
+            ],
+            [
+              "Nigeria",
+              25
+            ],
+            [
+              "Seychelles",
+              25
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "piechart",
-          "frames": [
-            {
-              "fields": [
-                "network.transport",
-                "Sum"
-              ],
-              "rows": [
-                [
-                  "udp",
-                  85035819
-                ],
-                [
-                  "tcp",
-                  148287
-                ]
-              ]
-            }
+          "title": "Operadoras / Redes de destino",
+          "viz": "rank",
+          "fields": [
+            "destination.as.as.organization.name.keyword",
+            "Count"
+          ],
+          "rows": [
+            [
+              "NOW FIBRA PROVEDOR DE INTERNET LTDA",
+              27380
+            ],
+            [
+              "Google LLC",
+              10535
+            ],
+            [
+              "FENIX BRASIL",
+              7424
+            ],
+            [
+              "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
+              873
+            ],
+            [
+              "Cloudflare, Inc.",
+              560
+            ],
+            [
+              "Cisco OpenDNS, LLC",
+              187
+            ],
+            [
+              "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
+              139
+            ],
+            [
+              "Scloud Pte Ltd",
+              113
+            ],
+            [
+              "Zenlayer Inc",
+              86
+            ],
+            [
+              "Meric Internet Teknolojileri A.S.",
+              81
+            ],
+            [
+              "Irfan Tugra Onem",
+              77
+            ],
+            [
+              "UAB Host Baltic",
+              63
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "piechart",
-          "frames": [
-            {
-              "fields": [
-                "destination.as.as.organization.name.keyword",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  27380
-                ],
-                [
-                  "Google LLC",
-                  10668
-                ],
-                [
-                  "FENIX BRASIL",
-                  5080
-                ],
-                [
-                  "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
-                  1448
-                ],
-                [
-                  "Cloudflare, Inc.",
-                  511
-                ],
-                [
-                  "Cisco OpenDNS, LLC",
-                  186
-                ],
-                [
-                  "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
-                  135
-                ],
-                [
-                  "Scloud Pte Ltd",
-                  125
-                ],
-                [
-                  "Zenlayer Inc",
-                  89
-                ],
-                [
-                  "Meric Internet Teknolojileri A.S.",
-                  81
-                ]
-              ]
-            }
+          "title": "IPs internos infectados",
+          "viz": "rank",
+          "fields": [
+            "source.ip",
+            "Count"
+          ],
+          "rows": [
+            [
+              "100.64.5.115",
+              11018
+            ],
+            [
+              "100.64.18.54",
+              8270
+            ],
+            [
+              "100.64.1.136",
+              7802
+            ],
+            [
+              "100.64.8.15",
+              4582
+            ],
+            [
+              "100.64.8.240",
+              2964
+            ],
+            [
+              "100.64.0.131",
+              826
+            ],
+            [
+              "100.64.1.235",
+              762
+            ],
+            [
+              "100.64.5.239",
+              526
+            ],
+            [
+              "100.64.0.152",
+              501
+            ],
+            [
+              "100.64.3.202",
+              263
+            ],
+            [
+              "100.64.13.133",
+              262
+            ],
+            [
+              "100.64.23.56",
+              221
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "timeseries",
-          "frames": [
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  980
-                ],
-                [
-                  1783459200000,
-                  1784730
-                ],
-                [
-                  1783459500000,
-                  1809340
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  1285330
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  8733700
-                ],
-                [
-                  1783461000000,
-                  11120300
-                ],
-                [
-                  1783461300000,
-                  3552680
-                ],
-                [
-                  1783461600000,
-                  7275250
-                ],
-                [
-                  1783461900000,
-                  4372940
-                ],
-                [
-                  1783462200000,
-                  2712200
-                ],
-                [
-                  1783462500000,
-                  8888150
-                ],
-                [
-                  1783462800000,
-                  8543710
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  6579450
-                ],
-                [
-                  1783463700000,
-                  850
-                ],
-                [
-                  1783464000000,
-                  2411720
-                ],
-                [
-                  1783464300000,
-                  2169450
-                ],
-                [
-                  1783464600000,
-                  3157190
-                ],
-                [
-                  1783464900000,
-                  780
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  9241610
-                ],
-                [
-                  1783465800000,
-                  2725800
-                ],
-                [
-                  1783466100000,
-                  4395250
-                ],
-                [
-                  1783466400000,
-                  8070520
-                ],
-                [
-                  1783466700000,
-                  2580
-                ],
-                [
-                  1783467000000,
-                  3548280
-                ],
-                [
-                  1783467300000,
-                  1040
-                ],
-                [
-                  1783467600000,
-                  1296110
-                ],
-                [
-                  1783467900000,
-                  16859640
-                ],
-                [
-                  1783468200000,
-                  11195720
-                ],
-                [
-                  1783468500000,
-                  0
-                ],
-                [
-                  1783468800000,
-                  8993740
-                ],
-                [
-                  1783469100000,
-                  0
-                ],
-                [
-                  1783469400000,
-                  0
-                ],
-                [
-                  1783469700000,
-                  0
-                ],
-                [
-                  1783470000000,
-                  10013970
-                ],
-                [
-                  1783470300000,
-                  12264360
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  870
-                ],
-                [
-                  1783471200000,
-                  0
-                ],
-                [
-                  1783471500000,
-                  3605650
-                ],
-                [
-                  1783471800000,
-                  10345140
-                ],
-                [
-                  1783472100000,
-                  7363430
-                ],
-                [
-                  1783472400000,
-                  2766850
-                ],
-                [
-                  1783472700000,
-                  18420260
-                ],
-                [
-                  1783473000000,
-                  3698610
-                ],
-                [
-                  1783473300000,
-                  1920
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  1870
-                ],
-                [
-                  1783474200000,
-                  1020
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  1460
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  4450
-                ],
-                [
-                  1783459200000,
-                  910
-                ],
-                [
-                  1783459500000,
-                  0
-                ],
-                [
-                  1783459800000,
-                  1060
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  1080
-                ],
-                [
-                  1783460700000,
-                  2010
-                ],
-                [
-                  1783461000000,
-                  990
-                ],
-                [
-                  1783461300000,
-                  0
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  950
-                ],
-                [
-                  1783462200000,
-                  339880
-                ],
-                [
-                  1783462500000,
-                  14073780
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  830
-                ],
-                [
-                  1783463400000,
-                  231980
-                ],
-                [
-                  1783463700000,
-                  3657620
-                ],
-                [
-                  1783464000000,
-                  10937890
-                ],
-                [
-                  1783464300000,
-                  2310300
-                ],
-                [
-                  1783464600000,
-                  2091900
-                ],
-                [
-                  1783464900000,
-                  14901130
-                ],
-                [
-                  1783465200000,
-                  6555080
-                ],
-                [
-                  1783465500000,
-                  6039370
-                ],
-                [
-                  1783465800000,
-                  3962570
-                ],
-                [
-                  1783466100000,
-                  5378180
-                ],
-                [
-                  1783466400000,
-                  6349250
-                ],
-                [
-                  1783466700000,
-                  1332790
-                ],
-                [
-                  1783467000000,
-                  2860
-                ],
-                [
-                  1783467300000,
-                  5341990
-                ],
-                [
-                  1783467600000,
-                  0
-                ],
-                [
-                  1783467900000,
-                  1278920
-                ],
-                [
-                  1783468200000,
-                  6229510
-                ],
-                [
-                  1783468500000,
-                  2620990
-                ],
-                [
-                  1783468800000,
-                  49550
-                ],
-                [
-                  1783469100000,
-                  2710020
-                ],
-                [
-                  1783469400000,
-                  3000460
-                ],
-                [
-                  1783469700000,
-                  1800
-                ],
-                [
-                  1783470000000,
-                  900
-                ],
-                [
-                  1783470300000,
-                  10354050
-                ],
-                [
-                  1783470600000,
-                  10287440
-                ],
-                [
-                  1783470900000,
-                  0
-                ],
-                [
-                  1783471200000,
-                  0
-                ],
-                [
-                  1783471500000,
-                  4848410
-                ],
-                [
-                  1783471800000,
-                  3241570
-                ],
-                [
-                  1783472100000,
-                  0
-                ],
-                [
-                  1783472400000,
-                  15415060
-                ],
-                [
-                  1783472700000,
-                  0
-                ],
-                [
-                  1783473000000,
-                  940
-                ],
-                [
-                  1783473300000,
-                  0
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  0
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  870
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  1070
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  0
-                ],
-                [
-                  1783459500000,
-                  7604420
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  15034360
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  0
-                ],
-                [
-                  1783461300000,
-                  12417160
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  0
-                ],
-                [
-                  1783462200000,
-                  31086520
-                ],
-                [
-                  1783462500000,
-                  0
-                ],
-                [
-                  1783462800000,
-                  7386320
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  0
-                ],
-                [
-                  1783463700000,
-                  7546260
-                ],
-                [
-                  1783464000000,
-                  7270000
-                ],
-                [
-                  1783464300000,
-                  0
-                ],
-                [
-                  1783464600000,
-                  0
-                ],
-                [
-                  1783464900000,
-                  0
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  14874420
-                ],
-                [
-                  1783465800000,
-                  0
-                ],
-                [
-                  1783466100000,
-                  0
-                ],
-                [
-                  1783466400000,
-                  7706200
-                ],
-                [
-                  1783466700000,
-                  0
-                ],
-                [
-                  1783467000000,
-                  0
-                ],
-                [
-                  1783467300000,
-                  0
-                ],
-                [
-                  1783467600000,
-                  0
-                ],
-                [
-                  1783467900000,
-                  7502640
-                ],
-                [
-                  1783468200000,
-                  990
-                ],
-                [
-                  1783468500000,
-                  0
-                ],
-                [
-                  1783468800000,
-                  0
-                ],
-                [
-                  1783469100000,
-                  0
-                ],
-                [
-                  1783469400000,
-                  0
-                ],
-                [
-                  1783469700000,
-                  0
-                ],
-                [
-                  1783470000000,
-                  0
-                ],
-                [
-                  1783470300000,
-                  0
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  0
-                ],
-                [
-                  1783471200000,
-                  0
-                ],
-                [
-                  1783471500000,
-                  0
-                ],
-                [
-                  1783471800000,
-                  0
-                ],
-                [
-                  1783472100000,
-                  0
-                ],
-                [
-                  1783472400000,
-                  0
-                ],
-                [
-                  1783472700000,
-                  0
-                ],
-                [
-                  1783473000000,
-                  0
-                ],
-                [
-                  1783473300000,
-                  0
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  0
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  940
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  2820
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  970
-                ],
-                [
-                  1783459200000,
-                  950
-                ],
-                [
-                  1783459500000,
-                  3010
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  286460
-                ],
-                [
-                  1783461300000,
-                  1746170
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  592920
-                ],
-                [
-                  1783462200000,
-                  2076420
-                ],
-                [
-                  1783462500000,
-                  439190
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  362940
-                ],
-                [
-                  1783463400000,
-                  4888340
-                ],
-                [
-                  1783463700000,
-                  4620390
-                ],
-                [
-                  1783464000000,
-                  10964950
-                ],
-                [
-                  1783464300000,
-                  6571270
-                ],
-                [
-                  1783464600000,
-                  4648730
-                ],
-                [
-                  1783464900000,
-                  0
-                ],
-                [
-                  1783465200000,
-                  2433370
-                ],
-                [
-                  1783465500000,
-                  5973820
-                ],
-                [
-                  1783465800000,
-                  3952640
-                ],
-                [
-                  1783466100000,
-                  860
-                ],
-                [
-                  1783466400000,
-                  0
-                ],
-                [
-                  1783466700000,
-                  0
-                ],
-                [
-                  1783467000000,
-                  0
-                ],
-                [
-                  1783467300000,
-                  0
-                ],
-                [
-                  1783467600000,
-                  784440
-                ],
-                [
-                  1783467900000,
-                  1220270
-                ],
-                [
-                  1783468200000,
-                  1257330
-                ],
-                [
-                  1783468500000,
-                  0
-                ],
-                [
-                  1783468800000,
-                  5535320
-                ],
-                [
-                  1783469100000,
-                  4148840
-                ],
-                [
-                  1783469400000,
-                  4458720
-                ],
-                [
-                  1783469700000,
-                  1691370
-                ],
-                [
-                  1783470000000,
-                  241990
-                ],
-                [
-                  1783470300000,
-                  0
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  0
-                ],
-                [
-                  1783471200000,
-                  514850
-                ],
-                [
-                  1783471500000,
-                  2036140
-                ],
-                [
-                  1783471800000,
-                  4804480
-                ],
-                [
-                  1783472100000,
-                  3078120
-                ],
-                [
-                  1783472400000,
-                  0
-                ],
-                [
-                  1783472700000,
-                  4265000
-                ],
-                [
-                  1783473000000,
-                  0
-                ],
-                [
-                  1783473300000,
-                  2541790
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  2580
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  0
-                ],
-                [
-                  1783459500000,
-                  1080
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  0
-                ],
-                [
-                  1783461300000,
-                  0
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  0
-                ],
-                [
-                  1783462200000,
-                  0
-                ],
-                [
-                  1783462500000,
-                  0
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  0
-                ],
-                [
-                  1783463700000,
-                  0
-                ],
-                [
-                  1783464000000,
-                  0
-                ],
-                [
-                  1783464300000,
-                  0
-                ],
-                [
-                  1783464600000,
-                  0
-                ],
-                [
-                  1783464900000,
-                  990
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  0
-                ],
-                [
-                  1783465800000,
-                  0
-                ],
-                [
-                  1783466100000,
-                  1078820
-                ],
-                [
-                  1783466400000,
-                  2974130
-                ],
-                [
-                  1783466700000,
-                  2580
-                ],
-                [
-                  1783467000000,
-                  0
-                ],
-                [
-                  1783467300000,
-                  0
-                ],
-                [
-                  1783467600000,
-                  2028040
-                ],
-                [
-                  1783467900000,
-                  0
-                ],
-                [
-                  1783468200000,
-                  0
-                ],
-                [
-                  1783468500000,
-                  1375520
-                ],
-                [
-                  1783468800000,
-                  2700540
-                ],
-                [
-                  1783469100000,
-                  7426920
-                ],
-                [
-                  1783469400000,
-                  2484280
-                ],
-                [
-                  1783469700000,
-                  2357610
-                ],
-                [
-                  1783470000000,
-                  2549950
-                ],
-                [
-                  1783470300000,
-                  3214850
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  1543680
-                ],
-                [
-                  1783471200000,
-                  4475510
-                ],
-                [
-                  1783471500000,
-                  7001260
-                ],
-                [
-                  1783471800000,
-                  1913510
-                ],
-                [
-                  1783472100000,
-                  0
-                ],
-                [
-                  1783472400000,
-                  0
-                ],
-                [
-                  1783472700000,
-                  2099070
-                ],
-                [
-                  1783473000000,
-                  1330
-                ],
-                [
-                  1783473300000,
-                  3694940
-                ],
-                [
-                  1783473600000,
-                  1110
-                ],
-                [
-                  1783473900000,
-                  0
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  940
-                ]
-              ]
-            }
+          "title": "Portas de destino",
+          "viz": "rank",
+          "fields": [
+            "destination.port",
+            "Count"
+          ],
+          "rows": [
+            [
+              53,
+              47413
+            ],
+            [
+              123,
+              588
+            ],
+            [
+              3389,
+              248
+            ],
+            [
+              1900,
+              222
+            ],
+            [
+              25,
+              68
+            ],
+            [
+              7776,
+              61
+            ],
+            [
+              8291,
+              51
+            ],
+            [
+              5060,
+              41
+            ],
+            [
+              37911,
+              34
+            ],
+            [
+              50450,
+              32
+            ],
+            [
+              65535,
+              25
+            ],
+            [
+              443,
+              23
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "source.ip",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "100.64.5.115",
-                  10823
-                ],
-                [
-                  "100.64.18.54",
-                  7960
-                ],
-                [
-                  "100.64.1.136",
-                  7418
-                ],
-                [
-                  "100.64.8.15",
-                  3643
-                ],
-                [
-                  "100.64.8.240",
-                  2453
-                ],
-                [
-                  "100.64.5.239",
-                  1101
-                ],
-                [
-                  "100.64.0.131",
-                  821
-                ],
-                [
-                  "100.64.1.235",
-                  764
-                ],
-                [
-                  "100.64.0.152",
-                  510
-                ],
-                [
-                  "100.64.3.202",
-                  264
-                ],
-                [
-                  "100.64.13.133",
-                  247
-                ],
-                [
-                  "100.64.23.56",
-                  243
-                ],
-                [
-                  "100.64.2.131",
-                  174
-                ],
-                [
-                  "100.64.4.44",
-                  132
-                ],
-                [
-                  "100.64.0.226",
-                  115
-                ],
-                [
-                  "100.64.17.118",
-                  96
-                ],
-                [
-                  "100.64.7.73",
-                  80
-                ],
-                [
-                  "45.229.121.175",
-                  73
-                ],
-                [
-                  "100.64.8.255",
-                  69
-                ],
-                [
-                  "100.64.18.116",
-                  53
-                ]
-              ]
-            }
+          "title": "Protocolos",
+          "viz": "pie",
+          "fields": [
+            "network.transport",
+            "Count"
+          ],
+          "rows": [
+            [
+              "udp",
+              48133
+            ],
+            [
+              "tcp",
+              818
+            ]
           ]
         }
       ]
     },
     {
-      "title": "Dashboard 4 Análise Profunda",
-      "uid": "admv28q",
-      "folder": "SOC",
+      "dash": "Análise Profunda",
       "panels": [
         {
-          "title": "",
-          "type": "state-timeline",
-          "frames": [
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  133
-                ],
-                [
-                  1783459500000,
-                  122
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  93
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  2
-                ],
-                [
-                  1783461000000,
-                  608
-                ],
-                [
-                  1783461300000,
-                  206
-                ],
-                [
-                  1783461600000,
-                  400
-                ],
-                [
-                  1783461900000,
-                  254
-                ],
-                [
-                  1783462200000,
-                  151
-                ],
-                [
-                  1783462500000,
-                  1
-                ],
-                [
-                  1783462800000,
-                  2
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  360
-                ],
-                [
-                  1783463700000,
-                  1
-                ],
-                [
-                  1783464000000,
-                  173
-                ],
-                [
-                  1783464300000,
-                  102
-                ],
-                [
-                  1783464600000,
-                  195
-                ],
-                [
-                  1783464900000,
-                  1
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  464
-                ],
-                [
-                  1783465800000,
-                  169
-                ],
-                [
-                  1783466100000,
-                  214
-                ],
-                [
-                  1783466400000,
-                  400
-                ],
-                [
-                  1783466700000,
-                  3
-                ],
-                [
-                  1783467000000,
-                  214
-                ],
-                [
-                  1783467300000,
-                  1
-                ],
-                [
-                  1783467600000,
-                  84
-                ],
-                [
-                  1783467900000,
-                  826
-                ],
-                [
-                  1783468200000,
-                  590
-                ],
-                [
-                  1783468500000,
-                  0
-                ],
-                [
-                  1783468800000,
-                  457
-                ],
-                [
-                  1783469100000,
-                  0
-                ],
-                [
-                  1783469400000,
-                  0
-                ],
-                [
-                  1783469700000,
-                  0
-                ],
-                [
-                  1783470000000,
-                  473
-                ],
-                [
-                  1783470300000,
-                  640
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  1
-                ],
-                [
-                  1783471200000,
-                  0
-                ],
-                [
-                  1783471500000,
-                  196
-                ],
-                [
-                  1783471800000,
-                  580
-                ],
-                [
-                  1783472100000,
-                  404
-                ],
-                [
-                  1783472400000,
-                  147
-                ],
-                [
-                  1783472700000,
-                  1042
-                ],
-                [
-                  1783473000000,
-                  195
-                ],
-                [
-                  1783473300000,
-                  1
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  2
-                ],
-                [
-                  1783474200000,
-                  1
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  1
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  3
-                ],
-                [
-                  1783459200000,
-                  0
-                ],
-                [
-                  1783459500000,
-                  0
-                ],
-                [
-                  1783459800000,
-                  1
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  1
-                ],
-                [
-                  1783461000000,
-                  0
-                ],
-                [
-                  1783461300000,
-                  0
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  0
-                ],
-                [
-                  1783462200000,
-                  27
-                ],
-                [
-                  1783462500000,
-                  831
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  1
-                ],
-                [
-                  1783463400000,
-                  13
-                ],
-                [
-                  1783463700000,
-                  196
-                ],
-                [
-                  1783464000000,
-                  596
-                ],
-                [
-                  1783464300000,
-                  158
-                ],
-                [
-                  1783464600000,
-                  127
-                ],
-                [
-                  1783464900000,
-                  492
-                ],
-                [
-                  1783465200000,
-                  391
-                ],
-                [
-                  1783465500000,
-                  345
-                ],
-                [
-                  1783465800000,
-                  237
-                ],
-                [
-                  1783466100000,
-                  310
-                ],
-                [
-                  1783466400000,
-                  382
-                ],
-                [
-                  1783466700000,
-                  20
-                ],
-                [
-                  1783467000000,
-                  1
-                ],
-                [
-                  1783467300000,
-                  319
-                ],
-                [
-                  1783467600000,
-                  0
-                ],
-                [
-                  1783467900000,
-                  96
-                ],
-                [
-                  1783468200000,
-                  370
-                ],
-                [
-                  1783468500000,
-                  152
-                ],
-                [
-                  1783468800000,
-                  3
-                ],
-                [
-                  1783469100000,
-                  177
-                ],
-                [
-                  1783469400000,
-                  194
-                ],
-                [
-                  1783469700000,
-                  2
-                ],
-                [
-                  1783470000000,
-                  1
-                ],
-                [
-                  1783470300000,
-                  591
-                ],
-                [
-                  1783470600000,
-                  179
-                ],
-                [
-                  1783470900000,
-                  0
-                ],
-                [
-                  1783471200000,
-                  0
-                ],
-                [
-                  1783471500000,
-                  304
-                ],
-                [
-                  1783471800000,
-                  182
-                ],
-                [
-                  1783472100000,
-                  0
-                ],
-                [
-                  1783472400000,
-                  886
-                ],
-                [
-                  1783472700000,
-                  0
-                ],
-                [
-                  1783473000000,
-                  1
-                ],
-                [
-                  1783473300000,
-                  0
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  0
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  1
-                ],
-                [
-                  1783459500000,
-                  0
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  25
-                ],
-                [
-                  1783461300000,
-                  134
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  50
-                ],
-                [
-                  1783462200000,
-                  159
-                ],
-                [
-                  1783462500000,
-                  35
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  28
-                ],
-                [
-                  1783463400000,
-                  300
-                ],
-                [
-                  1783463700000,
-                  284
-                ],
-                [
-                  1783464000000,
-                  717
-                ],
-                [
-                  1783464300000,
-                  426
-                ],
-                [
-                  1783464600000,
-                  298
-                ],
-                [
-                  1783464900000,
-                  0
-                ],
-                [
-                  1783465200000,
-                  174
-                ],
-                [
-                  1783465500000,
-                  424
-                ],
-                [
-                  1783465800000,
-                  260
-                ],
-                [
-                  1783466100000,
-                  1
-                ],
-                [
-                  1783466400000,
-                  0
-                ],
-                [
-                  1783466700000,
-                  0
-                ],
-                [
-                  1783467000000,
-                  0
-                ],
-                [
-                  1783467300000,
-                  0
-                ],
-                [
-                  1783467600000,
-                  60
-                ],
-                [
-                  1783467900000,
-                  92
-                ],
-                [
-                  1783468200000,
-                  85
-                ],
-                [
-                  1783468500000,
-                  0
-                ],
-                [
-                  1783468800000,
-                  382
-                ],
-                [
-                  1783469100000,
-                  257
-                ],
-                [
-                  1783469400000,
-                  295
-                ],
-                [
-                  1783469700000,
-                  124
-                ],
-                [
-                  1783470000000,
-                  18
-                ],
-                [
-                  1783470300000,
-                  0
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  0
-                ],
-                [
-                  1783471200000,
-                  42
-                ],
-                [
-                  1783471500000,
-                  153
-                ],
-                [
-                  1783471800000,
-                  320
-                ],
-                [
-                  1783472100000,
-                  203
-                ],
-                [
-                  1783472400000,
-                  0
-                ],
-                [
-                  1783472700000,
-                  268
-                ],
-                [
-                  1783473000000,
-                  0
-                ],
-                [
-                  1783473300000,
-                  1
-                ],
-                [
-                  1783473600000,
-                  0
-                ],
-                [
-                  1783473900000,
-                  3
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  0
-                ],
-                [
-                  1783459500000,
-                  0
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  0
-                ],
-                [
-                  1783461300000,
-                  0
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  0
-                ],
-                [
-                  1783462200000,
-                  0
-                ],
-                [
-                  1783462500000,
-                  0
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  0
-                ],
-                [
-                  1783463700000,
-                  0
-                ],
-                [
-                  1783464000000,
-                  0
-                ],
-                [
-                  1783464300000,
-                  0
-                ],
-                [
-                  1783464600000,
-                  0
-                ],
-                [
-                  1783464900000,
-                  1
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  0
-                ],
-                [
-                  1783465800000,
-                  0
-                ],
-                [
-                  1783466100000,
-                  82
-                ],
-                [
-                  1783466400000,
-                  183
-                ],
-                [
-                  1783466700000,
-                  3
-                ],
-                [
-                  1783467000000,
-                  0
-                ],
-                [
-                  1783467300000,
-                  0
-                ],
-                [
-                  1783467600000,
-                  133
-                ],
-                [
-                  1783467900000,
-                  0
-                ],
-                [
-                  1783468200000,
-                  0
-                ],
-                [
-                  1783468500000,
-                  96
-                ],
-                [
-                  1783468800000,
-                  160
-                ],
-                [
-                  1783469100000,
-                  455
-                ],
-                [
-                  1783469400000,
-                  146
-                ],
-                [
-                  1783469700000,
-                  151
-                ],
-                [
-                  1783470000000,
-                  170
-                ],
-                [
-                  1783470300000,
-                  228
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  110
-                ],
-                [
-                  1783471200000,
-                  285
-                ],
-                [
-                  1783471500000,
-                  458
-                ],
-                [
-                  1783471800000,
-                  135
-                ],
-                [
-                  1783472100000,
-                  0
-                ],
-                [
-                  1783472400000,
-                  0
-                ],
-                [
-                  1783472700000,
-                  141
-                ],
-                [
-                  1783473000000,
-                  0
-                ],
-                [
-                  1783473300000,
-                  2
-                ],
-                [
-                  1783473600000,
-                  1
-                ],
-                [
-                  1783473900000,
-                  0
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  0
-                ]
-              ]
-            },
-            {
-              "fields": [
-                "Time",
-                "Value"
-              ],
-              "rows": [
-                [
-                  1783456800000,
-                  0
-                ],
-                [
-                  1783457100000,
-                  0
-                ],
-                [
-                  1783457400000,
-                  0
-                ],
-                [
-                  1783457700000,
-                  0
-                ],
-                [
-                  1783458000000,
-                  0
-                ],
-                [
-                  1783458300000,
-                  0
-                ],
-                [
-                  1783458600000,
-                  0
-                ],
-                [
-                  1783458900000,
-                  0
-                ],
-                [
-                  1783459200000,
-                  0
-                ],
-                [
-                  1783459500000,
-                  0
-                ],
-                [
-                  1783459800000,
-                  0
-                ],
-                [
-                  1783460100000,
-                  0
-                ],
-                [
-                  1783460400000,
-                  0
-                ],
-                [
-                  1783460700000,
-                  0
-                ],
-                [
-                  1783461000000,
-                  0
-                ],
-                [
-                  1783461300000,
-                  0
-                ],
-                [
-                  1783461600000,
-                  0
-                ],
-                [
-                  1783461900000,
-                  0
-                ],
-                [
-                  1783462200000,
-                  0
-                ],
-                [
-                  1783462500000,
-                  0
-                ],
-                [
-                  1783462800000,
-                  0
-                ],
-                [
-                  1783463100000,
-                  0
-                ],
-                [
-                  1783463400000,
-                  0
-                ],
-                [
-                  1783463700000,
-                  0
-                ],
-                [
-                  1783464000000,
-                  0
-                ],
-                [
-                  1783464300000,
-                  0
-                ],
-                [
-                  1783464600000,
-                  0
-                ],
-                [
-                  1783464900000,
-                  0
-                ],
-                [
-                  1783465200000,
-                  0
-                ],
-                [
-                  1783465500000,
-                  0
-                ],
-                [
-                  1783465800000,
-                  2
-                ],
-                [
-                  1783466100000,
-                  0
-                ],
-                [
-                  1783466400000,
-                  75
-                ],
-                [
-                  1783466700000,
-                  166
-                ],
-                [
-                  1783467000000,
-                  54
-                ],
-                [
-                  1783467300000,
-                  14
-                ],
-                [
-                  1783467600000,
-                  106
-                ],
-                [
-                  1783467900000,
-                  119
-                ],
-                [
-                  1783468200000,
-                  7
-                ],
-                [
-                  1783468500000,
-                  60
-                ],
-                [
-                  1783468800000,
-                  63
-                ],
-                [
-                  1783469100000,
-                  211
-                ],
-                [
-                  1783469400000,
-                  149
-                ],
-                [
-                  1783469700000,
-                  41
-                ],
-                [
-                  1783470000000,
-                  11
-                ],
-                [
-                  1783470300000,
-                  30
-                ],
-                [
-                  1783470600000,
-                  0
-                ],
-                [
-                  1783470900000,
-                  30
-                ],
-                [
-                  1783471200000,
-                  69
-                ],
-                [
-                  1783471500000,
-                  95
-                ],
-                [
-                  1783471800000,
-                  50
-                ],
-                [
-                  1783472100000,
-                  230
-                ],
-                [
-                  1783472400000,
-                  91
-                ],
-                [
-                  1783472700000,
-                  111
-                ],
-                [
-                  1783473000000,
-                  60
-                ],
-                [
-                  1783473300000,
-                  1
-                ],
-                [
-                  1783473600000,
-                  3
-                ],
-                [
-                  1783473900000,
-                  2
-                ],
-                [
-                  1783474200000,
-                  0
-                ],
-                [
-                  1783474500000,
-                  13
-                ]
-              ]
-            }
+          "title": "Top IPs de origem",
+          "viz": "rank",
+          "fields": [
+            "source.ip",
+            "Count"
+          ],
+          "rows": [
+            [
+              "100.64.5.115",
+              11023
+            ],
+            [
+              "100.64.18.54",
+              8292
+            ],
+            [
+              "100.64.1.136",
+              7806
+            ],
+            [
+              "100.64.8.15",
+              4593
+            ],
+            [
+              "100.64.8.240",
+              2968
+            ],
+            [
+              "100.64.1.235",
+              1209
+            ],
+            [
+              "100.64.0.131",
+              826
+            ],
+            [
+              "100.64.0.152",
+              784
+            ],
+            [
+              "100.64.5.239",
+              526
+            ],
+            [
+              "100.64.1.51",
+              473
+            ],
+            [
+              "100.64.5.255",
+              405
+            ],
+            [
+              "100.64.13.133",
+              283
+            ],
+            [
+              "100.64.3.202",
+              271
+            ],
+            [
+              "100.64.4.44",
+              235
+            ],
+            [
+              "100.64.23.56",
+              221
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "barchart",
-          "frames": [
-            {
-              "fields": [
-                "source.ip",
-                "Unique Count"
-              ],
-              "rows": [
-                [
-                  "100.64.5.115",
-                  1957
-                ],
-                [
-                  "100.64.1.136",
-                  1872
-                ],
-                [
-                  "100.64.8.15",
-                  1548
-                ],
-                [
-                  "100.64.8.240",
-                  1361
-                ],
-                [
-                  "100.64.18.54",
-                  1361
-                ],
-                [
-                  "100.64.5.239",
-                  648
-                ],
-                [
-                  "100.64.0.131",
-                  576
-                ],
-                [
-                  "45.229.121.60",
-                  22
-                ],
-                [
-                  "172.21.1.2",
-                  13
-                ],
-                [
-                  "100.64.9.160",
-                  12
-                ],
-                [
-                  "100.64.5.73",
-                  10
-                ],
-                [
-                  "100.64.14.218",
-                  10
-                ],
-                [
-                  "45.229.121.1",
-                  9
-                ],
-                [
-                  "100.64.5.209",
-                  9
-                ],
-                [
-                  "100.64.7.76",
-                  9
-                ],
-                [
-                  "172.21.1.55",
-                  9
-                ],
-                [
-                  "100.64.3.38",
-                  8
-                ],
-                [
-                  "100.64.8.255",
-                  8
-                ],
-                [
-                  "100.64.14.163",
-                  8
-                ],
-                [
-                  "100.64.16.212",
-                  8
-                ]
-              ]
-            }
+          "title": "Top IPs de destino",
+          "viz": "rank",
+          "fields": [
+            "destination.ip",
+            "Count"
+          ],
+          "rows": [
+            [
+              "45.229.123.242",
+              31095
+            ],
+            [
+              "45.229.123.229",
+              7017
+            ],
+            [
+              "8.8.8.8",
+              6573
+            ],
+            [
+              "8.8.4.4",
+              3919
+            ],
+            [
+              "1.1.1.1",
+              399
+            ],
+            [
+              "239.255.255.250",
+              215
+            ],
+            [
+              "208.67.222.222",
+              152
+            ],
+            [
+              "114.114.114.114",
+              86
+            ],
+            [
+              "91.124.98.28",
+              59
+            ],
+            [
+              "177.37.180.183",
+              48
+            ],
+            [
+              "190.111.99.222",
+              48
+            ],
+            [
+              "91.224.92.88",
+              45
+            ],
+            [
+              "172.40.1.19",
+              45
+            ],
+            [
+              "1.0.0.3",
+              37
+            ],
+            [
+              "172.40.1.41",
+              35
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "source.ip",
-                "Unique Count"
-              ],
-              "rows": [
-                [
-                  "100.64.5.115",
-                  1957
-                ],
-                [
-                  "100.64.1.136",
-                  1872
-                ],
-                [
-                  "100.64.8.15",
-                  1548
-                ],
-                [
-                  "100.64.8.240",
-                  1362
-                ],
-                [
-                  "100.64.18.54",
-                  1361
-                ],
-                [
-                  "100.64.5.239",
-                  648
-                ],
-                [
-                  "100.64.0.131",
-                  576
-                ],
-                [
-                  "45.229.121.60",
-                  22
-                ],
-                [
-                  "172.21.1.2",
-                  13
-                ],
-                [
-                  "100.64.9.160",
-                  12
-                ],
-                [
-                  "100.64.5.73",
-                  10
-                ],
-                [
-                  "100.64.14.218",
-                  10
-                ],
-                [
-                  "45.229.121.1",
-                  9
-                ],
-                [
-                  "100.64.5.209",
-                  9
-                ],
-                [
-                  "100.64.7.76",
-                  9
-                ],
-                [
-                  "172.21.1.55",
-                  9
-                ],
-                [
-                  "100.64.3.38",
-                  8
-                ],
-                [
-                  "100.64.8.255",
-                  8
-                ],
-                [
-                  "100.64.14.163",
-                  8
-                ],
-                [
-                  "100.64.16.212",
-                  8
-                ]
-              ]
-            }
+          "title": "Portas mais usadas",
+          "viz": "rank",
+          "fields": [
+            "destination.port",
+            "Count"
+          ],
+          "rows": [
+            [
+              53,
+              85705
+            ],
+            [
+              123,
+              599
+            ],
+            [
+              3389,
+              265
+            ],
+            [
+              1900,
+              254
+            ],
+            [
+              5060,
+              121
+            ],
+            [
+              25,
+              68
+            ],
+            [
+              7776,
+              61
+            ],
+            [
+              23,
+              54
+            ],
+            [
+              8291,
+              54
+            ],
+            [
+              1433,
+              38
+            ],
+            [
+              37911,
+              34
+            ],
+            [
+              50450,
+              32
+            ],
+            [
+              443,
+              26
+            ],
+            [
+              65535,
+              25
+            ],
+            [
+              3759,
+              19
+            ]
           ]
         },
         {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "destination.as.as.number",
-                "destination.as.as.organization.name.keyword",
-                "destination.geo.country_name",
-                "source.ip",
-                "destination.port",
-                "Count"
-              ],
-              "rows": [
-                [
-                  "273480",
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  "Brazil",
-                  "100.64.5.115",
-                  53,
-                  9527
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.5.115",
-                  53,
-                  865
-                ],
-                [
-                  "269077",
-                  "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
-                  "Brazil",
-                  "100.64.5.115",
-                  53,
-                  347
-                ],
-                [
-                  "215238",
-                  "Irfan Tugra Onem",
-                  "Ukraine",
-                  "100.64.5.115",
-                  3389,
-                  41
-                ],
-                [
-                  "211273",
-                  "Cloud Software - FZCO",
-                  "United States",
-                  "100.64.5.115",
-                  3389,
-                  3
-                ],
-                [
-                  "211273",
-                  "Cloud Software - FZCO",
-                  "United States",
-                  "100.64.5.115",
-                  53,
-                  5
-                ],
-                [
-                  "211273",
-                  "Cloud Software - FZCO",
-                  "United States",
-                  "100.64.5.115",
-                  25,
-                  5
-                ],
-                [
-                  "211273",
-                  "Cloud Software - FZCO",
-                  "United States",
-                  "100.64.5.115",
-                  23,
-                  2
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.5.115",
-                  53,
-                  7
-                ],
-                [
-                  "12083",
-                  "WideOpenWest Finance LLC",
-                  "United States",
-                  "100.64.5.115",
-                  53,
-                  3
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.5.115",
-                  3389,
-                  6
-                ],
-                [
-                  "8881",
-                  "1&1 Versatel GmbH",
-                  "Germany",
-                  "100.64.5.115",
-                  53,
-                  2
-                ],
-                [
-                  "214351",
-                  "Femo It Solutions Limited",
-                  "Germany",
-                  "100.64.5.115",
-                  6969,
-                  1
-                ],
-                [
-                  "273480",
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  "Brazil",
-                  "100.64.18.54",
-                  53,
-                  7557
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.18.54",
-                  53,
-                  358
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.18.54",
-                  53,
-                  20
-                ],
-                [
-                  "11351",
-                  "Charter Communications Inc",
-                  "United States",
-                  "100.64.18.54",
-                  53,
-                  2
-                ],
-                [
-                  "701",
-                  "Verizon Business",
-                  "United States",
-                  "100.64.18.54",
-                  53,
-                  1
-                ],
-                [
-                  "215238",
-                  "Irfan Tugra Onem",
-                  "Ukraine",
-                  "100.64.18.54",
-                  3389,
-                  8
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.18.54",
-                  3389,
-                  7
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.18.54",
-                  53,
-                  2
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.18.54",
-                  25,
-                  1
-                ],
-                [
-                  "273480",
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  "Brazil",
-                  "100.64.1.136",
-                  53,
-                  5610
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.1.136",
-                  53,
-                  1796
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.1.136",
-                  3389,
-                  7
-                ],
-                [
-                  "36231",
-                  "Tempest Hosting, LLC",
-                  "The Netherlands",
-                  "100.64.1.136",
-                  53,
-                  1
-                ],
-                [
-                  "812",
-                  "Rogers Communications Canada Inc.",
-                  "Canada",
-                  "100.64.1.136",
-                  53,
-                  2
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.1.136",
-                  53,
-                  2
-                ],
-                [
-                  "273480",
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  "Brazil",
-                  "100.64.8.15",
-                  53,
-                  2930
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.8.15",
-                  53,
-                  691
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.8.15",
-                  3389,
-                  8
-                ],
-                [
-                  "36231",
-                  "Tempest Hosting, LLC",
-                  "The Netherlands",
-                  "100.64.8.15",
-                  53,
-                  2
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.8.15",
-                  53,
-                  5
-                ],
-                [
-                  "14586",
-                  "Nuclearfallout Enterprises, Inc.",
-                  "United States",
-                  "100.64.8.15",
-                  3389,
-                  1
-                ],
-                [
-                  "14586",
-                  "Nuclearfallout Enterprises, Inc.",
-                  "United States",
-                  "100.64.8.15",
-                  25,
-                  1
-                ],
-                [
-                  "211826",
-                  "Istqrar for Servers Services Ltd",
-                  "Spain",
-                  "100.64.8.15",
-                  53,
-                  3
-                ],
-                [
-                  "906",
-                  "DMIT Cloud Services",
-                  "Hong Kong",
-                  "100.64.8.15",
-                  53,
-                  2
-                ],
-                [
-                  "273480",
-                  "NOW FIBRA PROVEDOR DE INTERNET LTDA",
-                  "Brazil",
-                  "100.64.8.240",
-                  53,
-                  1756
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.8.240",
-                  53,
-                  553
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.8.240",
-                  3389,
-                  70
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.8.240",
-                  53,
-                  1
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.8.240",
-                  25,
-                  3
-                ],
-                [
-                  "209737",
-                  "Meric Internet Teknolojileri A.S.",
-                  "Türkiye",
-                  "100.64.8.240",
-                  23,
-                  4
-                ],
-                [
-                  "215238",
-                  "Irfan Tugra Onem",
-                  "Ukraine",
-                  "100.64.8.240",
-                  3389,
-                  28
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.8.240",
-                  3389,
-                  21
-                ],
-                [
-                  "36231",
-                  "Tempest Hosting, LLC",
-                  "The Netherlands",
-                  "100.64.8.240",
-                  53,
-                  1
-                ],
-                [
-                  "197170",
-                  "TechTies Inc.",
-                  "The Netherlands",
-                  "100.64.8.240",
-                  6969,
-                  1
-                ],
-                [
-                  "701",
-                  "Verizon Business",
-                  "United States",
-                  "100.64.8.240",
-                  53,
-                  2
-                ],
-                [
-                  "8075",
-                  "Microsoft Corporation",
-                  "United States",
-                  "100.64.8.240",
-                  25,
-                  2
-                ],
-                [
-                  "11427",
-                  "Charter Communications Inc",
-                  "United States",
-                  "100.64.8.240",
-                  53,
-                  1
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.8.240",
-                  53,
-                  1
-                ],
-                [
-                  "269077",
-                  "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
-                  "Brazil",
-                  "100.64.5.239",
-                  53,
-                  1101
-                ],
-                [
-                  "270923",
-                  "FENIX BRASIL",
-                  "Brazil",
-                  "100.64.0.131",
-                  53,
-                  817
-                ],
-                [
-                  "47890",
-                  "Unmanaged Ltd",
-                  "Romania",
-                  "100.64.0.131",
-                  10213,
-                  2
-                ],
-                [
-                  "207994",
-                  "Blockchain Creek B.V.",
-                  "The Netherlands",
-                  "100.64.0.131",
-                  3389,
-                  2
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.1.235",
-                  53,
-                  763
-                ],
-                [
-                  "22548",
-                  "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
-                  "Brazil",
-                  "100.64.1.235",
-                  123,
-                  1
-                ],
-                [
-                  "15169",
-                  "Google LLC",
-                  "United States",
-                  "100.64.0.152",
-                  53,
-                  508
-                ],
-                [
-                  "7195",
-                  "EDGEUNO S.A.S",
-                  "Brazil",
-                  "100.64.0.152",
-                  123,
-                  1
-                ],
-                [
-                  "20473",
-                  "The Constant Company, LLC",
-                  "Brazil",
-                  "100.64.0.152",
-                  123,
-                  1
-                ]
-              ]
-            }
-          ]
-        },
-        {
-          "title": "",
-          "type": "table",
-          "frames": [
-            {
-              "fields": [
-                "source.ip",
-                "destination.port",
-                "Count",
-                "Sum"
-              ],
-              "rows": [
-                [
-                  "100.64.5.115",
-                  53,
-                  10762,
-                  22333855
-                ],
-                [
-                  "100.64.18.54",
-                  53,
-                  7942,
-                  14969788
-                ],
-                [
-                  "100.64.1.136",
-                  53,
-                  7411,
-                  11221166
-                ],
-                [
-                  "100.64.8.15",
-                  53,
-                  3633,
-                  7013946
-                ],
-                [
-                  "100.64.8.240",
-                  53,
-                  2322,
-                  3234236
-                ],
-                [
-                  "100.64.5.239",
-                  53,
-                  1101,
-                  1481241
-                ],
-                [
-                  "100.64.0.131",
-                  53,
-                  817,
-                  1358344
-                ],
-                [
-                  "100.64.1.235",
-                  53,
-                  763,
-                  65268
-                ],
-                [
-                  "100.64.0.152",
-                  53,
-                  508,
-                  43416
-                ],
-                [
-                  "100.64.3.202",
-                  53,
-                  264,
-                  24864
-                ],
-                [
-                  "100.64.13.133",
-                  53,
-                  247,
-                  22621
-                ],
-                [
-                  "100.64.23.56",
-                  53,
-                  243,
-                  30176
-                ],
-                [
-                  "100.64.2.131",
-                  53,
-                  174,
-                  15834
-                ],
-                [
-                  "100.64.4.44",
-                  53,
-                  132,
-                  13913
-                ],
-                [
-                  "100.64.0.226",
-                  53,
-                  77,
-                  9361
-                ],
-                [
-                  "100.64.17.118",
-                  53,
-                  96,
-                  9216
-                ],
-                [
-                  "100.64.8.255",
-                  50450,
-                  36,
-                  6003
-                ],
-                [
-                  "100.64.7.73",
-                  53,
-                  80,
-                  8090
-                ],
-                [
-                  "45.229.121.175",
-                  53,
-                  73,
-                  7142
-                ],
-                [
-                  "100.64.18.116",
-                  1900,
-                  54,
-                  23638
-                ],
-                [
-                  "100.64.10.24",
-                  53,
-                  50,
-                  4550
-                ],
-                [
-                  "100.64.1.255",
-                  8291,
-                  48,
-                  375788
-                ],
-                [
-                  "100.64.5.209",
-                  53,
-                  30,
-                  2891
-                ],
-                [
-                  "45.229.122.132",
-                  53,
-                  42,
-                  3654
-                ],
-                [
-                  "172.21.1.2",
-                  123,
-                  38,
-                  3876
-                ],
-                [
-                  "100.64.4.65",
-                  53,
-                  38,
-                  3607
-                ],
-                [
-                  "100.64.12.52",
-                  1900,
-                  29,
-                  12281
-                ],
-                [
-                  "45.229.121.252",
-                  53,
-                  33,
-                  3086
-                ],
-                [
-                  "45.229.121.41",
-                  53,
-                  35,
-                  3943
-                ],
-                [
-                  "100.64.8.165",
-                  53,
-                  35,
-                  3418
-                ],
-                [
-                  "100.64.14.57",
-                  53,
-                  36,
-                  3256
-                ],
-                [
-                  "45.229.121.249",
-                  53,
-                  34,
-                  2958
-                ],
-                [
-                  "100.64.6.177",
-                  53,
-                  32,
-                  2945
-                ],
-                [
-                  "45.229.121.192",
-                  53,
-                  30,
-                  2828
-                ],
-                [
-                  "100.64.0.236",
-                  53,
-                  31,
-                  2728
-                ],
-                [
-                  "100.64.14.120",
-                  53,
-                  31,
-                  2817
-                ],
-                [
-                  "100.64.12.74",
-                  53,
-                  30,
-                  3229
-                ],
-                [
-                  "100.64.18.32",
-                  53,
-                  29,
-                  2755
-                ],
-                [
-                  "100.64.19.99",
-                  7776,
-                  28,
-                  6030
-                ],
-                [
-                  "100.64.12.157",
-                  7776,
-                  22,
-                  4201
-                ],
-                [
-                  "100.64.18.88",
-                  53,
-                  28,
-                  2770
-                ],
-                [
-                  "45.229.121.1",
-                  53,
-                  21,
-                  1899
-                ],
-                [
-                  "100.64.4.40",
-                  53,
-                  27,
-                  2668
-                ],
-                [
-                  "100.64.9.168",
-                  53,
-                  27,
-                  2570
-                ],
-                [
-                  "100.64.18.210",
-                  53,
-                  27,
-                  2903
-                ],
-                [
-                  "45.229.122.255",
-                  53,
-                  22,
-                  2062
-                ],
-                [
-                  "100.64.9.164",
-                  53,
-                  18,
-                  1843
-                ],
-                [
-                  "100.64.10.97",
-                  1433,
-                  16,
-                  14125
-                ],
-                [
-                  "100.64.16.27",
-                  53,
-                  24,
-                  227032
-                ],
-                [
-                  "100.64.22.14",
-                  53,
-                  25,
-                  2256
-                ],
-                [
-                  "45.229.121.233",
-                  53,
-                  23,
-                  2057
-                ],
-                [
-                  "100.64.10.18",
-                  53,
-                  24,
-                  2169
-                ],
-                [
-                  "100.64.13.177",
-                  53,
-                  20,
-                  1764
-                ],
-                [
-                  "100.64.15.250",
-                  53,
-                  23,
-                  2112
-                ],
-                [
-                  "100.64.21.17",
-                  53,
-                  23,
-                  2032
-                ],
-                [
-                  "100.64.1.233",
-                  53,
-                  22,
-                  2192
-                ],
-                [
-                  "100.64.9.160",
-                  53,
-                  22,
-                  11842929
-                ],
-                [
-                  "100.64.16.30",
-                  53,
-                  22,
-                  2227
-                ],
-                [
-                  "100.64.17.55",
-                  53,
-                  22,
-                  2045
-                ],
-                [
-                  "100.64.22.185",
-                  53,
-                  21,
-                  2026
-                ]
-              ]
-            }
+          "title": "Operadoras envolvidas (destino)",
+          "viz": "rank",
+          "fields": [
+            "destination.as.as.organization.name.keyword",
+            "Count"
+          ],
+          "rows": [
+            [
+              "NOW FIBRA PROVEDOR DE INTERNET LTDA",
+              27380
+            ],
+            [
+              "Google LLC",
+              10543
+            ],
+            [
+              "FENIX BRASIL",
+              7424
+            ],
+            [
+              "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
+              873
+            ],
+            [
+              "Cloudflare, Inc.",
+              560
+            ],
+            [
+              "Cisco OpenDNS, LLC",
+              187
+            ],
+            [
+              "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
+              139
+            ],
+            [
+              "Scloud Pte Ltd",
+              113
+            ],
+            [
+              "T-Mobile USA, Inc.",
+              97
+            ],
+            [
+              "Zenlayer Inc",
+              86
+            ],
+            [
+              "Meric Internet Teknolojileri A.S.",
+              81
+            ],
+            [
+              "Irfan Tugra Onem",
+              77
+            ],
+            [
+              "UAB Host Baltic",
+              63
+            ],
+            [
+              "Blockchain Creek B.V.",
+              59
+            ],
+            [
+              "Amazon.com, Inc.",
+              57
+            ]
           ]
         }
       ]
