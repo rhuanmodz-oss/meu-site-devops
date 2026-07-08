@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:16:57-03:00",
-  "sync": "21:16:56",
+  "collected_at": "2026-07-07T21:17:27-03:00",
+  "sync": "21:17:25",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -12,6 +12,19 @@
     "outbound": 0
   },
   "incidents": [
+    {
+      "ts": "2026-07-07 21:17:05",
+      "hits": 99,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "152.255.32.35",
+      "origin_net": "TELEFÔNICA BRASIL S.A",
+      "country": "Brazil",
+      "dest_count": 87,
+      "dest_type": "Dispositivos Internos",
+      "risk": 95
+    },
     {
       "ts": "2026-07-07 21:16:44",
       "hits": 143,
