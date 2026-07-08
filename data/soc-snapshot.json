@@ -1,17 +1,56 @@
 {
-  "collected_at": "2026-07-07T21:24:27-03:00",
-  "sync": "21:24:25",
+  "collected_at": "2026-07-07T21:24:57-03:00",
+  "sync": "21:24:56",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
     "critical": 0,
     "high": 0,
-    "info": 1726,
+    "info": 1727,
     "permanentes": 0,
     "inbound": 0,
     "outbound": 0
   },
   "incidents": [
+    {
+      "ts": "2026-07-07 21:24:53",
+      "hits": 802,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.8.240",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 598,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:24:53",
+      "hits": 461,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.17.217",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 195,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:24:52",
+      "hits": 23,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.17.16",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 16,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
     {
       "ts": "2026-07-07 21:24:19",
       "hits": 121,
@@ -65,19 +104,6 @@
       "risk": 80
     },
     {
-      "ts": "2026-07-07 21:23:36",
-      "hits": 460,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.17.217",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 195,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-07 21:22:44",
       "hits": 0,
       "level": "INFO",
@@ -87,19 +113,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 3661,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:22:38",
-      "hits": 801,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.240",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 597,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -193,19 +206,6 @@
       "dest_count": 19,
       "dest_type": "Destinos Externos",
       "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:09:08",
-      "hits": 2,
-      "level": "CRITICAL",
-      "direction": "",
-      "category": "",
-      "origin_ip": "164.163.36.23",
-      "origin_net": "LEANDRO FONSECA SANT ANA - ME",
-      "country": "Brazil",
-      "dest_count": 2,
-      "dest_type": "Dispositivos Internos",
-      "risk": 100
     }
   ]
 }
