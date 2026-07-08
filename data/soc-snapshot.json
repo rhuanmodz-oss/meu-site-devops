@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:20:57-03:00",
-  "sync": "21:20:55",
+  "collected_at": "2026-07-07T21:21:27-03:00",
+  "sync": "21:21:26",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,15 +13,28 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-07 21:20:48",
-      "hits": 798,
+      "ts": "2026-07-07 21:21:18",
+      "hits": 799,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.8.240",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 594,
+      "dest_count": 595,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:21:12",
+      "hits": 20,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.22.119",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 17,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -37,19 +50,6 @@
       "dest_count": 0,
       "dest_type": "",
       "risk": 100
-    },
-    {
-      "ts": "2026-07-07 21:20:38",
-      "hits": 18,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.22.119",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 17,
-      "dest_type": "Destinos Externos",
-      "risk": 95
     },
     {
       "ts": "2026-07-07 21:20:25",
