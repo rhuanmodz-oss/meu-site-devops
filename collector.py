@@ -184,20 +184,89 @@ def collect_reputacao(page) -> dict:
     return {}
 
 
-def collect_grafana_inventory(page, key: str, meta: dict) -> dict:
+def collect_grafana(page, key: str, meta: dict, wait_ms: int) -> dict:
+    """Grafana renderiza devagar: espera wait_ms e le TODOS os frames
+    (inclusive iframes aninhados) capturando o texto que aparecer -
+    tabelas como Veredito/Perfil saem; graficos SVG dao so rotulos."""
     _click_nav(page, meta["nav"])
-    page.wait_for_timeout(3000)
-    body = ""
+    page.wait_for_timeout(wait_ms)
+    conteudo = []
+    for fr in page.frames:
+        try:
+            t = fr.locator("body").inner_text(timeout=2000).strip()
+        except Exception:
+            continue
+        t = re.sub(r"[ \t]+", " ", t).strip()
+        if len(t) < 15 or t.lower().startswith("powered by"):
+            continue
+        conteudo.append(t[:1500])
     try:
         body = page.locator("body").inner_text(timeout=3000).upper()
     except Exception:
-        pass
+        body = ""
     present = [p for p in meta["panels"] if p.upper() in body]
-    return {"tipo": "grafana", "paineis": meta["panels"], "paineis_carregados": present}
+    return {"tipo": "grafana", "paineis": meta["panels"],
+            "paineis_carregados": present, "conteudo": conteudo[:14]}
+
+
+# JS executado NA PAGINA (usa a sessao logada): lista dashboards, busca o modelo
+# de cada um e reproduz as queries Elasticsearch via /api/ds/query, devolvendo
+# os valores reais de cada painel (campos + linhas).
+_GRAFANA_API_JS = r"""
+async () => {
+  const HOURS = 6;
+  const now = Date.now();
+  const from = String(now - HOURS*3600*1000), to = String(now);
+  const jget = async (u) => (await fetch(u, {credentials:'include'})).json();
+  let list;
+  try { list = await jget('/grafana/api/search?type=dash-db'); } catch(e){ return {erro:'search:'+e}; }
+  const out = [];
+  for (const d of (list||[])) {
+    let dash;
+    try { dash = await jget('/grafana/api/dashboards/uid/'+d.uid); } catch(e){ continue; }
+    const panels = (dash.dashboard && dash.dashboard.panels) || [];
+    const pout = [];
+    for (const p of panels) {
+      if (!p.targets || !p.targets.length) continue;
+      const dsUid = (p.datasource&&p.datasource.uid) || (p.targets[0].datasource&&p.targets[0].datasource.uid);
+      const dsType = (p.datasource&&p.datasource.type) || 'elasticsearch';
+      const queries = p.targets.map((t,i)=>Object.assign({}, t, {
+        datasource:{type:dsType, uid:dsUid}, intervalMs:300000, maxDataPoints:100, refId:(t.refId||('Q'+i))
+      }));
+      let qj;
+      try {
+        const q = await fetch('/grafana/api/ds/query', {method:'POST', credentials:'include',
+          headers:{'content-type':'application/json'}, body:JSON.stringify({queries, from, to})});
+        qj = await q.json();
+      } catch(e){ continue; }
+      const res = qj.results || {};
+      const frames = [];
+      for (const k of Object.keys(res)) {
+        for (const fr of ((res[k]&&res[k].frames)||[])) {
+          const names = ((fr.schema&&fr.schema.fields)||[]).map(f=>f.name);
+          const vals = (fr.data&&fr.data.values) || [];
+          const n = vals[0] ? vals[0].length : 0;
+          const rows = [];
+          for (let i=0;i<Math.min(n,60);i++) rows.push(names.map((nm,c)=>vals[c]?vals[c][i]:null));
+          if (names.length) frames.push({fields:names, rows});
+        }
+      }
+      pout.push({title:(p.title||''), type:p.type, frames});
+    }
+    out.push({title:(dash.dashboard&&dash.dashboard.title)||d.title, uid:d.uid, folder:d.folderTitle||'', panels:pout});
+  }
+  return out;
+}
+"""
+
+
+def collect_grafana_api(page) -> object:
+    """Coleta os dados reais dos paineis do Grafana via API (sessao logada)."""
+    return page.evaluate(_GRAFANA_API_JS)
 
 
 # ---------------------- montagem do snapshot ------------------------------- #
-def build_snapshot(page) -> dict:
+def build_snapshot(page, grafana_wait: int = 12000) -> dict:
     # 1) FLOWSPEC SOC (feed)
     _click_nav(page, "FlowSpec SOC")
     page.wait_for_selector(f"text={READY_MARKER}", timeout=30000)
@@ -219,12 +288,11 @@ def build_snapshot(page) -> dict:
     except Exception as e:
         snap["modules"]["reputacao_asn"] = {"erro": str(e)}
 
-    # 3) modulos Grafana (inventario)
-    for key, meta in GRAFANA_MODULES.items():
-        try:
-            snap["modules"][key] = collect_grafana_inventory(page, key, meta)
-        except Exception as e:
-            snap["modules"][key] = {"tipo": "grafana", "erro": str(e)}
+    # 3) Grafana via API — dado limpo do Elasticsearch (todos os dashboards)
+    try:
+        snap["grafana"] = collect_grafana_api(page)
+    except Exception as e:
+        snap["grafana"] = {"erro": str(e)}
 
     # volta ao feed pra proxima rodada
     _click_nav(page, "FlowSpec SOC")
@@ -261,21 +329,27 @@ def ensure_logged_in(page):
     page.wait_for_selector(f"text={READY_MARKER}", timeout=0)
 
 
-def collect_once(page, do_git: bool):
-    snap = build_snapshot(page)
+def collect_once(page, do_git: bool, grafana_wait: int = 12000):
+    snap = build_snapshot(page, grafana_wait)
     DATA_FILE.parent.mkdir(parents=True, exist_ok=True)
     DATA_FILE.write_text(json.dumps(snap, ensure_ascii=False, indent=2), encoding="utf-8")
     rep = snap["modules"].get("reputacao_asn", {})
+    graf = snap.get("grafana")
+    n_g = len(graf) if isinstance(graf, list) else 0
+    n_pan = sum(len(d.get("panels", [])) for d in graf) if isinstance(graf, list) else 0
     print(f"[{snap['collected_at']}] sync={snap['sync']} "
           f"incidentes={len(snap['incidents'])} "
-          f"asn_saude={rep.get('saude_pct')}% intel={len(rep.get('intel_feed', []))}")
+          f"asn_saude={rep.get('saude_pct')}% intel={len(rep.get('intel_feed', []))} "
+          f"grafana={n_g}dash/{n_pan}paineis")
     if do_git:
         commit_and_push()
 
 
 def main() -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--interval", type=int, default=30)
+    ap.add_argument("--interval", type=int, default=30, help="segundos entre coletas")
+    ap.add_argument("--grafana-wait", type=int, default=12000,
+                    help="ms de espera para o Grafana renderizar (default 12000)")
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--no-git", action="store_true")
     args = ap.parse_args()
@@ -289,14 +363,14 @@ def main() -> int:
         ensure_logged_in(page)
 
         if args.once:
-            collect_once(page, do_git); ctx.close(); return 0
+            collect_once(page, do_git, args.grafana_wait); ctx.close(); return 0
 
         print(f">>> Coletando a cada {args.interval}s (todos os modulos). Ctrl+C para parar.\n")
         try:
             while True:
                 t0 = time.time()
                 try:
-                    collect_once(page, do_git)
+                    collect_once(page, do_git, args.grafana_wait)
                 except Exception as e:
                     print("   erro na coleta:", e)
                 dt = args.interval - (time.time() - t0)

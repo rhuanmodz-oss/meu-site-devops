@@ -1,18 +1,27 @@
 # FlowSpec SOC — Coletor automático
 
-Coleta o feed de incidentes do painel **ASN Monitor** a cada 30 segundos, salva em
-`data/soc-snapshot.json` (sobrescrevendo) e faz **commit + push** no Git. O
-`index.html` lê esse arquivo e se atualiza sozinho.
-
-## Como funciona
+Coleta os módulos do painel **ASN Monitor**, grava em `data/soc-snapshot.json`
+e faz **commit + push** no GitHub a cada ciclo. O Cloudflare Pages reconstrói o
+site (`meu-site-devops-5i2.pages.dev`) e o `index.html` mostra os dados ao vivo.
 
 ```
-collector.py  →  data/soc-snapshot.json  →  git push  →  index.html (dashboard)
-   (loop 30s)        (sobrescreve)                          (re-lê a cada 30s)
+collector.py → data/soc-snapshot.json → git push → GitHub → Cloudflare Pages → site
 ```
 
-Autenticação é por **login no navegador**: na 1ª execução abre uma janela pra você
-logar; a sessão fica salva em `.soc-profile/` (ignorada no Git) e é reutilizada.
+## O que é coletado
+
+| Módulo               | Tipo             | Coleta |
+|----------------------|------------------|--------|
+| FlowSpec SOC (feed)  | HTML nativo      | completa |
+| Reputação ASN        | HTML nativo      | completa (cards + Intel Feed) |
+| Visão Global         | Grafana (iframe) | conteúdo de texto dos painéis |
+| Ataques Inbound      | Grafana (iframe) | conteúdo de texto dos painéis |
+| Infectados Outbound  | Grafana (iframe) | conteúdo de texto dos painéis |
+| Análise Profunda     | Grafana (iframe) | tabelas Veredito/Perfil + texto |
+
+Os painéis do Grafana renderizam **devagar** — por isso o coletor espera
+`--grafana-wait` (padrão 12s) por módulo antes de ler. Gráficos SVG dão só
+rótulos/legenda; tabelas saem completas.
 
 ## Instalação (uma vez)
 
@@ -21,39 +30,43 @@ pip install playwright
 playwright install chromium
 ```
 
-## Rodar
+## Uso manual
 
 ```powershell
-python collector.py                # loop de 30 em 30 segundos + git push
-python collector.py --interval 60  # a cada 60s
-python collector.py --once         # coleta 1 vez e sai
-python collector.py --no-git       # só gera o JSON, sem commit/push
+python collector.py                          # loop 30s, grafana-wait 12s, push
+python collector.py --grafana-wait 20000     # espera 20s no Grafana (mais lento/completo)
+python collector.py --once                   # 1 coleta e sai
+python collector.py --no-git                 # só gera o JSON
 ```
 
-Na 1ª vez, **faça login** na janela que abrir. Quando o feed aparecer, a coleta
-começa e não para até você apertar `Ctrl+C`.
+Na **1ª execução** abre uma janela do navegador: **faça login** (é a única
+interação manual — eu não guardo/uso sua senha). A sessão fica salva em
+`.soc-profile/` e é reutilizada; depois disso roda sozinho, sem login.
 
-## Ver o dashboard
+## Rodar 100% sozinho (auto-start no boot)
 
-Como o `index.html` faz `fetch` do JSON, abra via um servidor (não `file://`):
+1. Dê um duplo-clique em **`run-collector.bat`** para testar (ele reinicia
+   sozinho se cair).
+2. Para ligar junto com o Windows, registre no **Agendador de Tarefas**:
+   - Abra "Agendador de Tarefas" → **Criar Tarefa Básica**.
+   - Nome: `FlowSpec SOC Collector`.
+   - Disparador: **Ao fazer logon**.
+   - Ação: **Iniciar um programa** → Programa/script: aponte para
+     `run-collector.bat` (nesta pasta).
+   - Concluir. Pronto: a cada logon ele sobe sozinho e publica no GitHub.
 
-```powershell
-python -m http.server 8000
-# depois abra http://localhost:8000/index.html
+   Alternativa via PowerShell (uma linha):
+   ```powershell
+   schtasks /Create /TN "FlowSpec SOC Collector" /TR "\"%CD%\run-collector.bat\"" /SC ONLOGON /RL LIMITED /F
+   ```
+
+## Avisos
+
+- Depende da **sessão logada** no navegador — mantenha o processo/PC ligado
+  para coleta contínua.
+- `.soc-profile/` guarda os cookies de login → já está no `.gitignore`, nunca
+  versione.
+- Se o `git push` pedir senha toda vez, configure um credential helper ou chave
+  SSH no Git (o Windows normalmente já guarda após o 1º push).
+- O traceback ao dar `Ctrl+C` é inofensivo (é o navegador fechando).
 ```
-
-Ou publique o repositório (ex.: GitHub Pages) — aí o push do coletor já atualiza
-o painel online. Aberto direto como arquivo, ele cai no snapshot embutido de
-fallback (não atualiza sozinho).
-
-## Avisos honestos
-
-- **Não é 24/7 automático de verdade.** Como depende da sessão logada, a coleta só
-  roda enquanto `collector.py` estiver aberto. Pra rodar sem babá, deixe o processo
-  ligado numa máquina que fica online (ou registre no Agendador de Tarefas do Windows).
-- **30s é o intervalo do loop**, feito no próprio script. O agendador nativo do
-  Cowork tem granularidade mínima de 1 minuto — por isso o loop fica no `collector.py`.
-- **`.soc-profile/` contém os cookies de login** — já está no `.gitignore`. Nunca
-  versione essa pasta.
-- Se o `git push` pedir credencial toda vez, configure um credential helper ou uma
-  chave SSH no seu Git.

@@ -54,7 +54,10 @@
                     <span id="subtitle">carregando dados…</span>
                 </div>
             </div>
-            <div class="status"><span class="dot"></span> <span id="syncLabel">SOC ACTIVE</span></div>
+            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+                <div class="status" id="freshBadge"><span class="dot" id="freshDot"></span> <span id="freshLabel">—</span></div>
+                <div class="status"><span id="syncLabel">SOC ACTIVE</span></div>
+            </div>
         </header>
 
         <section class="kpis" id="kpis"></section>
@@ -74,6 +77,14 @@
             <div class="card"><h2>Origem por rede / ASN</h2><p class="sub">Hits agregados por fonte</p><div class="chart-box"><canvas id="asn"></canvas></div></div>
             <div class="card wide"><h2>Direção do tráfego malicioso</h2><p class="sub">Inbound (ataques recebidos) vs Outbound (infectados internos)</p><div class="chart-box tall"><canvas id="direction"></canvas></div></div>
         </div>
+
+        <section id="grafBlock" style="display:none; margin-top:16px;">
+            <div class="card wide">
+                <h2>Grafana — dados via API <span style="color:var(--accent);font-weight:600" id="grafCount"></span></h2>
+                <p class="sub">Valores reais das queries Elasticsearch de cada dashboard do SOC</p>
+                <div id="grafContent"></div>
+            </div>
+        </section>
 
         <footer id="footer">Aguardando dados…</footer>
     </div>
@@ -110,9 +121,16 @@
         return {sev,dir,topSrc,nets};
     }
 
-    function renderKpis(k){
-        const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',k.critical,'crit'],['High',k.high,'high'],
-                     ['Info',k.info,''],['Inbound',k.inbound,''],['Outbound',k.outbound,'']];
+    function renderKpis(k, incs){
+        // fallback: se o KPI raspado vier 0/nulo, calcula a partir do feed
+        incs = incs || [];
+        const cnt = (f) => incs.filter(f).length;
+        const crit = k.critical || cnt(i=>i.level==='CRITICAL');
+        const high = k.high || cnt(i=>i.level==='HIGH');
+        const inb  = k.inbound || cnt(i=>i.direction==='IN');
+        const outb = k.outbound || cnt(i=>i.direction==='OUT');
+        const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',crit,'crit'],['High',high,'high'],
+                     ['Info',k.info,''],['Inbound',inb,''],['Outbound',outb,'']];
         document.getElementById('kpis').innerHTML=items.map(([l,v,c])=>
             `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');
     }
@@ -138,15 +156,47 @@
             `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');
     }
 
+    function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+    function renderGrafana(g){
+        const block=document.getElementById('grafBlock'), cont=document.getElementById('grafContent'), cnt=document.getElementById('grafCount');
+        if(!Array.isArray(g)||!g.length){ block.style.display='none'; return; }
+        let panels=0, html='';
+        g.forEach(dash=>{
+            const withData=(dash.panels||[]).filter(p=>(p.frames||[]).some(f=>f.rows&&f.rows.length));
+            if(!withData.length) return;
+            html+=`<h3 style="margin:18px 0 8px;font-size:.92rem;color:var(--text)">${esc(dash.title)}</h3>`;
+            html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">';
+            withData.slice(0,10).forEach(p=>{
+                const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);
+                panels++;
+                let t='<div style="border:1px solid var(--card-border);border-radius:10px;padding:12px;background:#0f1114">';
+                t+=`<div style="font-size:.78rem;color:var(--muted);margin-bottom:8px">${esc(p.title||p.type)}</div>`;
+                t+='<table style="width:100%;border-collapse:collapse;font-size:.78rem"><tr>'+
+                    fr.fields.map(f=>`<th style="text-align:left;color:var(--muted);font-weight:600;padding:2px 6px">${esc(f)}</th>`).join('')+'</tr>';
+                fr.rows.slice(0,8).forEach(r=>{ t+='<tr>'+r.map(c=>`<td style="padding:2px 6px;border-top:1px solid var(--card-border)">${esc(typeof c==='number'?nf.format(c):c)}</td>`).join('')+'</tr>'; });
+                t+='</table></div>';
+                html+=t;
+            });
+            html+='</div>';
+        });
+        if(!panels){ block.style.display='none'; return; }
+        block.style.display='block';
+        cnt.textContent='· '+panels+' painéis com dados';
+        cont.innerHTML=html;
+    }
+
     function render(snap){
         renderRep(snap.modules && snap.modules.reputacao_asn);
+        renderGrafana(snap.grafana);
         const incs=(snap.incidents||[]).slice().reverse(); // cronologico
         const a=agg(snap.incidents||[]);
-        renderKpis(snap.kpis||{});
+        renderKpis(snap.kpis||{}, snap.incidents||[]);
         document.getElementById('subtitle').textContent='Análise de incidentes · '+(snap.incidents?snap.incidents.length:0)+' registros';
         document.getElementById('syncLabel').textContent='Sync '+(snap.sync||'—');
         const dt=snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—';
         document.getElementById('footer').textContent='Dados do ASN Monitor (FlowSpec SOC) · coletado em '+dt;
+        window.__lastCollected = snap.collected_at ? new Date(snap.collected_at).getTime() : null;
+        tickFreshness();
 
         // timeline
         const tctx=document.getElementById('timeline').getContext('2d');
@@ -178,6 +228,19 @@
             options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
             scales:{x:{...gridOpt,grid:{display:false}},y:{...gridOpt,beginAtZero:true}}}});
     }
+
+    function tickFreshness(){
+        const lbl=document.getElementById('freshLabel'), dot=document.getElementById('freshDot'), badge=document.getElementById('freshBadge');
+        if(!window.__lastCollected){ lbl.textContent='sem dados'; return; }
+        const s=Math.max(0,Math.round((Date.now()-window.__lastCollected)/1000));
+        const txt = s<60 ? ('atualizado há '+s+'s') : ('atualizado há '+Math.floor(s/60)+'m '+(s%60)+'s');
+        lbl.textContent=txt;
+        // verde <90s, amarelo <180s, vermelho acima (coletor travado)
+        const col = s<90 ? '#34d399' : (s<180 ? '#fbbf24' : '#ff4d5e');
+        dot.style.background=col; dot.style.boxShadow='0 0 8px '+col;
+        lbl.style.color=col; badge.style.borderColor=col;
+    }
+    setInterval(tickFreshness, 1000);
 
     async function load(){
         try{
