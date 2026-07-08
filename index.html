@@ -1,293 +1,388 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlowSpec SOC — Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <style>
-        :root {
-            --bg: #0a0b0e; --card: #14161b; --card-border: #232630;
-            --text: #f2f4f8; --muted: #8a92a0; --accent: #00fff2;
-            --crit: #ff4d5e; --high: #ffb020; --grid: rgba(255,255,255,0.06);
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: radial-gradient(1100px 500px at 85% -10%, #16323133, transparent),
-                        radial-gradient(900px 500px at -10% 0%, #3a121a33, transparent), var(--bg);
-            color: var(--text); margin: 0; padding: 28px 24px 56px; min-height: 100vh;
-        }
-        .wrap { max-width: 1200px; margin: 0 auto; }
-        header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-        .brand { display: flex; align-items: center; gap: 12px; }
-        .brand .logo { width: 42px; height: 42px; border-radius: 11px; background: linear-gradient(135deg, var(--accent), var(--crit)); display: grid; place-items: center; font-weight: 800; color: #06131a; font-size: 20px; }
-        .brand h1 { font-size: 1.35rem; margin: 0; font-weight: 700; letter-spacing: -0.02em; }
-        .brand span { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 500; }
-        .status { font-size: 0.8rem; color: var(--muted); background: var(--card); border: 1px solid var(--card-border); padding: 8px 14px; border-radius: 999px; display: flex; align-items: center; gap: 8px; }
-        .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: pulse 2s infinite; }
-        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
-        .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-bottom: 16px; }
-        .kpi { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; }
-        .kpi .label { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
-        .kpi .value { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
-        .kpi.crit .value { color: var(--crit); }
-        .kpi.high .value { color: var(--high); }
-        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
-        .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; }
-        .card.wide { grid-column: 1 / -1; }
-        .card h2 { font-size: 1rem; margin: 0 0 2px 0; font-weight: 650; }
-        .card .sub { font-size: 0.8rem; color: var(--muted); margin: 0 0 16px 0; }
-        .chart-box { position: relative; height: 280px; }
-        .chart-box.tall { height: 330px; }
-        /* módulos Grafana */
-        .mod-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin: 26px 0 12px;
-            padding-left: 12px; border-left: 3px solid var(--accent); }
-        .mod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
-        .mod-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; }
-        .mod-cap { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-        .mod-chart { position: relative; height: 210px; }
-        .mod-num { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; }
-        footer { text-align: center; color: var(--muted); font-size: 0.78rem; margin-top: 32px; }
-        @media (max-width: 900px) { .kpis { grid-template-columns: repeat(3, 1fr); } .grid { grid-template-columns: 1fr; } }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlowSpec SOC — Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#0a0b0e; --card:#14161b; --card2:#0f1114; --card-border:#232630;
+  --text:#f2f4f8; --muted:#8a92a0; --accent:#00fff2; --crit:#ff4d5e; --high:#ffb020;
+  --grid:rgba(255,255,255,0.06);
+}
+*{box-sizing:border-box;}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  background:radial-gradient(1100px 500px at 85% -10%,#16323133,transparent),
+             radial-gradient(900px 500px at -10% 0%,#3a121a33,transparent),var(--bg);
+  color:var(--text); margin:0; padding:24px 24px 56px; min-height:100vh;
+}
+.wrap{max-width:1240px;margin:0 auto;}
+/* header */
+header{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:18px;}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand .logo{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,var(--accent),var(--crit));display:grid;place-items:center;font-weight:800;color:#06131a;font-size:20px;}
+.brand h1{font-size:1.3rem;margin:0;font-weight:700;letter-spacing:-.02em;}
+.brand span{display:block;font-size:.8rem;color:var(--muted);font-weight:500;}
+.hstatus{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
+.pill{font-size:.8rem;color:var(--muted);background:var(--card);border:1px solid var(--card-border);padding:8px 14px;border-radius:999px;display:flex;align-items:center;gap:8px;}
+.dot{width:8px;height:8px;border-radius:50%;background:#34d399;box-shadow:0 0 8px #34d399;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+/* nav por módulo */
+.modnav{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;border-bottom:1px solid var(--card-border);padding-bottom:12px;}
+.modnav button{font:inherit;font-size:.86rem;font-weight:600;color:var(--muted);background:var(--card);border:1px solid var(--card-border);padding:9px 16px;border-radius:10px;cursor:pointer;transition:all .15s;}
+.modnav button:hover{color:var(--text);border-color:var(--muted);}
+.modnav button.active{color:#06131a;background:var(--accent);border-color:var(--accent);}
+.modnav button.crit.active{background:var(--crit);border-color:var(--crit);color:#fff;}
+/* módulos */
+.mod{display:none;}
+.mod.active{display:block;animation:fade .25s ease;}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+/* KPIs */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:14px;margin-bottom:16px;}
+.kpi{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;}
+.kpi .label{font-size:.72rem;color:var(--muted);margin-bottom:8px;text-transform:uppercase;letter-spacing:.04em;}
+.kpi .value{font-size:1.55rem;font-weight:700;letter-spacing:-.02em;}
+.kpi.crit .value{color:var(--crit);}
+.kpi.high .value{color:var(--high);}
+/* cards e grids */
+.card{background:var(--card);border:1px solid var(--card-border);border-radius:16px;padding:20px;margin-bottom:16px;}
+.card h2{font-size:1rem;margin:0 0 2px;font-weight:650;}
+.card .sub{font-size:.8rem;color:var(--muted);margin:0 0 16px;}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.grid .card{margin-bottom:0;}
+.chart-box{position:relative;height:280px;}
+/* módulo grafana grid */
+.mod-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;align-items:start;}
+.mod-card{background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;}
+.mod-cap{font-size:.84rem;font-weight:650;color:var(--text);margin-bottom:12px;display:flex;justify-content:space-between;gap:8px;}
+.mod-cap small{color:var(--muted);font-weight:500;}
+.mod-chart{position:relative;height:230px;}
+.mod-num{font-size:2.2rem;font-weight:800;letter-spacing:-.02em;color:var(--accent);}
+.mod-empty{color:var(--muted);font-size:.85rem;padding:30px 0;text-align:center;}
+/* tabela detalhada */
+.dtable{width:100%;border-collapse:collapse;font-size:.76rem;}
+.dtable th{text-align:left;color:var(--muted);font-weight:600;padding:5px 8px;border-bottom:1px solid var(--card-border);position:sticky;top:0;background:var(--card);}
+.dtable td{padding:5px 8px;border-bottom:1px solid var(--card-border);white-space:nowrap;}
+.dtable td:last-child{text-align:right;font-weight:600;color:var(--accent);}
+.dscroll{max-height:300px;overflow:auto;}
+/* mitigação ao vivo */
+.mitig-head{display:flex;align-items:center;gap:10px;margin:0 0 4px;}
+.live-tag{font-size:.7rem;font-weight:800;letter-spacing:.06em;color:#fff;background:var(--crit);padding:3px 8px;border-radius:6px;display:flex;align-items:center;gap:6px;}
+.live-tag .dot{background:#fff;box-shadow:0 0 8px #fff;}
+.mitig-list{max-height:300px;overflow:auto;margin-top:14px;display:flex;flex-direction:column;gap:6px;}
+.mrow{display:grid;grid-template-columns:88px 108px 1fr auto;align-items:center;gap:10px;padding:8px 12px;background:var(--card2);border:1px solid var(--card-border);border-radius:9px;font-size:.8rem;}
+.mrow.crit{border-left:3px solid var(--crit);}
+.mrow.high{border-left:3px solid var(--high);}
+.mtime{font-variant-numeric:tabular-nums;color:var(--text);font-weight:600;}
+.mtag{font-size:.68rem;font-weight:800;letter-spacing:.04em;color:#34d399;background:#34d39918;border:1px solid #34d39955;border-radius:6px;padding:3px 6px;text-align:center;}
+.mip{color:var(--text);font-weight:600;overflow:hidden;text-overflow:ellipsis;}
+.mmut{color:var(--muted);font-weight:400;}
+.mrisk{font-weight:700;color:var(--crit);font-variant-numeric:tabular-nums;}
+/* reputação */
+#repBlock .kpis{grid-template-columns:repeat(4,1fr);margin:12px 0 0;}
+.mod-title{font-size:1.05rem;font-weight:700;margin:0 0 14px;padding-left:12px;border-left:3px solid var(--accent);}
+footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:32px;}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(3,1fr);}.grid{grid-template-columns:1fr;}#repBlock .kpis{grid-template-columns:repeat(2,1fr);}}
+</style>
 </head>
 <body>
-    <div class="wrap">
-        <header>
-            <div class="brand">
-                <div class="logo">F</div>
-                <div>
-                    <h1>FlowSpec SOC</h1>
-                    <span id="subtitle">carregando dados…</span>
-                </div>
-            </div>
-            <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-                <div class="status" id="freshBadge"><span class="dot" id="freshDot"></span> <span id="freshLabel">—</span></div>
-                <div class="status"><span id="syncLabel">SOC ACTIVE</span></div>
-            </div>
-        </header>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="logo">F</div>
+      <div><h1>FlowSpec SOC</h1><span id="subtitle">carregando…</span></div>
+    </div>
+    <div class="hstatus">
+      <div class="pill" id="freshBadge"><span class="dot" id="freshDot"></span> <span id="freshLabel">—</span></div>
+      <div class="pill"><span id="syncLabel">SOC ACTIVE</span></div>
+    </div>
+  </header>
 
-        <section class="kpis" id="kpis"></section>
+  <nav class="modnav" id="modnav">
+    <button data-mod="mitig" class="crit active">🛡️ Mitigação</button>
+    <button data-mod="overview">Overview</button>
+    <button data-mod="inbound">Ataques Inbound</button>
+    <button data-mod="outbound">Infectados Outbound</button>
+    <button data-mod="deep">Análise Profunda</button>
+  </nav>
 
-        <section id="repBlock" style="display:none; margin-top:16px;">
-            <div class="card">
-                <h2>Reputação do ASN <span id="repAsn" style="color:var(--accent);font-weight:600"></span></h2>
-                <p class="sub" id="repPrefix"></p>
-                <div class="kpis" id="repKpis" style="margin:12px 0 0 0;"></div>
-            </div>
-        </section>
+  <!-- MÓDULO 1: MITIGAÇÃO -->
+  <section class="mod active" id="mod-mitig">
+    <div class="kpis" id="kpis"></div>
 
-        <div class="grid">
-            <div class="card"><h2>Hits ao longo do tempo</h2><p class="sub">Feed de incidentes (mais antigo → mais recente)</p><div class="chart-box"><canvas id="timeline"></canvas></div></div>
-            <div class="card"><h2>Top origens por hits</h2><p class="sub">IPs de origem com maior volume</p><div class="chart-box"><canvas id="sources"></canvas></div></div>
-            <div class="card"><h2>Incidentes por severidade</h2><p class="sub">Distribuição do feed atual</p><div class="chart-box"><canvas id="severity"></canvas></div></div>
-            <div class="card"><h2>Origem por rede / ASN</h2><p class="sub">Hits agregados por fonte</p><div class="chart-box"><canvas id="asn"></canvas></div></div>
-            <div class="card wide"><h2>Direção do tráfego malicioso</h2><p class="sub">Inbound (ataques recebidos) vs Outbound (infectados internos)</p><div class="chart-box tall"><canvas id="direction"></canvas></div></div>
-        </div>
+    <section id="repBlock" style="display:none;">
+      <div class="card">
+        <h2>Reputação do ASN <span id="repAsn" style="color:var(--accent);font-weight:600"></span></h2>
+        <p class="sub" id="repPrefix"></p>
+        <div class="kpis" id="repKpis"></div>
+      </div>
+    </section>
 
-        <section id="grafBlock" style="display:none; margin-top:16px;">
-            <div class="card wide">
-                <h2>Grafana — dados via API <span style="color:var(--accent);font-weight:600" id="grafCount"></span></h2>
-                <p class="sub">Valores reais das queries Elasticsearch de cada dashboard do SOC</p>
-                <div id="grafContent"></div>
-            </div>
-        </section>
-
-        <footer id="footer">Aguardando dados…</footer>
+    <div class="card">
+      <div class="mitig-head">
+        <h2 style="margin:0">Mitigação em tempo real</h2>
+        <span class="live-tag"><span class="dot"></span> AO VIVO</span>
+      </div>
+      <p class="sub">Cada incidente é uma ameaça mitigada automaticamente — hora exata e volume de hits</p>
+      <div class="chart-box" style="height:220px"><canvas id="mitigBar"></canvas></div>
+      <div class="mitig-list" id="mitigList"></div>
     </div>
 
-    <script>
-    // ---- snapshot embutido: fallback caso o fetch do JSON falhe (ex.: file://) ----
-    const FALLBACK = {"collected_at":"2026-07-07T20:52:09-03:00","sync":"20:52:09","kpis":{"iocs_mundiais":127879,"critical":11,"high":2,"info":1709,"permanentes":0,"inbound":3,"outbound":10},"incidents":[{"ts":"2026-07-07 20:51:22","hits":119,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.4.103","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:49:26","hits":546,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.2.239","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:48:25","hits":12,"level":"HIGH","direction":"OUT","origin_ip":"100.64.3.145","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:47:43","hits":133,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.10.50","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:47:35","hits":170,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.16.55","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:46:39","hits":45,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.12.48","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:46:05","hits":20,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.17.16","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:44:13","hits":13,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.22.119","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:43:51","hits":187,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.5.35","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:42:52","hits":75,"level":"CRITICAL","direction":"IN","origin_ip":"152.255.32.51","origin_net":"TELEFONICA BRASIL S.A","country":"Brazil"},{"ts":"2026-07-07 20:41:42","hits":12,"level":"CRITICAL","direction":"IN","origin_ip":"152.255.32.67","origin_net":"TELEFONICA BRASIL S.A","country":"Brazil"},{"ts":"2026-07-07 20:38:40","hits":275,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.10.208","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:38:30","hits":8,"level":"HIGH","direction":"IN","origin_ip":"64.210.136.67","origin_net":"REFLECTED NETWORKS, INC.","country":"United States"}],"modules":{"reputacao_asn":{"asn":"AS267114","prefix":"45.229.120.0/22","saude_pct":75.2,"total_ips":1024,"saudaveis":770,"criticos":254,"intel_feed":[{"ip":"45.229.120.6","status":"CRÍTICO"},{"ip":"45.229.120.3","status":"CRÍTICO"}]}},"grafana":[{"dash":"Dashboard 1 (Overview)","panels":[{"title":"Volume no tempo","type":"timeseries","frames":[{"fields":["Time","Value"],"rows":[[1783454400000,52],[1783454700000,743],[1783455000000,882],[1783455300000,610],[1783455600000,930],[1783455900000,1204],[1783456200000,760],[1783456500000,845]]}]},{"title":"Direção do tráfego","type":"piechart","frames":[{"fields":["event.direction","Count"],"rows":[["transit",110],["outbound",44520],["inbound",330]]}]},{"title":"Top portas destino","type":"table","frames":[{"fields":["destination.port","Count"],"rows":[[5060,51],[23,38],[51677,18],[80,12],[443,9]]}]},{"title":"Países de origem","type":"barchart","frames":[{"fields":["source.geo.country_name","Count"],"rows":[["United States",101],["Seychelles",50],["Brazil",43],["Germany",22],["Russia",15]]}]},{"title":"IPs destino internos","type":"table","frames":[{"fields":["destination.ip","Count"],"rows":[["100.64.5.218",27],["100.64.19.99",17],["100.64.19.195",16],["100.64.5.35",11]]}]}]}]};
+    <div class="grid">
+      <div class="card"><h2>Hits ao longo do tempo</h2><p class="sub">Feed de incidentes (mais antigo → recente)</p><div class="chart-box"><canvas id="timeline"></canvas></div></div>
+      <div class="card"><h2>Top origens por hits</h2><p class="sub">IPs de origem com maior volume</p><div class="chart-box"><canvas id="sources"></canvas></div></div>
+      <div class="card"><h2>Incidentes por severidade</h2><p class="sub">Distribuição do feed atual</p><div class="chart-box"><canvas id="severity"></canvas></div></div>
+      <div class="card"><h2>Origem por rede / ASN</h2><p class="sub">Hits agregados por fonte</p><div class="chart-box"><canvas id="asn"></canvas></div></div>
+    </div>
+  </section>
 
-    const css = getComputedStyle(document.documentElement);
-    const ACCENT=css.getPropertyValue('--accent').trim(), CRIT=css.getPropertyValue('--crit').trim(),
-          HIGH=css.getPropertyValue('--high').trim(), MUTED=css.getPropertyValue('--muted').trim(),
-          GRID=css.getPropertyValue('--grid').trim(), CARD=css.getPropertyValue('--card').trim();
-    const PALETTE=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185'];
-    Chart.defaults.color=MUTED; Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;
-    Chart.defaults.plugins.legend.labels.usePointStyle=true; Chart.defaults.plugins.legend.labels.boxWidth=8;
-    const gridOpt={grid:{color:GRID},border:{display:false},ticks:{padding:8}};
-    const charts={};
-    function grad(ctx,color){const g=ctx.createLinearGradient(0,0,0,280);g.addColorStop(0,color+'55');g.addColorStop(1,color+'00');return g;}
-    const nf=new Intl.NumberFormat('pt-BR');
+  <!-- MÓDULOS GRAFANA -->
+  <section class="mod" id="mod-overview"><div class="mod-title">Overview — visão global</div><div class="mod-grid" id="graf-overview"></div></section>
+  <section class="mod" id="mod-inbound"><div class="mod-title">Ataques Inbound</div><div class="mod-grid" id="graf-inbound"></div></section>
+  <section class="mod" id="mod-outbound"><div class="mod-title">Infectados Outbound</div><div class="mod-grid" id="graf-outbound"></div></section>
+  <section class="mod" id="mod-deep"><div class="mod-title">Análise Profunda</div><div class="mod-grid" id="graf-deep"></div></section>
 
-    function agg(incs){
-        const sev={CRITICAL:0,HIGH:0,INFO:0};
-        const dir={IN:{n:0,hits:0},OUT:{n:0,hits:0}};
-        const srcHits={}, netHits={};
-        incs.forEach(i=>{
-            sev[i.level]=(sev[i.level]||0)+1;
-            const d=i.direction==='IN'?'IN':'OUT'; dir[d].n++; dir[d].hits+=i.hits||0;
-            srcHits[i.origin_ip]=(srcHits[i.origin_ip]||0)+(i.hits||0);
-            const net=(i.origin_net&&i.origin_net.toUpperCase().includes('REDE INTERNA'))?'Rede Interna (CGNAT)':(i.origin_net||i.country||'—');
-            netHits[net]=(netHits[net]||0)+(i.hits||0);
-        });
-        const topSrc=Object.entries(srcHits).sort((a,b)=>b[1]-a[1]).slice(0,8);
-        const nets=Object.entries(netHits).sort((a,b)=>b[1]-a[1]);
-        return {sev,dir,topSrc,nets};
+  <footer id="footer">Aguardando dados…</footer>
+</div>
+
+<script>
+/* ---- fallback: mostra o layout mesmo sem fetch (file://) ---- */
+const FALLBACK={"collected_at":"2026-07-07T21:25:57-03:00","sync":"21:25:55","kpis":{"iocs_mundiais":127879,"critical":0,"high":0,"info":1727,"permanentes":0,"inbound":0,"outbound":0},"incidents":[{"ts":"2026-07-07 21:25:47","hits":135,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.10.50","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:25:30","hits":804,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.8.240","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:24:56","hits":15,"level":"CRITICAL","direction":"IN","category":"DAY-0 SCANNER","origin_ip":"152.255.32.160","origin_net":"TELEFONICA","country":"Brazil","risk":95},{"ts":"2026-07-07 21:24:53","hits":461,"level":"CRITICAL","direction":"OUT","category":"DAY-0 SCANNER","origin_ip":"100.64.17.217","origin_net":"REDE INTERNA","country":"Interna","risk":95},{"ts":"2026-07-07 21:23:45","hits":9,"level":"HIGH","direction":"OUT","category":"DAY-0: MULTI-TARGET","origin_ip":"100.64.6.211","origin_net":"REDE INTERNA","country":"Interna","risk":80},{"ts":"2026-07-07 21:17:05","hits":99,"level":"CRITICAL","direction":"IN","category":"DAY-0 SCANNER","origin_ip":"152.255.32.35","origin_net":"TELEFONICA","country":"Brazil","risk":95}],"modules":{"reputacao_asn":{"asn":"AS267114","prefix":"45.229.120.0/22","saude_pct":75.2,"total_ips":1024,"saudaveis":770,"criticos":254,"intel_feed":[{"ip":"45.229.120.6","status":"CRÍTICO"}]}},"grafana":[
+{"dash":"Dashboard 1 (Overview)","panels":[
+ {"title":"","type":"timeseries","frames":[{"fields":["Time","Value"],"rows":[[1783454400000,52],[1783454700000,743],[1783455000000,882],[1783455300000,610],[1783455600000,930],[1783455900000,1204],[1783456200000,760],[1783456500000,845]]}]},
+ {"title":"","type":"piechart","frames":[{"fields":["event.direction","Count"],"rows":[["transit",110],["outbound",44520],["inbound",330]]}]},
+ {"title":"","type":"table","frames":[{"fields":["destination.port","Count"],"rows":[[5060,51],[23,38],[51677,18],[80,12],[443,9]]}]},
+ {"title":"","type":"barchart","frames":[{"fields":["source.geo.country_name","Count"],"rows":[["United States",101],["Seychelles",50],["Brazil",43],["Germany",22],["Russia",15]]}]},
+ {"title":"","type":"table","frames":[{"fields":["destination.geo.city_name.keyword","Count"],"rows":[["Cidade A",27380],["Cidade B",7190],["Cidade C",3944]]}]}
+]},
+{"dash":"Dashboard 2 (Inbound)","panels":[
+ {"title":"","type":"barchart","frames":[{"fields":["source.as.as.organization.name.keyword","Count"],"rows":[["Scloud Pte Ltd",42],["IP Solus Inc",41],["UAB Host Baltic",30],["OVH",18]]}]},
+ {"title":"","type":"table","frames":[{"fields":["destination.ip","Count"],"rows":[["45.229.123.242",31292],["45.229.123.229",7251],["45.229.120.10",980]]}]},
+ {"title":"","type":"table","frames":[{"fields":["source.as.as.organization.name.keyword","source.ip","destination.port","Count"],"rows":[["UAB Host Baltic","91.224.92.88",33322,3],["UAB Host Baltic","91.224.92.88",58468,2],["Scloud","103.7.29.1",23,9]]}]}
+]},
+{"dash":"Dashboard 3 (Outbound)","panels":[
+ {"title":"","type":"stat","frames":[{"fields":["Time","Value"],"rows":[[1783455300000,15],[1783455600000,177]]}]},
+ {"title":"","type":"table","frames":[{"fields":["destination.port","Count"],"rows":[[443,1286374],[80,166213],[53,44201]]}]},
+ {"title":"","type":"piechart","frames":[{"fields":["network.transport","Sum"],"rows":[["udp",81632545],["tcp",143672]]}]},
+ {"title":"","type":"piechart","frames":[{"fields":["destination.as.as.organization.name.keyword","Count"],"rows":[["NOW FIBRA",120],["Google",88],["Cloudflare",41]]}]}
+]},
+{"dash":"Dashboard 4 Análise Profunda","panels":[
+ {"title":"","type":"barchart","frames":[{"fields":["source.ip","Count"],"rows":[["100.64.5.239",1980],["100.64.13.24",1420],["100.64.8.15",980]]}]},
+ {"title":"","type":"table","frames":[{"fields":["source.ip","destination.port","Count"],"rows":[["100.64.5.115",53,6215],["100.64.18.54",53,5072],["100.64.5.239",53,3824]]}]}
+]}
+]};
+
+/* ---- setup ---- */
+const css=getComputedStyle(document.documentElement);
+const ACCENT=css.getPropertyValue('--accent').trim(),CRIT=css.getPropertyValue('--crit').trim(),
+      HIGH=css.getPropertyValue('--high').trim(),MUTED=css.getPropertyValue('--muted').trim(),
+      GRID=css.getPropertyValue('--grid').trim(),CARD=css.getPropertyValue('--card').trim();
+const PAL=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185','#c084fc','#4ade80'];
+Chart.defaults.color=MUTED;Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;
+Chart.defaults.plugins.legend.labels.usePointStyle=true;Chart.defaults.plugins.legend.labels.boxWidth=8;
+const gridOpt={grid:{color:GRID},border:{display:false},ticks:{padding:6}};
+const nf=new Intl.NumberFormat('pt-BR');
+const esc=s=>String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const fmtT=ms=>{const d=new Date(Number(ms));return isNaN(d.getTime())?String(ms):(d.getHours()+':'+String(d.getMinutes()).padStart(2,'0'));};
+const numify=v=>{if(typeof v==='number')return v;const n=parseFloat(String(v).replace(/[^\d.\-]/g,''));return isNaN(n)?0:n;};
+function grad(ctx,color,h){const g=ctx.createLinearGradient(0,0,0,h||280);g.addColorStop(0,color+'55');g.addColorStop(1,color+'00');return g;}
+
+let lastSnap=null, activeMod='mitig', charts=[];
+function clearCharts(){charts.forEach(c=>{try{c.destroy();}catch(e){}});charts=[];}
+
+/* ---- agregações do feed ---- */
+function agg(incs){
+  const sev={CRITICAL:0,HIGH:0,INFO:0}, srcHits={}, netHits={};
+  incs.forEach(i=>{sev[i.level]=(sev[i.level]||0)+1;
+    srcHits[i.origin_ip]=(srcHits[i.origin_ip]||0)+(i.hits||0);
+    const net=(i.origin_net&&i.origin_net.toUpperCase().includes('REDE INTERNA'))?'Rede Interna (CGNAT)':(i.origin_net||i.country||'—');
+    netHits[net]=(netHits[net]||0)+(i.hits||0);});
+  return {sev,topSrc:Object.entries(srcHits).sort((a,b)=>b[1]-a[1]).slice(0,8),
+          nets:Object.entries(netHits).sort((a,b)=>b[1]-a[1])};
+}
+
+/* ---- KPIs ---- */
+function renderKpis(k,incs){
+  incs=incs||[];const cnt=f=>incs.filter(f).length;
+  const crit=k.critical||cnt(i=>i.level==='CRITICAL'),high=k.high||cnt(i=>i.level==='HIGH'),
+        inb=k.inbound||cnt(i=>i.direction==='IN'),outb=k.outbound||cnt(i=>i.direction==='OUT');
+  const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',crit,'crit'],['High',high,'high'],
+               ['Info',k.info,''],['Inbound',inb,''],['Outbound',outb,'']];
+  document.getElementById('kpis').innerHTML=items.map(([l,v,c])=>
+    `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');
+}
+
+/* ---- Reputação ASN ---- */
+function renderRep(rep){
+  const b=document.getElementById('repBlock');
+  if(!rep||(rep.total_ips==null&&rep.saude_pct==null)){b.style.display='none';return;}
+  b.style.display='block';
+  document.getElementById('repAsn').textContent=rep.asn||'';
+  document.getElementById('repPrefix').textContent=(rep.prefix||'')+(rep.intel_feed&&rep.intel_feed.length?(' · '+rep.intel_feed.length+' IPs no Intel Feed'):'');
+  const items=[['Saúde da rede',rep.saude_pct!=null?rep.saude_pct+'%':'—',''],['Total de IPs',rep.total_ips,''],['Saudáveis',rep.saudaveis,''],['Críticos',rep.criticos,'crit']];
+  document.getElementById('repKpis').innerHTML=items.map(([l,v,c])=>
+    `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');
+}
+
+/* ---- Mitigação em tempo real ---- */
+function renderMitig(incs){
+  const arr=(incs||[]).slice(0,20);
+  const ctx=document.getElementById('mitigBar').getContext('2d');
+  charts.push(new Chart(ctx,{type:'bar',
+    data:{labels:arr.map(i=>(i.ts||'').slice(11)),
+      datasets:[{label:'Hits mitigados',data:arr.map(i=>i.hits),
+        backgroundColor:arr.map(i=>i.level==='CRITICAL'?CRIT:i.level==='HIGH'?HIGH:MUTED),borderRadius:5,maxBarThickness:26}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false},
+      tooltip:{callbacks:{title:it=>'Mitigado às '+it[0].label,label:it=>nf.format(it.raw)+' hits'}}},
+      scales:{x:{...gridOpt,grid:{display:false},ticks:{maxRotation:60,minRotation:45,font:{size:9}}},y:{...gridOpt,beginAtZero:true}}}}));
+  document.getElementById('mitigList').innerHTML=arr.map(i=>{
+    const cls=i.level==='CRITICAL'?'crit':i.level==='HIGH'?'high':'';
+    const dst=i.dest_count?(' → '+i.dest_count+' '+(i.dest_type||'')):'';
+    return `<div class="mrow ${cls}"><span class="mtime">${esc((i.ts||'').slice(11))}</span>`+
+      `<span class="mtag">✓ MITIGADO</span>`+
+      `<span class="mip">${esc(i.origin_ip)} <span class="mmut">${esc(i.category||'')} ${i.direction?('· '+i.direction):''}${esc(dst)}</span></span>`+
+      `<span class="mrisk">${i.risk||0}%</span></div>`;
+  }).join('');
+}
+
+/* ---- gráficos do feed (módulo mitigação) ---- */
+function renderFeed(snap){
+  const incs=(snap.incidents||[]).slice().reverse();
+  const a=agg(snap.incidents||[]);
+  const tctx=document.getElementById('timeline').getContext('2d');
+  charts.push(new Chart(tctx,{type:'line',data:{labels:incs.map(i=>(i.ts||'').slice(11,16)),
+    datasets:[{label:'Hits',data:incs.map(i=>i.hits),borderColor:ACCENT,backgroundColor:grad(tctx,ACCENT),
+      borderWidth:2.5,fill:true,tension:.35,pointRadius:0,pointHoverRadius:5}]},
+    options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:gridOpt,y:{...gridOpt,beginAtZero:true}}}}));
+  charts.push(new Chart(document.getElementById('sources').getContext('2d'),{type:'bar',
+    data:{labels:a.topSrc.map(s=>s[0]),datasets:[{data:a.topSrc.map(s=>s[1]),backgroundColor:PAL,borderRadius:6,barThickness:16}]},
+    options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:false}}}}}));
+  charts.push(new Chart(document.getElementById('severity').getContext('2d'),{type:'doughnut',
+    data:{labels:['Critical','High'],datasets:[{data:[a.sev.CRITICAL,a.sev.HIGH],backgroundColor:[CRIT,HIGH],borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+    options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}}));
+  charts.push(new Chart(document.getElementById('asn').getContext('2d'),{type:'doughnut',
+    data:{labels:a.nets.map(n=>n[0]),datasets:[{data:a.nets.map(n=>n[1]),backgroundColor:PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+    options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}}));
+}
+
+/* ---- módulos Grafana ---- */
+function titleFor(p){
+  if(p.title&&p.title.trim())return p.title;
+  const f=(((p.frames&&p.frames[0]&&p.frames[0].fields)||[]).join(' ')).toLowerCase();
+  if(/direction/.test(f))return 'Direção do tráfego';
+  if(/transport/.test(f))return 'Protocolos (transporte)';
+  if(/country/.test(f))return 'Países de origem';
+  if(/organization|as\.as/.test(f))return 'ASNs / Organizações';
+  if(/destination\.port/.test(f))return 'Portas de destino';
+  if(/source\.port/.test(f))return 'Portas de origem';
+  if(/destination\.ip/.test(f))return 'IPs de destino';
+  if(/source\.ip/.test(f))return 'IPs de origem';
+  if(/geo|city|location/.test(f))return 'Geolocalização';
+  if(/time/.test(f))return p.type==='stat'?'Total no período':'Volume no tempo';
+  return p.type||'Painel';
+}
+function chartFor(id,p){
+  const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);if(!fr)return null;
+  const cols=fr.fields||[],rows=fr.rows||[];
+  const ctx=document.getElementById(id).getContext('2d');
+  let vi=cols.findIndex(c=>/count|value|total|sum|hits/i.test(c));if(vi<0)vi=cols.length-1;
+  let li=cols.findIndex((c,i)=>i!==vi);if(li<0)li=0;
+  if(/time|timestamp/i.test(cols[0]||'')){
+    const g=grad(ctx,ACCENT,230);
+    return new Chart(ctx,{type:'line',data:{labels:rows.map(r=>fmtT(r[0])),datasets:[{data:rows.map(r=>numify(r[vi])),borderColor:ACCENT,backgroundColor:g,borderWidth:2,fill:true,tension:.4,pointRadius:0,pointHoverRadius:4}]},
+      options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,ticks:{maxTicksLimit:6}},y:{...gridOpt,beginAtZero:true}}}});
+  }
+  const labels=rows.map(r=>String(r[li])),data=rows.map(r=>numify(r[vi]));
+  if(p.type==='piechart')
+    return new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+      options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{boxWidth:8,font:{size:10}}}}}});
+  const horiz=labels.some(l=>l.length>6)||labels.length>6;
+  return new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:PAL,borderRadius:6,barThickness:horiz?14:undefined,maxBarThickness:34}]},
+    options:{indexAxis:horiz?'y':'x',maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:!horiz}}}}});
+}
+function renderModule(containerId, dash){
+  const cont=document.getElementById(containerId);
+  if(!dash||!dash.panels||!dash.panels.length){cont.innerHTML='<div class="mod-empty">Sem dados coletados ainda para este módulo. Rode o coletor.</div>';return;}
+  let idx=0,html='';const q=[];
+  dash.panels.forEach(p=>{
+    const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);
+    const title=titleFor(p);
+    if(p.type==='stat'&&fr){
+      const last=fr.rows[fr.rows.length-1];const v=numify(last[last.length-1]);
+      html+=`<div class="mod-card"><div class="mod-cap">${esc(title)}</div><div class="mod-num">${nf.format(v)}</div></div>`;return;
     }
-
-    function renderKpis(k, incs){
-        // fallback: se o KPI raspado vier 0/nulo, calcula a partir do feed
-        incs = incs || [];
-        const cnt = (f) => incs.filter(f).length;
-        const crit = k.critical || cnt(i=>i.level==='CRITICAL');
-        const high = k.high || cnt(i=>i.level==='HIGH');
-        const inb  = k.inbound || cnt(i=>i.direction==='IN');
-        const outb = k.outbound || cnt(i=>i.direction==='OUT');
-        const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',crit,'crit'],['High',high,'high'],
-                     ['Info',k.info,''],['Inbound',inb,''],['Outbound',outb,'']];
-        document.getElementById('kpis').innerHTML=items.map(([l,v,c])=>
-            `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');
+    if(!fr)return;
+    if((fr.fields||[]).length>2){
+      let t=`<div class="mod-card"><div class="mod-cap">${esc(title)} <small>${fr.rows.length} linhas</small></div><div class="dscroll"><table class="dtable"><thead><tr>`+
+        fr.fields.map(f=>`<th>${esc(f)}</th>`).join('')+'</tr></thead><tbody>';
+      fr.rows.slice(0,40).forEach(r=>{t+='<tr>'+r.map(c=>`<td>${esc(typeof c==='number'?nf.format(c):c)}</td>`).join('')+'</tr>';});
+      t+='</tbody></table></div></div>';html+=t;return;
     }
+    const id=containerId+'_c'+(idx++);
+    html+=`<div class="mod-card"><div class="mod-cap">${esc(title)} <small>${fr.rows.length}</small></div><div class="mod-chart"><canvas id="${id}"></canvas></div></div>`;
+    q.push({id,p});
+  });
+  cont.innerHTML=html;
+  q.forEach(o=>{try{const c=chartFor(o.id,o.p);if(c)charts.push(c);}catch(e){}});
+}
+function findDash(g,key){
+  if(!Array.isArray(g))return null;
+  const rx={overview:/overview/i,inbound:/inbound/i,outbound:/outbound/i,deep:/profunda|deep|análise|analise/i}[key];
+  return g.find(d=>rx.test(d.dash||d.title||''))||null;
+}
 
-    function upsert(id,cfg){
-        if(charts[id]){
-            charts[id].data=cfg.data;
-            charts[id].update();
-        } else {
-            charts[id]=new Chart(document.getElementById(id).getContext('2d'),cfg);
-        }
-    }
+/* ---- render do módulo ativo ---- */
+function renderActive(){
+  const s=lastSnap;if(!s)return;clearCharts();
+  if(activeMod==='mitig'){
+    renderKpis(s.kpis||{},s.incidents||[]);
+    renderRep(s.modules&&s.modules.reputacao_asn);
+    renderMitig(s.incidents||[]);
+    renderFeed(s);
+  }else{
+    renderModule('graf-'+activeMod, findDash(s.grafana,activeMod));
+  }
+}
 
-    function renderRep(rep){
-        const block=document.getElementById('repBlock');
-        if(!rep || (rep.total_ips==null && rep.saude_pct==null)){ block.style.display='none'; return; }
-        block.style.display='block';
-        document.getElementById('repAsn').textContent=rep.asn||'';
-        document.getElementById('repPrefix').textContent=(rep.prefix||'')+(rep.intel_feed&&rep.intel_feed.length?(' · '+rep.intel_feed.length+' IPs no Intel Feed'):'');
-        const items=[['Saúde da rede',(rep.saude_pct!=null?rep.saude_pct+'%':'—'),''],
-                     ['Total de IPs',rep.total_ips,''],['Saudáveis',rep.saudaveis,''],['Críticos',rep.criticos,'crit']];
-        document.getElementById('repKpis').innerHTML=items.map(([l,v,c])=>
-            `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');
-    }
+/* ---- navegação por módulo ---- */
+document.getElementById('modnav').addEventListener('click',e=>{
+  const b=e.target.closest('button');if(!b)return;
+  activeMod=b.dataset.mod;
+  document.querySelectorAll('.modnav button').forEach(x=>x.classList.toggle('active',x===b));
+  document.querySelectorAll('.mod').forEach(m=>m.classList.toggle('active',m.id==='mod-'+activeMod));
+  renderActive();
+});
 
-    function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
-    const G_PAL=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185','#c084fc','#4ade80'];
-    let grafCharts=[];
-    function fmtT(ms){ const d=new Date(Number(ms)); return isNaN(d.getTime())?String(ms):(d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')); }
-    function numify(v){ if(typeof v==='number')return v; const n=parseFloat(String(v).replace(/[^\d.\-]/g,'')); return isNaN(n)?0:n; }
+/* ---- selo de frescor ---- */
+function tickFreshness(){
+  const lbl=document.getElementById('freshLabel'),dot=document.getElementById('freshDot'),badge=document.getElementById('freshBadge');
+  if(!window.__lastCollected){lbl.textContent='sem dados';return;}
+  const sc=Math.max(0,Math.round((Date.now()-window.__lastCollected)/1000));
+  lbl.textContent=sc<60?('atualizado há '+sc+'s'):('atualizado há '+Math.floor(sc/60)+'m '+(sc%60)+'s');
+  const col=sc<90?'#34d399':(sc<180?'#fbbf24':'#ff4d5e');
+  dot.style.background=col;dot.style.boxShadow='0 0 8px '+col;lbl.style.color=col;badge.style.borderColor=col;
+}
+setInterval(tickFreshness,1000);
 
-    function buildGrafChart(id, p){
-        const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length); if(!fr) return null;
-        const cols=fr.fields||[], rows=fr.rows||[];
-        const el=document.getElementById(id); if(!el) return null;
-        const ctx=el.getContext('2d');
-        let vi=cols.findIndex(c=>/count|value|total|sum|hits/i.test(c)); if(vi<0) vi=cols.length-1;
-        const isTime=/time|timestamp/i.test(cols[0]||'');
-        let li=cols.findIndex((c,i)=>i!==vi); if(li<0) li=0;
-
-        if(isTime){
-            const labels=rows.map(r=>fmtT(r[0]));
-            const data=rows.map(r=>numify(r[vi]));
-            const grd=ctx.createLinearGradient(0,0,0,210); grd.addColorStop(0,'#00fff255'); grd.addColorStop(1,'#00fff200');
-            return new Chart(ctx,{type:'line',data:{labels,datasets:[{data,borderColor:'#00fff2',backgroundColor:grd,borderWidth:2,fill:true,tension:.4,pointRadius:0,pointHoverRadius:4}]},
-                options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,ticks:{maxTicksLimit:6}},y:{...gridOpt,beginAtZero:true}}}});
-        }
-        const labels=rows.map(r=>String(r[li]));
-        const data=rows.map(r=>numify(r[vi]));
-        if(p.type==='piechart'){
-            return new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:G_PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-                options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{boxWidth:8,font:{size:10}}}}}});
-        }
-        const horiz = labels.some(l=>l.length>6) || labels.length>6;
-        return new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:G_PAL,borderRadius:6,barThickness:horiz?14:undefined,maxBarThickness:34}]},
-            options:{indexAxis:horiz?'y':'x',maintainAspectRatio:false,plugins:{legend:{display:false}},
-                scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:!horiz}}}}});
-    }
-
-    function renderGrafana(g){
-        const block=document.getElementById('grafBlock'), cont=document.getElementById('grafContent'), cnt=document.getElementById('grafCount');
-        grafCharts.forEach(c=>{try{c.destroy();}catch(e){}}); grafCharts=[];
-        if(!Array.isArray(g)||!g.length){ block.style.display='none'; return; }
-        let idx=0,total=0,html=''; const queue=[];
-        g.forEach(dash=>{
-            const good=(dash.panels||[]).filter(p=>p.type!=='text' && (p.frames||[]).some(f=>f.rows&&f.rows.length));
-            if(!good.length) return;
-            html+=`<div class="mod-title">${esc(dash.dash||dash.title||'Dashboard')}</div><div class="mod-grid">`;
-            good.slice(0,12).forEach(p=>{ const id='graf_c'+(idx++); total++;
-                html+=`<div class="mod-card"><div class="mod-cap">${esc(p.title||p.type)}</div><div class="mod-chart"><canvas id="${id}"></canvas></div></div>`;
-                queue.push({id,p});
-            });
-            html+='</div>';
-        });
-        if(!total){ block.style.display='none'; return; }
-        block.style.display='block';
-        cnt.textContent='· '+total+' painéis';
-        cont.innerHTML=html;
-        queue.forEach(q=>{ try{ const c=buildGrafChart(q.id,q.p); if(c) grafCharts.push(c); }catch(e){} });
-    }
-
-    function render(snap){
-        renderRep(snap.modules && snap.modules.reputacao_asn);
-        renderGrafana(snap.grafana);
-        const incs=(snap.incidents||[]).slice().reverse(); // cronologico
-        const a=agg(snap.incidents||[]);
-        renderKpis(snap.kpis||{}, snap.incidents||[]);
-        document.getElementById('subtitle').textContent='Análise de incidentes · '+(snap.incidents?snap.incidents.length:0)+' registros';
-        document.getElementById('syncLabel').textContent='Sync '+(snap.sync||'—');
-        const dt=snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—';
-        document.getElementById('footer').textContent='Dados do ASN Monitor (FlowSpec SOC) · coletado em '+dt;
-        window.__lastCollected = snap.collected_at ? new Date(snap.collected_at).getTime() : null;
-        tickFreshness();
-
-        // timeline
-        const tctx=document.getElementById('timeline').getContext('2d');
-        upsert('timeline',{type:'line',data:{labels:incs.map(i=>(i.ts||'').slice(11,16)),
-            datasets:[{label:'Hits',data:incs.map(i=>i.hits),borderColor:ACCENT,backgroundColor:grad(tctx,ACCENT),
-            borderWidth:2.5,fill:true,tension:0.35,pointRadius:0,pointHoverRadius:5}]},
-            options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:gridOpt,y:{...gridOpt,beginAtZero:true}}}});
-
-        // top sources
-        upsert('sources',{type:'bar',data:{labels:a.topSrc.map(s=>s[0]),
-            datasets:[{data:a.topSrc.map(s=>s[1]),backgroundColor:PALETTE,borderRadius:6,barThickness:18}]},
-            options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},
-            scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:false}}}}});
-
-        // severity
-        upsert('severity',{type:'doughnut',data:{labels:['Critical','High'],
-            datasets:[{data:[a.sev.CRITICAL,a.sev.HIGH],backgroundColor:[CRIT,HIGH],borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-            options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}});
-
-        // asn
-        upsert('asn',{type:'doughnut',data:{labels:a.nets.map(n=>n[0]),
-            datasets:[{data:a.nets.map(n=>n[1]),backgroundColor:PALETTE,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
-            options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}});
-
-        // direction
-        upsert('direction',{type:'bar',data:{labels:['Nº de incidentes','Total de hits'],
-            datasets:[{label:'Inbound',data:[a.dir.IN.n,a.dir.IN.hits],backgroundColor:HIGH,borderRadius:6,maxBarThickness:60},
-                      {label:'Outbound',data:[a.dir.OUT.n,a.dir.OUT.hits],backgroundColor:CRIT,borderRadius:6,maxBarThickness:60}]},
-            options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
-            scales:{x:{...gridOpt,grid:{display:false}},y:{...gridOpt,beginAtZero:true}}}});
-    }
-
-    function tickFreshness(){
-        const lbl=document.getElementById('freshLabel'), dot=document.getElementById('freshDot'), badge=document.getElementById('freshBadge');
-        if(!window.__lastCollected){ lbl.textContent='sem dados'; return; }
-        const s=Math.max(0,Math.round((Date.now()-window.__lastCollected)/1000));
-        const txt = s<60 ? ('atualizado há '+s+'s') : ('atualizado há '+Math.floor(s/60)+'m '+(s%60)+'s');
-        lbl.textContent=txt;
-        // verde <90s, amarelo <180s, vermelho acima (coletor travado)
-        const col = s<90 ? '#34d399' : (s<180 ? '#fbbf24' : '#ff4d5e');
-        dot.style.background=col; dot.style.boxShadow='0 0 8px '+col;
-        lbl.style.color=col; badge.style.borderColor=col;
-    }
-    setInterval(tickFreshness, 1000);
-
-    async function load(){
-        try{
-            const r=await fetch('./data/soc-snapshot.json?t='+Date.now(),{cache:'no-store'});
-            if(!r.ok) throw new Error(r.status);
-            render(await r.json());
-        }catch(e){
-            render(FALLBACK); // fetch bloqueado (file://) ou arquivo ausente
-        }
-    }
-    load();
-    setInterval(load, 30000); // re-lê o snapshot a cada 30s
-    </script>
+/* ---- carregamento ---- */
+function apply(snap){
+  lastSnap=snap;
+  document.getElementById('subtitle').textContent='Análise de incidentes · '+((snap.incidents||[]).length)+' registros';
+  document.getElementById('syncLabel').textContent='Sync '+(snap.sync||'—');
+  const dt=snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—';
+  document.getElementById('footer').textContent='Dados do ASN Monitor (FlowSpec SOC) · coletado em '+dt;
+  window.__lastCollected=snap.collected_at?new Date(snap.collected_at).getTime():null;
+  tickFreshness();
+  renderActive();
+}
+async function load(){
+  try{const r=await fetch('./data/soc-snapshot.json?t='+Date.now(),{cache:'no-store'});if(!r.ok)throw 0;apply(await r.json());}
+  catch(e){apply(FALLBACK);}
+}
+load();
+setInterval(load,30000);
+</script>
 </body>
 </html>
