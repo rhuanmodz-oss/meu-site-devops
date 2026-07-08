@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:18:57-03:00",
-  "sync": "21:18:56",
+  "collected_at": "2026-07-07T21:19:27-03:00",
+  "sync": "21:19:26",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
