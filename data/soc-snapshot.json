@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:15:57-03:00",
-  "sync": "21:15:55",
+  "collected_at": "2026-07-07T21:16:27-03:00",
+  "sync": "21:16:26",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -75,19 +75,6 @@
       "country": "United States",
       "dest_count": 20,
       "dest_type": "Dispositivos Internos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:10:48",
-      "hits": 791,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.240",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 587,
-      "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
