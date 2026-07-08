@@ -40,6 +40,14 @@
         .card .sub { font-size: 0.8rem; color: var(--muted); margin: 0 0 16px 0; }
         .chart-box { position: relative; height: 280px; }
         .chart-box.tall { height: 330px; }
+        /* módulos Grafana */
+        .mod-title { font-size: 1.05rem; font-weight: 700; letter-spacing: -0.01em; margin: 26px 0 12px;
+            padding-left: 12px; border-left: 3px solid var(--accent); }
+        .mod-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+        .mod-card { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; }
+        .mod-cap { font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
+        .mod-chart { position: relative; height: 210px; }
+        .mod-num { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.02em; }
         footer { text-align: center; color: var(--muted); font-size: 0.78rem; margin-top: 32px; }
         @media (max-width: 900px) { .kpis { grid-template-columns: repeat(3, 1fr); } .grid { grid-template-columns: 1fr; } }
     </style>
