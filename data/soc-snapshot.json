@@ -1,0 +1,15 @@
+{
+  "collected_at": "2026-07-07T21:06:28-03:00",
+  "sync": "",
+  "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
+  "kpis": {
+    "iocs_mundiais": 0,
+    "critical": 0,
+    "high": 0,
+    "info": 0,
+    "permanentes": 0,
+    "inbound": 0,
+    "outbound": 0
+  },
+  "incidents": []
+}
