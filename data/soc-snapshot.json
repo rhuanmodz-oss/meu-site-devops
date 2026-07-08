@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:11:57-03:00",
-  "sync": "21:11:56",
+  "collected_at": "2026-07-07T21:12:27-03:00",
+  "sync": "21:12:25",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,7 +13,7 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-07 21:11:42",
+      "ts": "2026-07-07 21:12:19",
       "hits": 0,
       "level": "INFO",
       "direction": "OUT",
@@ -21,20 +21,7 @@
       "origin_ip": "100.64.8.15",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 3646,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:10:51",
-      "hits": 0,
-      "level": "INFO",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.11.202",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 314,
+      "dest_count": 3653,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -61,19 +48,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 19,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:09:40",
-      "hits": 457,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.17.217",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 192,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -204,6 +178,19 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 121,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 20:59:10",
+      "hits": 120,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.4.103",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 53,
       "dest_type": "Destinos Externos",
       "risk": 95
     }
