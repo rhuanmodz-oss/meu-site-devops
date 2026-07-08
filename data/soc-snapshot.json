@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:23:27-03:00",
-  "sync": "21:23:26",
+  "collected_at": "2026-07-07T21:23:57-03:00",
+  "sync": "21:23:56",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -12,6 +12,45 @@
     "outbound": 0
   },
   "incidents": [
+    {
+      "ts": "2026-07-07 21:23:46",
+      "hits": 59,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.16.203",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 45,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:23:45",
+      "hits": 9,
+      "level": "HIGH",
+      "direction": "OUT",
+      "category": "DAY-0: MULTI-TARGET",
+      "origin_ip": "100.64.6.211",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 6,
+      "dest_type": "Destinos Externos",
+      "risk": 80
+    },
+    {
+      "ts": "2026-07-07 21:23:36",
+      "hits": 460,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.17.217",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 195,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
     {
       "ts": "2026-07-07 21:22:44",
       "hits": 0,
@@ -48,19 +87,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 110,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:22:00",
-      "hits": 458,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.17.217",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 193,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -115,19 +141,6 @@
       "dest_count": 315,
       "dest_type": "Destinos Externos",
       "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:17:54",
-      "hits": 8,
-      "level": "HIGH",
-      "direction": "OUT",
-      "category": "DAY-0: MULTI-TARGET",
-      "origin_ip": "100.64.6.211",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 5,
-      "dest_type": "Destinos Externos",
-      "risk": 80
     },
     {
       "ts": "2026-07-07 21:17:05",
