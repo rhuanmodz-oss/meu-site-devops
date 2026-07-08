@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-08T00:16:40-03:00",
-  "sync": "00:16:39",
+  "collected_at": "2026-07-08T00:17:09-03:00",
+  "sync": "00:17:08",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,21 +13,34 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-08 00:16:34",
-      "hits": 1176,
+      "ts": "2026-07-08 00:17:05",
+      "hits": 44,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.19.253",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 28,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:16:56",
+      "hits": 1182,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.5.115",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 1002,
+      "dest_count": 1008,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-08 00:16:20",
-      "hits": 184,
+      "ts": "2026-07-08 00:16:55",
+      "hits": 185,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
@@ -130,19 +143,6 @@
       "risk": 95
     },
     {
-      "ts": "2026-07-08 00:15:01",
-      "hits": 43,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.19.253",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 27,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-08 00:14:38",
       "hits": 188,
       "level": "CRITICAL",
@@ -152,19 +152,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 112,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:14:33",
-      "hits": 77,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.1.216",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 63,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -205,6 +192,19 @@
       "country": "Interna",
       "dest_count": 42,
       "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:13:21",
+      "hits": 121,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "152.255.32.35",
+      "origin_net": "TELEFÔNICA BRASIL S.A",
+      "country": "Brazil",
+      "dest_count": 99,
+      "dest_type": "Dispositivos Internos",
       "risk": 95
     }
   ],
@@ -334,7 +334,7 @@
           "rows": [
             [
               1783458900000,
-              472
+              399
             ],
             [
               1783459200000,
@@ -614,7 +614,7 @@
             ],
             [
               1783479900000,
-              311
+              371
             ],
             [
               1783480200000,
@@ -636,15 +636,15 @@
           "rows": [
             [
               "outbound",
-              48698
+              48696
             ],
             [
               "internal",
-              38189
+              38177
             ],
             [
               "inbound",
-              365
+              364
             ],
             [
               "transit",
@@ -666,7 +666,7 @@
             ],
             [
               "United States",
-              113
+              112
             ],
             [
               "Seychelles",
@@ -724,7 +724,7 @@
             ],
             [
               "United States",
-              11345
+              11344
             ],
             [
               "China",
@@ -732,7 +732,7 @@
             ],
             [
               "The Netherlands",
-              91
+              90
             ],
             [
               "Türkiye",
@@ -778,11 +778,11 @@
           "rows": [
             [
               53,
-              85407
+              85396
             ],
             [
               123,
-              599
+              598
             ],
             [
               3389,
@@ -794,7 +794,7 @@
             ],
             [
               5060,
-              122
+              123
             ],
             [
               25,
@@ -806,7 +806,7 @@
             ],
             [
               23,
-              56
+              55
             ],
             [
               8291,
@@ -836,7 +836,7 @@
           "rows": [
             [
               "udp",
-              85993
+              85980
             ],
             [
               "tcp",
@@ -859,7 +859,7 @@
           "rows": [
             [
               1783458900000,
-              4
+              3
             ],
             [
               1783459200000,
@@ -1161,7 +1161,7 @@
           "rows": [
             [
               "United States",
-              113
+              112
             ],
             [
               "Seychelles",
@@ -1281,7 +1281,7 @@
             ],
             [
               23,
-              44
+              43
             ],
             [
               51677,
@@ -1393,7 +1393,7 @@
           "rows": [
             [
               "tcp",
-              250
+              249
             ],
             [
               "udp",
@@ -1416,7 +1416,7 @@
           "rows": [
             [
               1783458900000,
-              114
+              94
             ],
             [
               1783459200000,
@@ -1696,7 +1696,7 @@
             ],
             [
               1783479900000,
-              72
+              90
             ],
             [
               1783480200000,
@@ -1722,7 +1722,7 @@
             ],
             [
               "United States",
-              11236
+              11235
             ],
             [
               "China",
@@ -1730,7 +1730,7 @@
             ],
             [
               "The Netherlands",
-              91
+              90
             ],
             [
               "Türkiye",
@@ -1780,7 +1780,7 @@
             ],
             [
               "Google LLC",
-              10499
+              10497
             ],
             [
               "FENIX BRASIL",
@@ -1788,7 +1788,7 @@
             ],
             [
               "Cloudflare, Inc.",
-              560
+              561
             ],
             [
               "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
@@ -1858,7 +1858,7 @@
             ],
             [
               "100.64.1.235",
-              765
+              766
             ],
             [
               "100.64.0.152",
@@ -1866,7 +1866,7 @@
             ],
             [
               "100.64.3.202",
-              266
+              267
             ],
             [
               "100.64.13.133",
@@ -1896,7 +1896,7 @@
             ],
             [
               123,
-              588
+              587
             ],
             [
               3389,
@@ -1950,11 +1950,11 @@
           "rows": [
             [
               "udp",
-              47883
+              47882
             ],
             [
               "tcp",
-              816
+              815
             ]
           ]
         }
@@ -2001,7 +2001,7 @@
             ],
             [
               "100.64.0.152",
-              792
+              793
             ],
             [
               "100.64.1.51",
@@ -2017,7 +2017,7 @@
             ],
             [
               "100.64.3.202",
-              274
+              275
             ],
             [
               "100.64.4.44",
@@ -2043,19 +2043,19 @@
           "rows": [
             [
               "45.229.123.242",
-              31059
+              31050
             ],
             [
               "45.229.123.229",
-              7009
+              7007
             ],
             [
               "8.8.8.8",
-              6546
+              6548
             ],
             [
               "8.8.4.4",
-              3911
+              3906
             ],
             [
               "1.1.1.1",
@@ -2098,8 +2098,8 @@
               38
             ],
             [
-              "172.40.1.41",
-              35
+              "1.1.1.3",
+              36
             ]
           ]
         },
@@ -2113,11 +2113,11 @@
           "rows": [
             [
               53,
-              85409
+              85398
             ],
             [
               123,
-              599
+              598
             ],
             [
               3389,
@@ -2129,7 +2129,7 @@
             ],
             [
               5060,
-              122
+              123
             ],
             [
               25,
@@ -2141,7 +2141,7 @@
             ],
             [
               23,
-              56
+              55
             ],
             [
               8291,
@@ -2187,7 +2187,7 @@
             ],
             [
               "Google LLC",
-              10508
+              10505
             ],
             [
               "FENIX BRASIL",
@@ -2195,7 +2195,7 @@
             ],
             [
               "Cloudflare, Inc.",
-              560
+              562
             ],
             [
               "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
@@ -2239,7 +2239,7 @@
             ],
             [
               "Amazon.com, Inc.",
-              57
+              58
             ]
           ]
         }
