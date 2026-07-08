@@ -1,104 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Links</title>
+    <title>FlowSpec SOC — Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <style>
-        /* Base styles */
+        :root {
+            --bg: #0a0b0e; --card: #14161b; --card-border: #232630;
+            --text: #f2f4f8; --muted: #8a92a0; --accent: #00fff2;
+            --crit: #ff4d5e; --high: #ffb020; --grid: rgba(255,255,255,0.06);
+        }
+        * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            box-sizing: border-box;
+            background: radial-gradient(1100px 500px at 85% -10%, #16323133, transparent),
+                        radial-gradient(900px 500px at -10% 0%, #3a121a33, transparent), var(--bg);
+            color: var(--text); margin: 0; padding: 28px 24px 56px; min-height: 100vh;
         }
-
-        /* Container for the content */
-        .container {
-            width: 100%;
-            max-width: 480px;
-            text-align: center;
-        }
-
-        /* Profile image placeholder */
-        .profile-img {
-            width: 96px;
-            height: 96px;
-            border-radius: 50%;
-            background-color: #333;
-            margin-bottom: 16px;
-            object-fit: cover;
-            border: 2px solid #00fff2;
-        }
-
-        /* Name and Bio */
-        h1 {
-            font-size: 1.5rem;
-            margin: 0 0 8px 0;
-            font-weight: 700;
-        }
-
-        p {
-            font-size: 1rem;
-            color: #a0a0a0;
-            margin: 0 0 32px 0;
-        }
-
-        /* Links section */
-        .links-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        /* Styled button link */
-        .link-btn {
-            display: block;
-            padding: 16px;
-            background-color: #1e1e1e;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: 1px solid #333;
-            transition: all 0.2s ease-in-out;
-        }
-
-        /* Hover animation */
-        .link-btn:hover {
-            background-color: #ffffff;
-            color: #121212;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
-        }
+        .wrap { max-width: 1200px; margin: 0 auto; }
+        header { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+        .brand { display: flex; align-items: center; gap: 12px; }
+        .brand .logo { width: 42px; height: 42px; border-radius: 11px; background: linear-gradient(135deg, var(--accent), var(--crit)); display: grid; place-items: center; font-weight: 800; color: #06131a; font-size: 20px; }
+        .brand h1 { font-size: 1.35rem; margin: 0; font-weight: 700; letter-spacing: -0.02em; }
+        .brand span { display: block; font-size: 0.8rem; color: var(--muted); font-weight: 500; }
+        .status { font-size: 0.8rem; color: var(--muted); background: var(--card); border: 1px solid var(--card-border); padding: 8px 14px; border-radius: 999px; display: flex; align-items: center; gap: 8px; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: #34d399; box-shadow: 0 0 8px #34d399; animation: pulse 2s infinite; }
+        @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+        .kpis { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-bottom: 16px; }
+        .kpi { background: var(--card); border: 1px solid var(--card-border); border-radius: 14px; padding: 16px; }
+        .kpi .label { font-size: 0.72rem; color: var(--muted); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .04em; }
+        .kpi .value { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
+        .kpi.crit .value { color: var(--crit); }
+        .kpi.high .value { color: var(--high); }
+        .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
+        .card { background: var(--card); border: 1px solid var(--card-border); border-radius: 16px; padding: 20px; }
+        .card.wide { grid-column: 1 / -1; }
+        .card h2 { font-size: 1rem; margin: 0 0 2px 0; font-weight: 650; }
+        .card .sub { font-size: 0.8rem; color: var(--muted); margin: 0 0 16px 0; }
+        .chart-box { position: relative; height: 280px; }
+        .chart-box.tall { height: 330px; }
+        footer { text-align: center; color: var(--muted); font-size: 0.78rem; margin-top: 32px; }
+        @media (max-width: 900px) { .kpis { grid-template-columns: repeat(3, 1fr); } .grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <div class="logo">F</div>
+                <div>
+                    <h1>FlowSpec SOC</h1>
+                    <span id="subtitle">carregando dados…</span>
+                </div>
+            </div>
+            <div class="status"><span class="dot"></span> <span id="syncLabel">SOC ACTIVE</span></div>
+        </header>
 
-    <div class="container">
-        <!-- Profile Picture (Replace URL with your own image) -->
-        <img class="profile-img" src="https://media.licdn.com/dms/image/v2/D4D03AQHGvfOBUKnACw/profile-displayphoto-scale_100_100/B4DZtgk3z.KoAc-/0/1766851839262?e=1783555200&v=beta&t=1XrmLuEuoJvipQIrH58qZyHxI5dIR-jfo_-Ur6l-1Hw" alt="Profile Picture">
+        <section class="kpis" id="kpis"></section>
 
-        <!-- Personal Info -->
-        <h1>Rhuan Ribeiroooooooooo</h1>
-        <p>Short bio, profession, or a catchy tagline goes here.</p>
+        <section id="repBlock" style="display:none; margin-top:16px;">
+            <div class="card">
+                <h2>Reputação do ASN <span id="repAsn" style="color:var(--accent);font-weight:600"></span></h2>
+                <p class="sub" id="repPrefix"></p>
+                <div class="kpis" id="repKpis" style="margin:12px 0 0 0;"></div>
+            </div>
+        </section>
 
-        <!-- Personal Links -->
-        <div class="links-wrapper">
-            <a class="link-btn" href="https://yourwebsite.com" target="_blank">🌐 Personal Website</a>
-            <a class="link-btn" href="https://linkedin.com" target="_blank">💼 LinkedIn Profile</a>
-            <a class="link-btn" href="https://github.com" target="_blank">💻 GitHub Portfolio</a>
-            <a class="link-btn" href="https://twitter.com" target="_blank">🐦 Twitter / X</a>
-            <a class="link-btn" href="mailto:your.email@example.com">✉️ Contact Me</a>
+        <div class="grid">
+            <div class="card"><h2>Hits ao longo do tempo</h2><p class="sub">Feed de incidentes (mais antigo → mais recente)</p><div class="chart-box"><canvas id="timeline"></canvas></div></div>
+            <div class="card"><h2>Top origens por hits</h2><p class="sub">IPs de origem com maior volume</p><div class="chart-box"><canvas id="sources"></canvas></div></div>
+            <div class="card"><h2>Incidentes por severidade</h2><p class="sub">Distribuição do feed atual</p><div class="chart-box"><canvas id="severity"></canvas></div></div>
+            <div class="card"><h2>Origem por rede / ASN</h2><p class="sub">Hits agregados por fonte</p><div class="chart-box"><canvas id="asn"></canvas></div></div>
+            <div class="card wide"><h2>Direção do tráfego malicioso</h2><p class="sub">Inbound (ataques recebidos) vs Outbound (infectados internos)</p><div class="chart-box tall"><canvas id="direction"></canvas></div></div>
         </div>
+
+        <footer id="footer">Aguardando dados…</footer>
     </div>
 
+    <script>
+    // ---- snapshot embutido: fallback caso o fetch do JSON falhe (ex.: file://) ----
+    const FALLBACK = {"collected_at":"2026-07-07T20:52:09-03:00","sync":"20:52:09","kpis":{"iocs_mundiais":127879,"critical":11,"high":2,"info":1709,"permanentes":0,"inbound":3,"outbound":10},"incidents":[{"ts":"2026-07-07 20:51:22","hits":119,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.4.103","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:49:26","hits":546,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.2.239","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:48:25","hits":12,"level":"HIGH","direction":"OUT","origin_ip":"100.64.3.145","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:47:43","hits":133,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.10.50","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:47:35","hits":170,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.16.55","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:46:39","hits":45,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.12.48","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:46:05","hits":20,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.17.16","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:44:13","hits":13,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.22.119","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:43:51","hits":187,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.5.35","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:42:52","hits":75,"level":"CRITICAL","direction":"IN","origin_ip":"152.255.32.51","origin_net":"TELEFONICA BRASIL S.A","country":"Brazil"},{"ts":"2026-07-07 20:41:42","hits":12,"level":"CRITICAL","direction":"IN","origin_ip":"152.255.32.67","origin_net":"TELEFONICA BRASIL S.A","country":"Brazil"},{"ts":"2026-07-07 20:38:40","hits":275,"level":"CRITICAL","direction":"OUT","origin_ip":"100.64.10.208","origin_net":"REDE INTERNA","country":"Interna"},{"ts":"2026-07-07 20:38:30","hits":8,"level":"HIGH","direction":"IN","origin_ip":"64.210.136.67","origin_net":"REFLECTED NETWORKS, INC.","country":"United States"}],"modules":{"reputacao_asn":{"asn":"AS267114","prefix":"45.229.120.0/22","saude_pct":75.2,"total_ips":1024,"saudaveis":770,"criticos":254,"intel_feed":[{"ip":"45.229.120.6","status":"CRÍTICO"},{"ip":"45.229.120.3","status":"CRÍTICO"}]}}};
+
+    const css = getComputedStyle(document.documentElement);
+    const ACCENT=css.getPropertyValue('--accent').trim(), CRIT=css.getPropertyValue('--crit').trim(),
+          HIGH=css.getPropertyValue('--high').trim(), MUTED=css.getPropertyValue('--muted').trim(),
+          GRID=css.getPropertyValue('--grid').trim(), CARD=css.getPropertyValue('--card').trim();
+    const PALETTE=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185'];
+    Chart.defaults.color=MUTED; Chart.defaults.font.family=getComputedStyle(document.body).fontFamily;
+    Chart.defaults.plugins.legend.labels.usePointStyle=true; Chart.defaults.plugins.legend.labels.boxWidth=8;
+    const gridOpt={grid:{color:GRID},border:{display:false},ticks:{padding:8}};
+    const charts={};
+    function grad(ctx,color){const g=ctx.createLinearGradient(0,0,0,280);g.addColorStop(0,color+'55');g.addColorStop(1,color+'00');return g;}
+    const nf=new Intl.NumberFormat('pt-BR');
+
+    function agg(incs){
+        const sev={CRITICAL:0,HIGH:0,INFO:0};
+        const dir={IN:{n:0,hits:0},OUT:{n:0,hits:0}};
+        const srcHits={}, netHits={};
+        incs.forEach(i=>{
+            sev[i.level]=(sev[i.level]||0)+1;
+            const d=i.direction==='IN'?'IN':'OUT'; dir[d].n++; dir[d].hits+=i.hits||0;
+            srcHits[i.origin_ip]=(srcHits[i.origin_ip]||0)+(i.hits||0);
+            const net=(i.origin_net&&i.origin_net.toUpperCase().includes('REDE INTERNA'))?'Rede Interna (CGNAT)':(i.origin_net||i.country||'—');
+            netHits[net]=(netHits[net]||0)+(i.hits||0);
+        });
+        const topSrc=Object.entries(srcHits).sort((a,b)=>b[1]-a[1]).slice(0,8);
+        const nets=Object.entries(netHits).sort((a,b)=>b[1]-a[1]);
+        return {sev,dir,topSrc,nets};
+    }
+
+    function renderKpis(k){
+        const items=[['IOCs Mundiais',k.iocs_mundiais,''],['Critical',k.critical,'crit'],['High',k.high,'high'],
+                     ['Info',k.info,''],['Inbound',k.inbound,''],['Outbound',k.outbound,'']];
+        document.getElementById('kpis').innerHTML=items.map(([l,v,c])=>
+            `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${nf.format(v||0)}</div></div>`).join('');
+    }
+
+    function upsert(id,cfg){
+        if(charts[id]){
+            charts[id].data=cfg.data;
+            charts[id].update();
+        } else {
+            charts[id]=new Chart(document.getElementById(id).getContext('2d'),cfg);
+        }
+    }
+
+    function renderRep(rep){
+        const block=document.getElementById('repBlock');
+        if(!rep || (rep.total_ips==null && rep.saude_pct==null)){ block.style.display='none'; return; }
+        block.style.display='block';
+        document.getElementById('repAsn').textContent=rep.asn||'';
+        document.getElementById('repPrefix').textContent=(rep.prefix||'')+(rep.intel_feed&&rep.intel_feed.length?(' · '+rep.intel_feed.length+' IPs no Intel Feed'):'');
+        const items=[['Saúde da rede',(rep.saude_pct!=null?rep.saude_pct+'%':'—'),''],
+                     ['Total de IPs',rep.total_ips,''],['Saudáveis',rep.saudaveis,''],['Críticos',rep.criticos,'crit']];
+        document.getElementById('repKpis').innerHTML=items.map(([l,v,c])=>
+            `<div class="kpi ${c}"><div class="label">${l}</div><div class="value">${typeof v==='number'?nf.format(v):(v||'—')}</div></div>`).join('');
+    }
+
+    function render(snap){
+        renderRep(snap.modules && snap.modules.reputacao_asn);
+        const incs=(snap.incidents||[]).slice().reverse(); // cronologico
+        const a=agg(snap.incidents||[]);
+        renderKpis(snap.kpis||{});
+        document.getElementById('subtitle').textContent='Análise de incidentes · '+(snap.incidents?snap.incidents.length:0)+' registros';
+        document.getElementById('syncLabel').textContent='Sync '+(snap.sync||'—');
+        const dt=snap.collected_at?new Date(snap.collected_at).toLocaleString('pt-BR'):'—';
+        document.getElementById('footer').textContent='Dados do ASN Monitor (FlowSpec SOC) · coletado em '+dt;
+
+        // timeline
+        const tctx=document.getElementById('timeline').getContext('2d');
+        upsert('timeline',{type:'line',data:{labels:incs.map(i=>(i.ts||'').slice(11,16)),
+            datasets:[{label:'Hits',data:incs.map(i=>i.hits),borderColor:ACCENT,backgroundColor:grad(tctx,ACCENT),
+            borderWidth:2.5,fill:true,tension:0.35,pointRadius:0,pointHoverRadius:5}]},
+            options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:gridOpt,y:{...gridOpt,beginAtZero:true}}}});
+
+        // top sources
+        upsert('sources',{type:'bar',data:{labels:a.topSrc.map(s=>s[0]),
+            datasets:[{data:a.topSrc.map(s=>s[1]),backgroundColor:PALETTE,borderRadius:6,barThickness:18}]},
+            options:{indexAxis:'y',maintainAspectRatio:false,plugins:{legend:{display:false}},
+            scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:false}}}}});
+
+        // severity
+        upsert('severity',{type:'doughnut',data:{labels:['Critical','High'],
+            datasets:[{data:[a.sev.CRITICAL,a.sev.HIGH],backgroundColor:[CRIT,HIGH],borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+            options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}});
+
+        // asn
+        upsert('asn',{type:'doughnut',data:{labels:a.nets.map(n=>n[0]),
+            datasets:[{data:a.nets.map(n=>n[1]),backgroundColor:PALETTE,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+            options:{maintainAspectRatio:false,cutout:'64%',plugins:{legend:{position:'right'}}}});
+
+        // direction
+        upsert('direction',{type:'bar',data:{labels:['Nº de incidentes','Total de hits'],
+            datasets:[{label:'Inbound',data:[a.dir.IN.n,a.dir.IN.hits],backgroundColor:HIGH,borderRadius:6,maxBarThickness:60},
+                      {label:'Outbound',data:[a.dir.OUT.n,a.dir.OUT.hits],backgroundColor:CRIT,borderRadius:6,maxBarThickness:60}]},
+            options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom'}},
+            scales:{x:{...gridOpt,grid:{display:false}},y:{...gridOpt,beginAtZero:true}}}});
+    }
+
+    async function load(){
+        try{
+            const r=await fetch('./data/soc-snapshot.json?t='+Date.now(),{cache:'no-store'});
+            if(!r.ok) throw new Error(r.status);
+            render(await r.json());
+        }catch(e){
+            render(FALLBACK); // fetch bloqueado (file://) ou arquivo ausente
+        }
+    }
+    load();
+    setInterval(load, 30000); // re-lê o snapshot a cada 30s
+    </script>
 </body>
 </html>

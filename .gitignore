@@ -1,0 +1,8 @@
+# Sessao do navegador do coletor (contem cookies de login) — NUNCA versionar
+.soc-profile/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
