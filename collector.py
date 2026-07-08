@@ -345,35 +345,67 @@ def collect_once(page, do_git: bool, grafana_wait: int = 12000):
         commit_and_push()
 
 
+def _pick_page(ctx):
+    """Reaproveita a aba do ASN Monitor; se nao existir, abre UMA aba nova
+    (na sua janela, nao uma janela separada)."""
+    for p in ctx.pages:
+        if "asn-monitor" in (p.url or ""):
+            return p
+    return ctx.new_page()
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--interval", type=int, default=30, help="segundos entre coletas")
     ap.add_argument("--grafana-wait", type=int, default=12000,
                     help="ms de espera para o Grafana renderizar (default 12000)")
+    ap.add_argument("--cdp", default="http://localhost:9222",
+                    help="endereco do seu Chrome aberto com --remote-debugging-port")
+    ap.add_argument("--own-window", action="store_true",
+                    help="abre uma janela propria (perfil .soc-profile) em vez de anexar ao seu Chrome")
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--no-git", action="store_true")
     args = ap.parse_args()
     do_git = not args.no_git
 
-    # limpa locks de sessao presa (evita "Abrindo em uma sessao existente")
-    for lock in ("SingletonLock", "SingletonCookie", "SingletonSocket"):
-        try:
-            (PROFILE_DIR / lock).unlink()
-        except Exception:
-            pass
-
     with sync_playwright() as pw:
-        ctx = pw.chromium.launch_persistent_context(
-            user_data_dir=str(PROFILE_DIR), headless=False,
-            viewport={"width": 1500, "height": 900})
-        page = ctx.pages[0] if ctx.pages else ctx.new_page()
+        browser = None
+        attached = False
+
+        # 1) tenta ANEXAR ao seu Chrome (aberto via start-chrome-debug.bat)
+        if not args.own_window:
+            try:
+                browser = pw.chromium.connect_over_cdp(args.cdp, timeout=5000)
+                attached = True
+            except Exception:
+                print(">>> Nao encontrei um Chrome com depuracao em", args.cdp)
+                print(">>> Abra o seu Chrome pelo atalho 'start-chrome-debug.bat' (uma vez),")
+                print(">>> faca login no ASN Monitor, e deixe rodando. Depois rode este coletor.")
+                print(">>> (alternativa: rode 'python collector.py --own-window' para janela propria)")
+                return 1
+
+        if attached:
+            ctx = browser.contexts[0] if browser.contexts else browser.new_context()
+            page = _pick_page(ctx)
+            print(">>> Anexado ao seu Chrome em", args.cdp)
+        else:
+            for lock in ("SingletonLock", "SingletonCookie", "SingletonSocket"):
+                try:
+                    (PROFILE_DIR / lock).unlink()
+                except Exception:
+                    pass
+            ctx = pw.chromium.launch_persistent_context(
+                user_data_dir=str(PROFILE_DIR), headless=False,
+                viewport={"width": 1500, "height": 900})
+            page = ctx.pages[0] if ctx.pages else ctx.new_page()
+
         ensure_logged_in(page)
 
-        if args.once:
-            collect_once(page, do_git, args.grafana_wait); ctx.close(); return 0
-
-        print(f">>> Coletando a cada {args.interval}s (todos os modulos). Ctrl+C para parar.\n")
         try:
+            if args.once:
+                collect_once(page, do_git, args.grafana_wait)
+                return 0
+            print(f">>> Coletando a cada {args.interval}s. Ctrl+C para parar.\n")
             while True:
                 t0 = time.time()
                 try:
@@ -386,7 +418,12 @@ def main() -> int:
         except KeyboardInterrupt:
             print("\n>>> Encerrado.")
         finally:
-            ctx.close()
+            # quando anexado, NAO fecha o seu navegador — so desconecta
+            if not attached:
+                try:
+                    ctx.close()
+                except Exception:
+                    pass
     return 0
 
 

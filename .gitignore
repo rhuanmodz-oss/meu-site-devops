@@ -1,5 +1,6 @@
-# Sessao do navegador do coletor (contem cookies de login) — NUNCA versionar
+# Perfis/sessao do navegador do coletor (cookies de login, cache) — NUNCA versionar
 .soc-profile/
+.chrome-debug/
 
 # Python
 __pycache__/
