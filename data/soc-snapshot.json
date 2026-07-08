@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-08T00:17:40-03:00",
-  "sync": "00:17:38",
+  "collected_at": "2026-07-08T00:18:09-03:00",
+  "sync": "00:18:08",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,6 +13,71 @@
   },
   "incidents": [
     {
+      "ts": "2026-07-08 00:18:05",
+      "hits": 1190,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.5.115",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 1016,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:18:04",
+      "hits": 1013,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.8.240",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 775,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:17:56",
+      "hits": 42,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "152.255.32.48",
+      "origin_net": "TELEFONICA BRASIL S.A",
+      "country": "Brazil",
+      "dest_count": 33,
+      "dest_type": "Dispositivos Internos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:17:55",
+      "hits": 1048,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.11.202",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 327,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:17:43",
+      "hits": 490,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.17.217",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 219,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
       "ts": "2026-07-08 00:17:38",
       "hits": 26,
       "level": "CRITICAL",
@@ -22,19 +87,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 11,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:17:34",
-      "hits": 1185,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.5.115",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 1011,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -91,19 +143,6 @@
       "risk": 95
     },
     {
-      "ts": "2026-07-08 00:16:06",
-      "hits": 1009,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.240",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 773,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-08 00:16:03",
       "hits": 21,
       "level": "CRITICAL",
@@ -156,19 +195,6 @@
       "risk": 95
     },
     {
-      "ts": "2026-07-08 00:15:14",
-      "hits": 489,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.17.217",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 218,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-08 00:15:13",
       "hits": 261,
       "level": "CRITICAL",
@@ -178,32 +204,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 137,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:14:38",
-      "hits": 188,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.10.50",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 112,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:14:19",
-      "hits": 90,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.16.203",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 66,
       "dest_type": "Destinos Externos",
       "risk": 95
     }
@@ -334,7 +334,7 @@
           "rows": [
             [
               1783458900000,
-              334
+              275
             ],
             [
               1783459200000,
@@ -614,7 +614,7 @@
             ],
             [
               1783479900000,
-              428
+              503
             ],
             [
               1783480200000,
@@ -636,11 +636,11 @@
           "rows": [
             [
               "outbound",
-              48689
+              48702
             ],
             [
               "internal",
-              38177
+              38180
             ],
             [
               "inbound",
@@ -720,15 +720,15 @@
           "rows": [
             [
               "Brazil",
-              35857
+              35876
             ],
             [
               "United States",
-              11336
+              11329
             ],
             [
               "China",
-              163
+              164
             ],
             [
               "The Netherlands",
@@ -778,11 +778,11 @@
           "rows": [
             [
               53,
-              85389
+              85406
             ],
             [
               123,
-              596
+              595
             ],
             [
               3389,
@@ -836,7 +836,7 @@
           "rows": [
             [
               "udp",
-              85970
+              85986
             ],
             [
               "tcp",
@@ -1416,7 +1416,7 @@
           "rows": [
             [
               1783458900000,
-              75
+              62
             ],
             [
               1783459200000,
@@ -1696,7 +1696,7 @@
             ],
             [
               1783479900000,
-              102
+              128
             ],
             [
               1783480200000,
@@ -1718,15 +1718,15 @@
           "rows": [
             [
               "Brazil",
-              35857
+              35876
             ],
             [
               "United States",
-              11227
+              11220
             ],
             [
               "China",
-              163
+              164
             ],
             [
               "The Netherlands",
@@ -1780,11 +1780,11 @@
             ],
             [
               "Google LLC",
-              10490
+              10483
             ],
             [
               "FENIX BRASIL",
-              7543
+              7563
             ],
             [
               "Cloudflare, Inc.",
@@ -1808,7 +1808,7 @@
             ],
             [
               "Zenlayer Inc",
-              83
+              84
             ],
             [
               "Meric Internet Teknolojileri A.S.",
@@ -1846,11 +1846,11 @@
             ],
             [
               "100.64.8.15",
-              4582
+              4607
             ],
             [
               "100.64.8.240",
-              2965
+              2967
             ],
             [
               "100.64.0.131",
@@ -1858,7 +1858,7 @@
             ],
             [
               "100.64.1.235",
-              765
+              764
             ],
             [
               "100.64.0.152",
@@ -1874,7 +1874,7 @@
             ],
             [
               "100.64.23.56",
-              216
+              215
             ],
             [
               "100.64.5.239",
@@ -1892,7 +1892,7 @@
           "rows": [
             [
               53,
-              47157
+              47178
             ],
             [
               123,
@@ -1950,7 +1950,7 @@
           "rows": [
             [
               "udp",
-              47875
+              47896
             ],
             [
               "tcp",
@@ -1985,15 +1985,15 @@
             ],
             [
               "100.64.8.15",
-              4593
+              4618
             ],
             [
               "100.64.8.240",
-              2969
+              2971
             ],
             [
               "100.64.1.235",
-              1212
+              1211
             ],
             [
               "100.64.0.131",
@@ -2005,7 +2005,7 @@
             ],
             [
               "100.64.1.51",
-              474
+              473
             ],
             [
               "100.64.5.255",
@@ -2021,11 +2021,11 @@
             ],
             [
               "100.64.4.44",
-              230
+              229
             ],
             [
               "100.64.23.56",
-              216
+              215
             ],
             [
               "100.64.0.226",
@@ -2043,7 +2043,7 @@
           "rows": [
             [
               "45.229.123.242",
-              31053
+              31056
             ],
             [
               "45.229.123.229",
@@ -2051,11 +2051,11 @@
             ],
             [
               "8.8.8.8",
-              6544
+              6539
             ],
             [
               "8.8.4.4",
-              3904
+              3902
             ],
             [
               "1.1.1.1",
@@ -2071,7 +2071,7 @@
             ],
             [
               "114.114.114.114",
-              83
+              84
             ],
             [
               "91.124.98.28",
@@ -2113,7 +2113,7 @@
           "rows": [
             [
               53,
-              85393
+              85417
             ],
             [
               123,
@@ -2187,11 +2187,11 @@
             ],
             [
               "Google LLC",
-              10499
+              10492
             ],
             [
               "FENIX BRASIL",
-              7543
+              7570
             ],
             [
               "Cloudflare, Inc.",
@@ -2219,7 +2219,7 @@
             ],
             [
               "Zenlayer Inc",
-              83
+              84
             ],
             [
               "Meric Internet Teknolojileri A.S.",
