@@ -355,6 +355,13 @@ def main() -> int:
     args = ap.parse_args()
     do_git = not args.no_git
 
+    # limpa locks de sessao presa (evita "Abrindo em uma sessao existente")
+    for lock in ("SingletonLock", "SingletonCookie", "SingletonSocket"):
+        try:
+            (PROFILE_DIR / lock).unlink()
+        except Exception:
+            pass
+
     with sync_playwright() as pw:
         ctx = pw.chromium.launch_persistent_context(
             user_data_dir=str(PROFILE_DIR), headless=False,
