@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T21:24:57-03:00",
-  "sync": "21:24:56",
+  "collected_at": "2026-07-07T21:25:27-03:00",
+  "sync": "21:25:25",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,16 +13,42 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-07 21:24:53",
-      "hits": 802,
+      "ts": "2026-07-07 21:25:13",
+      "hits": 803,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.8.240",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 598,
+      "dest_count": 599,
       "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:24:59",
+      "hits": 122,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.4.103",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 54,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 21:24:56",
+      "hits": 15,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "152.255.32.160",
+      "origin_net": "TELEFÔNICA BRASIL S.A",
+      "country": "Brazil",
+      "dest_count": 14,
+      "dest_type": "Dispositivos Internos",
       "risk": 95
     },
     {
@@ -48,19 +74,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 16,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:24:19",
-      "hits": 121,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.4.103",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 53,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -102,19 +115,6 @@
       "dest_count": 6,
       "dest_type": "Destinos Externos",
       "risk": 80
-    },
-    {
-      "ts": "2026-07-07 21:22:44",
-      "hits": 0,
-      "level": "INFO",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.15",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 3661,
-      "dest_type": "Destinos Externos",
-      "risk": 95
     },
     {
       "ts": "2026-07-07 21:21:12",
@@ -165,19 +165,6 @@
       "origin_net": "TELEFÔNICA BRASIL S.A",
       "country": "Brazil",
       "dest_count": 87,
-      "dest_type": "Dispositivos Internos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 21:16:30",
-      "hits": 14,
-      "level": "CRITICAL",
-      "direction": "IN",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "152.255.32.160",
-      "origin_net": "TELEFÔNICA BRASIL S.A",
-      "country": "Brazil",
-      "dest_count": 14,
       "dest_type": "Dispositivos Internos",
       "risk": 95
     },
