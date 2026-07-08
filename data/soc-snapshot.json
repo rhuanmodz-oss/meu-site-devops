@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-08T00:18:09-03:00",
-  "sync": "00:18:08",
+  "collected_at": "2026-07-08T00:18:39-03:00",
+  "sync": "00:18:38",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,15 +13,67 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-08 00:18:05",
-      "hits": 1190,
+      "ts": "2026-07-08 00:18:35",
+      "hits": 1193,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.5.115",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 1016,
+      "dest_count": 1019,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:18:35",
+      "hits": 383,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.6.11",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 290,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:18:32",
+      "hits": 43,
+      "level": "CRITICAL",
+      "direction": "IN",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "152.255.32.48",
+      "origin_net": "TELEFONICA BRASIL S.A",
+      "country": "Brazil",
+      "dest_count": 33,
+      "dest_type": "Dispositivos Internos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:18:29",
+      "hits": 721,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "45.229.121.1",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 300,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-08 00:18:09",
+      "hits": 262,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.19.76",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 137,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -36,19 +88,6 @@
       "country": "Interna",
       "dest_count": 775,
       "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:17:56",
-      "hits": 42,
-      "level": "CRITICAL",
-      "direction": "IN",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "152.255.32.48",
-      "origin_net": "TELEFONICA BRASIL S.A",
-      "country": "Brazil",
-      "dest_count": 33,
-      "dest_type": "Dispositivos Internos",
       "risk": 95
     },
     {
@@ -117,19 +156,6 @@
       "risk": 95
     },
     {
-      "ts": "2026-07-08 00:17:16",
-      "hits": 382,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.6.11",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 289,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
       "ts": "2026-07-08 00:16:55",
       "hits": 185,
       "level": "CRITICAL",
@@ -179,32 +205,6 @@
       "country": "Brazil",
       "dest_count": 54,
       "dest_type": "Dispositivos Internos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:15:22",
-      "hits": 210,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.5.35",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 112,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-08 00:15:13",
-      "hits": 261,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.19.76",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 137,
-      "dest_type": "Destinos Externos",
       "risk": 95
     }
   ],
@@ -334,7 +334,7 @@
           "rows": [
             [
               1783458900000,
-              275
+              198
             ],
             [
               1783459200000,
@@ -614,7 +614,7 @@
             ],
             [
               1783479900000,
-              503
+              706
             ],
             [
               1783480200000,
@@ -636,15 +636,15 @@
           "rows": [
             [
               "outbound",
-              48702
+              48856
             ],
             [
               "internal",
-              38180
+              38151
             ],
             [
               "inbound",
-              363
+              364
             ],
             [
               "transit",
@@ -678,7 +678,7 @@
             ],
             [
               "United Kingdom",
-              34
+              35
             ],
             [
               "The Netherlands",
@@ -720,15 +720,15 @@
           "rows": [
             [
               "Brazil",
-              35876
+              36037
             ],
             [
               "United States",
-              11329
+              11318
             ],
             [
               "China",
-              164
+              165
             ],
             [
               "The Netherlands",
@@ -778,11 +778,11 @@
           "rows": [
             [
               53,
-              85406
+              85532
             ],
             [
               123,
-              595
+              597
             ],
             [
               3389,
@@ -790,7 +790,7 @@
             ],
             [
               1900,
-              255
+              253
             ],
             [
               5060,
@@ -836,11 +836,11 @@
           "rows": [
             [
               "udp",
-              85986
+              86112
             ],
             [
               "tcp",
-              1368
+              1369
             ]
           ]
         }
@@ -1139,7 +1139,7 @@
             ],
             [
               1783479900000,
-              4
+              5
             ],
             [
               1783480200000,
@@ -1173,7 +1173,7 @@
             ],
             [
               "United Kingdom",
-              34
+              35
             ],
             [
               "The Netherlands",
@@ -1227,7 +1227,7 @@
             ],
             [
               "UAB Host Baltic",
-              34
+              35
             ],
             [
               "Psychz Networks",
@@ -1339,7 +1339,7 @@
             ],
             [
               "100.64.19.99",
-              20
+              21
             ],
             [
               "100.64.19.195",
@@ -1393,7 +1393,7 @@
           "rows": [
             [
               "tcp",
-              249
+              250
             ],
             [
               "udp",
@@ -1416,7 +1416,7 @@
           "rows": [
             [
               1783458900000,
-              62
+              47
             ],
             [
               1783459200000,
@@ -1696,7 +1696,7 @@
             ],
             [
               1783479900000,
-              128
+              297
             ],
             [
               1783480200000,
@@ -1718,15 +1718,15 @@
           "rows": [
             [
               "Brazil",
-              35876
+              36037
             ],
             [
               "United States",
-              11220
+              11209
             ],
             [
               "China",
-              164
+              165
             ],
             [
               "The Netherlands",
@@ -1780,15 +1780,15 @@
             ],
             [
               "Google LLC",
-              10483
+              10474
             ],
             [
               "FENIX BRASIL",
-              7563
+              7723
             ],
             [
               "Cloudflare, Inc.",
-              563
+              566
             ],
             [
               "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
@@ -1796,7 +1796,7 @@
             ],
             [
               "Cisco OpenDNS, LLC",
-              187
+              186
             ],
             [
               "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
@@ -1846,11 +1846,11 @@
             ],
             [
               "100.64.8.15",
-              4607
+              4759
             ],
             [
               "100.64.8.240",
-              2967
+              2968
             ],
             [
               "100.64.0.131",
@@ -1866,7 +1866,7 @@
             ],
             [
               "100.64.3.202",
-              267
+              266
             ],
             [
               "100.64.13.133",
@@ -1892,11 +1892,11 @@
           "rows": [
             [
               53,
-              47178
+              47323
             ],
             [
               123,
-              585
+              586
             ],
             [
               3389,
@@ -1904,7 +1904,7 @@
             ],
             [
               1900,
-              223
+              222
             ],
             [
               25,
@@ -1950,11 +1950,11 @@
           "rows": [
             [
               "udp",
-              47896
+              48040
             ],
             [
               "tcp",
-              815
+              816
             ]
           ]
         }
@@ -1985,11 +1985,11 @@
             ],
             [
               "100.64.8.15",
-              4618
+              4770
             ],
             [
               "100.64.8.240",
-              2971
+              2972
             ],
             [
               "100.64.1.235",
@@ -2001,15 +2001,15 @@
             ],
             [
               "100.64.0.152",
-              792
+              793
             ],
             [
               "100.64.1.51",
-              473
+              472
             ],
             [
               "100.64.5.255",
-              405
+              404
             ],
             [
               "100.64.13.133",
@@ -2017,7 +2017,7 @@
             ],
             [
               "100.64.3.202",
-              275
+              274
             ],
             [
               "100.64.4.44",
@@ -2043,27 +2043,27 @@
           "rows": [
             [
               "45.229.123.242",
-              31056
+              31034
             ],
             [
               "45.229.123.229",
-              7004
+              6998
             ],
             [
               "8.8.8.8",
-              6539
+              6532
             ],
             [
               "8.8.4.4",
-              3902
+              3899
             ],
             [
               "1.1.1.1",
-              402
+              404
             ],
             [
               "239.255.255.250",
-              216
+              215
             ],
             [
               "208.67.222.222",
@@ -2113,11 +2113,11 @@
           "rows": [
             [
               53,
-              85417
+              85534
             ],
             [
               123,
-              596
+              597
             ],
             [
               3389,
@@ -2125,7 +2125,7 @@
             ],
             [
               1900,
-              255
+              253
             ],
             [
               5060,
@@ -2187,15 +2187,15 @@
             ],
             [
               "Google LLC",
-              10492
+              10482
             ],
             [
               "FENIX BRASIL",
-              7570
+              7723
             ],
             [
               "Cloudflare, Inc.",
-              563
+              566
             ],
             [
               "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
@@ -2203,7 +2203,7 @@
             ],
             [
               "Cisco OpenDNS, LLC",
-              187
+              186
             ],
             [
               "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",

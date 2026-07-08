@@ -235,7 +235,7 @@ function renderRank(host,panel,accent){
   const rows=(panel.rows||[]).filter(r=>r&&r.length);
   const max=Math.max(1,...rows.map(r=>numify(r[r.length-1])));
   const body=rows.map((r,i)=>{const val=numify(r[r.length-1]);const w=Math.max(2,Math.round(val/max*100));
-    return `<div class="rk"><span class="i">${i+1}</span><span class="l">${fmtLabel(panel.title,r[0])}</span><span class="v">${nf.format(val)}</span><div class="track"><i style="width:${w}%"></i></div></div>`;}).join('');
+    return `<div class="rk"><span class="i">${i+1}</span><span class="l" title="${esc(String(r[0]))}">${fmtLabel(panel.title,r[0])}</span><span class="v">${nf.format(val)}</span><div class="track"><i style="width:${w}%"></i></div></div>`;}).join('');
   host.insertAdjacentHTML('beforeend',`<div class="mcard" style="--accent:${accent}"><div class="cap">${esc(panel.title)} <small>${rows.length}</small></div><div class="rank">${body||'<div class="empty">sem dados</div>'}</div></div>`);
 }
 function renderVizCard(host,panel,accent){
