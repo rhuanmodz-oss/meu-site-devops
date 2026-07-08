@@ -165,32 +165,59 @@
     }
 
     function esc(s){return String(s==null?'':s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+    const G_PAL=['#00fff2','#a78bfa','#f472b6','#34d399','#fbbf24','#60a5fa','#7dd3fc','#fb7185','#c084fc','#4ade80'];
+    let grafCharts=[];
+    function fmtT(ms){ const d=new Date(Number(ms)); return isNaN(d.getTime())?String(ms):(d.getHours()+':'+String(d.getMinutes()).padStart(2,'0')); }
+    function numify(v){ if(typeof v==='number')return v; const n=parseFloat(String(v).replace(/[^\d.\-]/g,'')); return isNaN(n)?0:n; }
+
+    function buildGrafChart(id, p){
+        const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length); if(!fr) return null;
+        const cols=fr.fields||[], rows=fr.rows||[];
+        const el=document.getElementById(id); if(!el) return null;
+        const ctx=el.getContext('2d');
+        let vi=cols.findIndex(c=>/count|value|total|sum|hits/i.test(c)); if(vi<0) vi=cols.length-1;
+        const isTime=/time|timestamp/i.test(cols[0]||'');
+        let li=cols.findIndex((c,i)=>i!==vi); if(li<0) li=0;
+
+        if(isTime){
+            const labels=rows.map(r=>fmtT(r[0]));
+            const data=rows.map(r=>numify(r[vi]));
+            const grd=ctx.createLinearGradient(0,0,0,210); grd.addColorStop(0,'#00fff255'); grd.addColorStop(1,'#00fff200');
+            return new Chart(ctx,{type:'line',data:{labels,datasets:[{data,borderColor:'#00fff2',backgroundColor:grd,borderWidth:2,fill:true,tension:.4,pointRadius:0,pointHoverRadius:4}]},
+                options:{maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{...gridOpt,ticks:{maxTicksLimit:6}},y:{...gridOpt,beginAtZero:true}}}});
+        }
+        const labels=rows.map(r=>String(r[li]));
+        const data=rows.map(r=>numify(r[vi]));
+        if(p.type==='piechart'){
+            return new Chart(ctx,{type:'doughnut',data:{labels,datasets:[{data,backgroundColor:G_PAL,borderColor:CARD,borderWidth:3,hoverOffset:6}]},
+                options:{maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'right',labels:{boxWidth:8,font:{size:10}}}}}});
+        }
+        const horiz = labels.some(l=>l.length>6) || labels.length>6;
+        return new Chart(ctx,{type:'bar',data:{labels,datasets:[{data,backgroundColor:G_PAL,borderRadius:6,barThickness:horiz?14:undefined,maxBarThickness:34}]},
+            options:{indexAxis:horiz?'y':'x',maintainAspectRatio:false,plugins:{legend:{display:false}},
+                scales:{x:{...gridOpt,beginAtZero:true},y:{...gridOpt,grid:{display:!horiz}}}}});
+    }
+
     function renderGrafana(g){
         const block=document.getElementById('grafBlock'), cont=document.getElementById('grafContent'), cnt=document.getElementById('grafCount');
+        grafCharts.forEach(c=>{try{c.destroy();}catch(e){}}); grafCharts=[];
         if(!Array.isArray(g)||!g.length){ block.style.display='none'; return; }
-        let panels=0, html='';
+        let idx=0,total=0,html=''; const queue=[];
         g.forEach(dash=>{
-            const withData=(dash.panels||[]).filter(p=>(p.frames||[]).some(f=>f.rows&&f.rows.length));
-            if(!withData.length) return;
-            html+=`<h3 style="margin:18px 0 8px;font-size:.92rem;color:var(--text)">${esc(dash.title)}</h3>`;
-            html+='<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px">';
-            withData.slice(0,10).forEach(p=>{
-                const fr=(p.frames||[]).find(f=>f.rows&&f.rows.length);
-                panels++;
-                let t='<div style="border:1px solid var(--card-border);border-radius:10px;padding:12px;background:#0f1114">';
-                t+=`<div style="font-size:.78rem;color:var(--muted);margin-bottom:8px">${esc(p.title||p.type)}</div>`;
-                t+='<table style="width:100%;border-collapse:collapse;font-size:.78rem"><tr>'+
-                    fr.fields.map(f=>`<th style="text-align:left;color:var(--muted);font-weight:600;padding:2px 6px">${esc(f)}</th>`).join('')+'</tr>';
-                fr.rows.slice(0,8).forEach(r=>{ t+='<tr>'+r.map(c=>`<td style="padding:2px 6px;border-top:1px solid var(--card-border)">${esc(typeof c==='number'?nf.format(c):c)}</td>`).join('')+'</tr>'; });
-                t+='</table></div>';
-                html+=t;
+            const good=(dash.panels||[]).filter(p=>p.type!=='text' && (p.frames||[]).some(f=>f.rows&&f.rows.length));
+            if(!good.length) return;
+            html+=`<div class="mod-title">${esc(dash.dash||dash.title||'Dashboard')}</div><div class="mod-grid">`;
+            good.slice(0,12).forEach(p=>{ const id='graf_c'+(idx++); total++;
+                html+=`<div class="mod-card"><div class="mod-cap">${esc(p.title||p.type)}</div><div class="mod-chart"><canvas id="${id}"></canvas></div></div>`;
+                queue.push({id,p});
             });
             html+='</div>';
         });
-        if(!panels){ block.style.display='none'; return; }
+        if(!total){ block.style.display='none'; return; }
         block.style.display='block';
-        cnt.textContent='· '+panels+' painéis com dados';
+        cnt.textContent='· '+total+' painéis';
         cont.innerHTML=html;
+        queue.forEach(q=>{ try{ const c=buildGrafChart(q.id,q.p); if(c) grafCharts.push(c); }catch(e){} });
     }
 
     function render(snap){
