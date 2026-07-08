@@ -1,6 +1,6 @@
 {
-  "collected_at": "2026-07-07T23:02:33-03:00",
-  "sync": "23:02:32",
+  "collected_at": "2026-07-07T23:03:02-03:00",
+  "sync": "23:03:01",
   "source": "FlowSpec Enterprise SOC (asn-monitor.linknetbandalarga.net)",
   "kpis": {
     "iocs_mundiais": 127879,
@@ -13,28 +13,54 @@
   },
   "incidents": [
     {
-      "ts": "2026-07-07 23:02:30",
-      "hits": 7340,
+      "ts": "2026-07-07 23:02:55",
+      "hits": 159,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.8.15",
+      "origin_ip": "100.64.10.50",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 3846,
+      "dest_count": 100,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
     {
-      "ts": "2026-07-07 23:02:30",
-      "hits": 889,
+      "ts": "2026-07-07 23:02:49",
+      "hits": 155,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.15.75",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 58,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 23:02:43",
+      "hits": 891,
       "level": "CRITICAL",
       "direction": "OUT",
       "category": "DAY-0 SCANNER",
       "origin_ip": "100.64.8.240",
       "origin_net": "REDE INTERNA",
       "country": "Interna",
-      "dest_count": 669,
+      "dest_count": 670,
+      "dest_type": "Destinos Externos",
+      "risk": 95
+    },
+    {
+      "ts": "2026-07-07 23:02:41",
+      "hits": 7342,
+      "level": "CRITICAL",
+      "direction": "OUT",
+      "category": "DAY-0 SCANNER",
+      "origin_ip": "100.64.8.15",
+      "origin_net": "REDE INTERNA",
+      "country": "Interna",
+      "dest_count": 3848,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -48,19 +74,6 @@
       "origin_net": "REDE INTERNA",
       "country": "Interna",
       "dest_count": 319,
-      "dest_type": "Destinos Externos",
-      "risk": 95
-    },
-    {
-      "ts": "2026-07-07 23:01:11",
-      "hits": 158,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "DAY-0 SCANNER",
-      "origin_ip": "100.64.10.50",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 100,
       "dest_type": "Destinos Externos",
       "risk": 95
     },
@@ -193,19 +206,6 @@
       "dest_count": 22,
       "dest_type": "Destinos Externos",
       "risk": 95
-    },
-    {
-      "ts": "2026-07-07 22:52:21",
-      "hits": 2,
-      "level": "CRITICAL",
-      "direction": "OUT",
-      "category": "IOC: ABUSE-DB, IPSUM, BL-DE",
-      "origin_ip": "45.229.121.44",
-      "origin_net": "REDE INTERNA",
-      "country": "Interna",
-      "dest_count": 2,
-      "dest_type": "Destinos Externos",
-      "risk": 100
     }
   ],
   "modules": {
@@ -338,7 +338,7 @@
               "rows": [
                 [
                   1783454400000,
-                  278
+                  232
                 ],
                 [
                   1783454700000,
@@ -604,7 +604,7 @@
                 [
                   "drkr",
                   "Cidade",
-                  3942
+                  3941
                 ],
                 [
                   "6xmq",
@@ -707,6 +707,11 @@
                   20
                 ],
                 [
+                  "7p76",
+                  "Cidade",
+                  20
+                ],
+                [
                   "7h7m",
                   "Cidade",
                   20
@@ -715,11 +720,6 @@
                   "6gyd",
                   "Cidade",
                   20
-                ],
-                [
-                  "7p76",
-                  "Cidade",
-                  19
                 ],
                 [
                   "7pkd",
@@ -749,7 +749,7 @@
                 [
                   "wecp",
                   "Cidade",
-                  15
+                  16
                 ],
                 [
                   "9yuw",
@@ -817,17 +817,17 @@
                   7
                 ],
                 [
-                  "dr5r",
+                  "ws0e",
                   "Cidade",
                   7
                 ],
                 [
-                  "ws0e",
+                  "dryw",
                   "Cidade",
                   6
                 ],
                 [
-                  "dryw",
+                  "dr5r",
                   "Cidade",
                   6
                 ],
@@ -1127,7 +1127,7 @@
                 ],
                 [
                   "outbound",
-                  44080
+                  44082
                 ],
                 [
                   "inbound",
@@ -1372,11 +1372,11 @@
               "rows": [
                 [
                   "45.229.123.242",
-                  31243
+                  31246
                 ],
                 [
                   "45.229.123.229",
-                  7233
+                  7240
                 ],
                 [
                   "100.65.0.2",
@@ -1809,7 +1809,7 @@
               "rows": [
                 [
                   1783454400000,
-                  16
+                  15
                 ],
                 [
                   1783454700000,
@@ -2063,11 +2063,11 @@
               "rows": [
                 [
                   443,
-                  1281076
+                  1281350
                 ],
                 [
                   80,
-                  164856
+                  164929
                 ],
                 [
                   53,
@@ -2075,31 +2075,31 @@
                 ],
                 [
                   3478,
-                  37699
+                  37686
                 ],
                 [
                   28575,
-                  11836
+                  11838
                 ],
                 [
                   5222,
-                  11400
+                  11401
                 ],
                 [
                   853,
-                  6025
+                  6027
                 ],
                 [
                   18000,
-                  6010
+                  6017
                 ],
                 [
                   771,
-                  5432
+                  5431
                 ],
                 [
                   23429,
-                  5020
+                  5021
                 ]
               ]
             }
@@ -2117,11 +2117,11 @@
               "rows": [
                 [
                   "udp",
-                  78922217
+                  78928088
                 ],
                 [
                   "tcp",
-                  140639
+                  140459
                 ]
               ]
             }
@@ -2143,7 +2143,7 @@
                 ],
                 [
                   "Google LLC",
-                  10709
+                  10707
                 ],
                 [
                   "VISION TELECOM SERVICOS DE COMUNICACAO MULTIMIDIA",
@@ -2163,7 +2163,7 @@
                 ],
                 [
                   "Cisco OpenDNS, LLC",
-                  205
+                  206
                 ],
                 [
                   "Nucleo de Inf. e Coord. do Ponto BR - NIC.BR",
@@ -3467,7 +3467,7 @@
                 ],
                 [
                   "100.64.0.152",
-                  512
+                  511
                 ],
                 [
                   "100.64.0.131",
@@ -5398,7 +5398,7 @@
                   "United States",
                   "100.64.0.152",
                   53,
-                  510
+                  509
                 ],
                 [
                   "7195",
@@ -5517,8 +5517,8 @@
                 [
                   "100.64.0.152",
                   53,
-                  510,
-                  43587
+                  509,
+                  43497
                 ],
                 [
                   "100.64.0.131",
@@ -5601,8 +5601,8 @@
                 [
                   "100.64.18.116",
                   1900,
-                  44,
-                  19289
+                  45,
+                  19749
                 ],
                 [
                   "45.229.122.132",
@@ -5629,6 +5629,12 @@
                   3468
                 ],
                 [
+                  "100.64.18.32",
+                  53,
+                  36,
+                  3468
+                ],
+                [
                   "45.229.121.249",
                   53,
                   35,
@@ -5645,12 +5651,6 @@
                   53,
                   35,
                   3200
-                ],
-                [
-                  "100.64.18.32",
-                  53,
-                  35,
-                  3369
                 ],
                 [
                   "45.229.121.1",
